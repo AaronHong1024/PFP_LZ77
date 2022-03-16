@@ -1,0 +1,986 @@
+The system is: Darwin - 21.3.0 - arm64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /opt/homebrew/bin/gcc 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+
+The C compiler identification is GNU, found in "/Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/3.20.2/CompilerIdC/a.out"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: /opt/homebrew/bin/g++ 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+ld: warning: dylib (/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/libstdc++.dylib) was built for newer macOS version (11.4) than being linked (11.2)
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+
+The CXX compiler identification is GNU, found in "/Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/3.20.2/CompilerIdCXX/a.out"
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_17936/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_17936.dir/build.make CMakeFiles/cmTC_17936.dir/build
+Building C object CMakeFiles/cmTC_17936.dir/CMakeCCompilerABI.c.o
+/opt/homebrew/bin/gcc   -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk   -v -Wl,-v -o CMakeFiles/cmTC_17936.dir/CMakeCCompilerABI.c.o -c /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.20/Modules/CMakeCCompilerABI.c
+Using built-in specs.
+COLLECT_GCC=/opt/homebrew/bin/gcc
+Target: aarch64-apple-darwin20
+Configured with: ../configure --prefix=/opt/homebrew/Cellar/gcc/11.2.0 --libdir=/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11 --disable-nls --enable-checking=release --enable-languages=c,c++,objc,obj-c++,fortran --program-suffix=-11 --with-gmp=/opt/homebrew/opt/gmp --with-mpfr=/opt/homebrew/opt/mpfr --with-mpc=/opt/homebrew/opt/libmpc --with-isl=/opt/homebrew/opt/isl --with-zstd=/opt/homebrew/opt/zstd --with-pkgversion='Homebrew GCC 11.2.0' --with-bugurl=https://github.com/Homebrew/homebrew-core/issues --build=aarch64-apple-darwin20 --with-system-zlib --disable-multilib --with-native-system-header-dir=/usr/include --with-sysroot=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk
+Thread model: posix
+Supported LTO compression algorithms: zlib zstd
+gcc version 11.1.0 (Homebrew GCC 11.2.0) 
+COLLECT_GCC_OPTIONS='-isysroot' '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk' '-v' '-o' 'CMakeFiles/cmTC_17936.dir/CMakeCCompilerABI.c.o' '-c' '-mmacosx-version-min=11.2.0' '-asm_macosx_version_min=11.2' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_17936.dir/'
+ /opt/homebrew/Cellar/gcc/11.2.0/libexec/gcc/aarch64-apple-darwin20/11.1.0/cc1 -quiet -v -D__DYNAMIC__ -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.20/Modules/CMakeCCompilerABI.c -fPIC -quiet -dumpdir CMakeFiles/cmTC_17936.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mmacosx-version-min=11.2.0 -mlittle-endian -mabi=lp64 -version -o /var/folders/03/h5csm9115m1gw7hpzh8pwwbc0000gn/T//ccrrlMYd.s
+GNU C17 (Homebrew GCC 11.2.0) version 11.1.0 (aarch64-apple-darwin20)
+	compiled by GNU C version 11.1.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+ignoring nonexistent directory "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/local/include"
+ignoring nonexistent directory "/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/../../../../../../aarch64-apple-darwin20/include"
+ignoring nonexistent directory "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/Library/Frameworks"
+#include "..." search starts here:
+#include <...> search starts here:
+ /opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/include
+ /opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/include-fixed
+ /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include
+ /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/System/Library/Frameworks
+End of search list.
+GNU C17 (Homebrew GCC 11.2.0) version 11.1.0 (aarch64-apple-darwin20)
+	compiled by GNU C version 11.1.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+Compiler executable checksum: f8829df2b4d071c3a3f7635e6faf792e
+COLLECT_GCC_OPTIONS='-isysroot' '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk' '-v' '-o' 'CMakeFiles/cmTC_17936.dir/CMakeCCompilerABI.c.o' '-c' '-mmacosx-version-min=11.2.0'  '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_17936.dir/'
+ as -arch arm64 -v -mmacosx-version-min=11.2 -o CMakeFiles/cmTC_17936.dir/CMakeCCompilerABI.c.o /var/folders/03/h5csm9115m1gw7hpzh8pwwbc0000gn/T//ccrrlMYd.s
+Apple clang version 13.0.0 (clang-1300.0.29.30)
+Target: arm64-apple-darwin21.3.0
+Thread model: posix
+InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang" -cc1as -triple arm64-apple-macosx11.2.0 -filetype obj -main-file-name ccrrlMYd.s -target-cpu apple-m1 -target-feature +v8.5a -target-feature +fp-armv8 -target-feature +neon -target-feature +crc -target-feature +crypto -target-feature +dotprod -target-feature +fp16fml -target-feature +ras -target-feature +lse -target-feature +rdm -target-feature +rcpc -target-feature +zcm -target-feature +zcz -target-feature +fullfp16 -target-feature +sm4 -target-feature +sha3 -target-feature +sha2 -target-feature +aes -fdebug-compilation-dir /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp -dwarf-debug-producer "Apple clang version 13.0.0 (clang-1300.0.29.30)" -dwarf-version=4 -mrelocation-model pic --mrelax-relocations -mllvm -disable-aligned-alloc-awareness=1 -mllvm -enable-dse-memoryssa=0 -o CMakeFiles/cmTC_17936.dir/CMakeCCompilerABI.c.o /var/folders/03/h5csm9115m1gw7hpzh8pwwbc0000gn/T//ccrrlMYd.s
+COMPILER_PATH=/opt/homebrew/Cellar/gcc/11.2.0/libexec/gcc/aarch64-apple-darwin20/11.1.0/:/opt/homebrew/Cellar/gcc/11.2.0/libexec/gcc/aarch64-apple-darwin20/11.1.0/:/opt/homebrew/Cellar/gcc/11.2.0/libexec/gcc/aarch64-apple-darwin20/:/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/:/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/
+LIBRARY_PATH=/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/:/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/../../../
+COLLECT_GCC_OPTIONS='-isysroot' '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk' '-v' '-o' 'CMakeFiles/cmTC_17936.dir/CMakeCCompilerABI.c.o' '-c' '-mmacosx-version-min=11.2.0'  '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_17936.dir/CMakeCCompilerABI.c.'
+Linking C executable cmTC_17936
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E cmake_link_script CMakeFiles/cmTC_17936.dir/link.txt --verbose=1
+/opt/homebrew/bin/gcc  -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -v -Wl,-v CMakeFiles/cmTC_17936.dir/CMakeCCompilerABI.c.o -o cmTC_17936 
+Using built-in specs.
+COLLECT_GCC=/opt/homebrew/bin/gcc
+COLLECT_LTO_WRAPPER=/opt/homebrew/Cellar/gcc/11.2.0/libexec/gcc/aarch64-apple-darwin20/11.1.0/lto-wrapper
+Target: aarch64-apple-darwin20
+Configured with: ../configure --prefix=/opt/homebrew/Cellar/gcc/11.2.0 --libdir=/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11 --disable-nls --enable-checking=release --enable-languages=c,c++,objc,obj-c++,fortran --program-suffix=-11 --with-gmp=/opt/homebrew/opt/gmp --with-mpfr=/opt/homebrew/opt/mpfr --with-mpc=/opt/homebrew/opt/libmpc --with-isl=/opt/homebrew/opt/isl --with-zstd=/opt/homebrew/opt/zstd --with-pkgversion='Homebrew GCC 11.2.0' --with-bugurl=https://github.com/Homebrew/homebrew-core/issues --build=aarch64-apple-darwin20 --with-system-zlib --disable-multilib --with-native-system-header-dir=/usr/include --with-sysroot=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk
+Thread model: posix
+Supported LTO compression algorithms: zlib zstd
+gcc version 11.1.0 (Homebrew GCC 11.2.0) 
+COMPILER_PATH=/opt/homebrew/Cellar/gcc/11.2.0/libexec/gcc/aarch64-apple-darwin20/11.1.0/:/opt/homebrew/Cellar/gcc/11.2.0/libexec/gcc/aarch64-apple-darwin20/11.1.0/:/opt/homebrew/Cellar/gcc/11.2.0/libexec/gcc/aarch64-apple-darwin20/:/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/:/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/
+LIBRARY_PATH=/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/:/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/../../../
+COLLECT_GCC_OPTIONS='-isysroot' '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk' '-v' '-o' 'cmTC_17936' '-mmacosx-version-min=11.2.0' '-asm_macosx_version_min=11.2' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'cmTC_17936.'
+ /opt/homebrew/Cellar/gcc/11.2.0/libexec/gcc/aarch64-apple-darwin20/11.1.0/collect2 -dynamic -arch arm64 -macosx_version_min 11.2.0 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -weak_reference_mismatches non-weak -o cmTC_17936 -L/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0 -L/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/../../.. -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_17936.dir/CMakeCCompilerABI.c.o -lgcc_s.1.1 -lgcc -lSystem -lgcc -no_compact_unwind -rpath @loader_path -rpath /opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0 -rpath /opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/../../.. -v
+collect2 version 11.1.0
+/usr/bin/ld -dynamic -arch arm64 -macosx_version_min 11.2.0 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -weak_reference_mismatches non-weak -o cmTC_17936 -L/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0 -L/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/../../.. -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_17936.dir/CMakeCCompilerABI.c.o -lgcc_s.1.1 -lgcc -lSystem -lgcc -no_compact_unwind -rpath @loader_path -rpath /opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0 -rpath /opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/../../.. -v
+@(#)PROGRAM:ld  PROJECT:ld64-711
+BUILD 21:57:24 Nov 17 2021
+configured to support archs: armv6 armv7 armv7s arm64 arm64e arm64_32 i386 x86_64 x86_64h armv6m armv7k armv7m armv7em
+@(#)PROGRAM:ld  PROJECT:ld64-711
+BUILD 21:57:24 Nov 17 2021
+configured to support archs: armv6 armv7 armv7s arm64 arm64e arm64_32 i386 x86_64 x86_64h armv6m armv7k armv7m armv7em
+Library search paths:
+	/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0
+	/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11
+	/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/lib
+Framework search paths:
+	/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/System/Library/Frameworks/
+
+
+
+Parsed C implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/include]
+    add: [/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/include-fixed]
+    add: [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include]
+    add: [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/System/Library/Frameworks]
+  end of search list found
+  collapse include dir [/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/include] ==> [/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/include]
+  collapse include dir [/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/include-fixed] ==> [/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/include-fixed]
+  collapse include dir [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include] ==> [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include]
+  collapse include dir [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/System/Library/Frameworks] ==> [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/System/Library/Frameworks]
+  implicit include dirs: [/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/include;/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/include-fixed;/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include;/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/System/Library/Frameworks]
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):/usr/bin/make -f Makefile cmTC_17936/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_17936.dir/build.make CMakeFiles/cmTC_17936.dir/build]
+  ignore line: [Building C object CMakeFiles/cmTC_17936.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/opt/homebrew/bin/gcc   -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk   -v -Wl -v -o CMakeFiles/cmTC_17936.dir/CMakeCCompilerABI.c.o -c /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.20/Modules/CMakeCCompilerABI.c]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/opt/homebrew/bin/gcc]
+  ignore line: [Target: aarch64-apple-darwin20]
+  ignore line: [Configured with: ../configure --prefix=/opt/homebrew/Cellar/gcc/11.2.0 --libdir=/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11 --disable-nls --enable-checking=release --enable-languages=c c++ objc obj-c++ fortran --program-suffix=-11 --with-gmp=/opt/homebrew/opt/gmp --with-mpfr=/opt/homebrew/opt/mpfr --with-mpc=/opt/homebrew/opt/libmpc --with-isl=/opt/homebrew/opt/isl --with-zstd=/opt/homebrew/opt/zstd --with-pkgversion='Homebrew GCC 11.2.0' --with-bugurl=https://github.com/Homebrew/homebrew-core/issues --build=aarch64-apple-darwin20 --with-system-zlib --disable-multilib --with-native-system-header-dir=/usr/include --with-sysroot=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk]
+  ignore line: [Thread model: posix]
+  ignore line: [Supported LTO compression algorithms: zlib zstd]
+  ignore line: [gcc version 11.1.0 (Homebrew GCC 11.2.0) ]
+  ignore line: [COLLECT_GCC_OPTIONS='-isysroot' '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk' '-v' '-o' 'CMakeFiles/cmTC_17936.dir/CMakeCCompilerABI.c.o' '-c' '-mmacosx-version-min=11.2.0' '-asm_macosx_version_min=11.2' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_17936.dir/']
+  ignore line: [ /opt/homebrew/Cellar/gcc/11.2.0/libexec/gcc/aarch64-apple-darwin20/11.1.0/cc1 -quiet -v -D__DYNAMIC__ -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.20/Modules/CMakeCCompilerABI.c -fPIC -quiet -dumpdir CMakeFiles/cmTC_17936.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mmacosx-version-min=11.2.0 -mlittle-endian -mabi=lp64 -version -o /var/folders/03/h5csm9115m1gw7hpzh8pwwbc0000gn/T//ccrrlMYd.s]
+  ignore line: [GNU C17 (Homebrew GCC 11.2.0) version 11.1.0 (aarch64-apple-darwin20)]
+  ignore line: [	compiled by GNU C version 11.1.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.2.1  isl version isl-0.24-GMP]
+  ignore line: []
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [ignoring nonexistent directory "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/local/include"]
+  ignore line: [ignoring nonexistent directory "/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/../../../../../../aarch64-apple-darwin20/include"]
+  ignore line: [ignoring nonexistent directory "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/Library/Frameworks"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ /opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/include]
+  ignore line: [ /opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/include-fixed]
+  ignore line: [ /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include]
+  ignore line: [ /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/System/Library/Frameworks]
+  ignore line: [End of search list.]
+  ignore line: [GNU C17 (Homebrew GCC 11.2.0) version 11.1.0 (aarch64-apple-darwin20)]
+  ignore line: [	compiled by GNU C version 11.1.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.2.1  isl version isl-0.24-GMP]
+  ignore line: []
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [Compiler executable checksum: f8829df2b4d071c3a3f7635e6faf792e]
+  ignore line: [COLLECT_GCC_OPTIONS='-isysroot' '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk' '-v' '-o' 'CMakeFiles/cmTC_17936.dir/CMakeCCompilerABI.c.o' '-c' '-mmacosx-version-min=11.2.0'  '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_17936.dir/']
+  ignore line: [ as -arch arm64 -v -mmacosx-version-min=11.2 -o CMakeFiles/cmTC_17936.dir/CMakeCCompilerABI.c.o /var/folders/03/h5csm9115m1gw7hpzh8pwwbc0000gn/T//ccrrlMYd.s]
+  ignore line: [Apple clang version 13.0.0 (clang-1300.0.29.30)]
+  ignore line: [Target: arm64-apple-darwin21.3.0]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin]
+  ignore line: [ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang" -cc1as -triple arm64-apple-macosx11.2.0 -filetype obj -main-file-name ccrrlMYd.s -target-cpu apple-m1 -target-feature +v8.5a -target-feature +fp-armv8 -target-feature +neon -target-feature +crc -target-feature +crypto -target-feature +dotprod -target-feature +fp16fml -target-feature +ras -target-feature +lse -target-feature +rdm -target-feature +rcpc -target-feature +zcm -target-feature +zcz -target-feature +fullfp16 -target-feature +sm4 -target-feature +sha3 -target-feature +sha2 -target-feature +aes -fdebug-compilation-dir /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp -dwarf-debug-producer "Apple clang version 13.0.0 (clang-1300.0.29.30)" -dwarf-version=4 -mrelocation-model pic --mrelax-relocations -mllvm -disable-aligned-alloc-awareness=1 -mllvm -enable-dse-memoryssa=0 -o CMakeFiles/cmTC_17936.dir/CMakeCCompilerABI.c.o /var/folders/03/h5csm9115m1gw7hpzh8pwwbc0000gn/T//ccrrlMYd.s]
+  ignore line: [COMPILER_PATH=/opt/homebrew/Cellar/gcc/11.2.0/libexec/gcc/aarch64-apple-darwin20/11.1.0/:/opt/homebrew/Cellar/gcc/11.2.0/libexec/gcc/aarch64-apple-darwin20/11.1.0/:/opt/homebrew/Cellar/gcc/11.2.0/libexec/gcc/aarch64-apple-darwin20/:/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/:/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/]
+  ignore line: [LIBRARY_PATH=/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/:/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/../../../]
+  ignore line: [COLLECT_GCC_OPTIONS='-isysroot' '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk' '-v' '-o' 'CMakeFiles/cmTC_17936.dir/CMakeCCompilerABI.c.o' '-c' '-mmacosx-version-min=11.2.0'  '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_17936.dir/CMakeCCompilerABI.c.']
+  ignore line: [Linking C executable cmTC_17936]
+  ignore line: [/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E cmake_link_script CMakeFiles/cmTC_17936.dir/link.txt --verbose=1]
+  ignore line: [/opt/homebrew/bin/gcc  -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -Wl -search_paths_first -Wl -headerpad_max_install_names  -v -Wl -v CMakeFiles/cmTC_17936.dir/CMakeCCompilerABI.c.o -o cmTC_17936 ]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/opt/homebrew/bin/gcc]
+  ignore line: [COLLECT_LTO_WRAPPER=/opt/homebrew/Cellar/gcc/11.2.0/libexec/gcc/aarch64-apple-darwin20/11.1.0/lto-wrapper]
+  ignore line: [Target: aarch64-apple-darwin20]
+  ignore line: [Configured with: ../configure --prefix=/opt/homebrew/Cellar/gcc/11.2.0 --libdir=/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11 --disable-nls --enable-checking=release --enable-languages=c c++ objc obj-c++ fortran --program-suffix=-11 --with-gmp=/opt/homebrew/opt/gmp --with-mpfr=/opt/homebrew/opt/mpfr --with-mpc=/opt/homebrew/opt/libmpc --with-isl=/opt/homebrew/opt/isl --with-zstd=/opt/homebrew/opt/zstd --with-pkgversion='Homebrew GCC 11.2.0' --with-bugurl=https://github.com/Homebrew/homebrew-core/issues --build=aarch64-apple-darwin20 --with-system-zlib --disable-multilib --with-native-system-header-dir=/usr/include --with-sysroot=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk]
+  ignore line: [Thread model: posix]
+  ignore line: [Supported LTO compression algorithms: zlib zstd]
+  ignore line: [gcc version 11.1.0 (Homebrew GCC 11.2.0) ]
+  ignore line: [COMPILER_PATH=/opt/homebrew/Cellar/gcc/11.2.0/libexec/gcc/aarch64-apple-darwin20/11.1.0/:/opt/homebrew/Cellar/gcc/11.2.0/libexec/gcc/aarch64-apple-darwin20/11.1.0/:/opt/homebrew/Cellar/gcc/11.2.0/libexec/gcc/aarch64-apple-darwin20/:/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/:/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/]
+  ignore line: [LIBRARY_PATH=/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/:/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/../../../]
+  ignore line: [COLLECT_GCC_OPTIONS='-isysroot' '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk' '-v' '-o' 'cmTC_17936' '-mmacosx-version-min=11.2.0' '-asm_macosx_version_min=11.2' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'cmTC_17936.']
+  link line: [ /opt/homebrew/Cellar/gcc/11.2.0/libexec/gcc/aarch64-apple-darwin20/11.1.0/collect2 -dynamic -arch arm64 -macosx_version_min 11.2.0 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -weak_reference_mismatches non-weak -o cmTC_17936 -L/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0 -L/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/../../.. -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_17936.dir/CMakeCCompilerABI.c.o -lgcc_s.1.1 -lgcc -lSystem -lgcc -no_compact_unwind -rpath @loader_path -rpath /opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0 -rpath /opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/../../.. -v]
+    arg [/opt/homebrew/Cellar/gcc/11.2.0/libexec/gcc/aarch64-apple-darwin20/11.1.0/collect2] ==> ignore
+    arg [-dynamic] ==> ignore
+    arg [-arch] ==> ignore
+    arg [arm64] ==> ignore
+    arg [-macosx_version_min] ==> ignore
+    arg [11.2.0] ==> ignore
+    arg [-syslibroot] ==> ignore
+    arg [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk] ==> ignore
+    arg [-weak_reference_mismatches] ==> ignore
+    arg [non-weak] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_17936] ==> ignore
+    arg [-L/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0] ==> dir [/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0]
+    arg [-L/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/../../..] ==> dir [/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/../../..]
+    arg [-search_paths_first] ==> ignore
+    arg [-headerpad_max_install_names] ==> ignore
+    arg [-v] ==> ignore
+    arg [CMakeFiles/cmTC_17936.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [-lgcc_s.1.1] ==> lib [gcc_s.1.1]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lSystem] ==> lib [System]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-no_compact_unwind] ==> ignore
+    arg [-rpath] ==> ignore
+    arg [@loader_path] ==> ignore
+    arg [-rpath] ==> ignore
+    arg [/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0] ==> ignore
+    arg [-rpath] ==> ignore
+    arg [/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/../../..] ==> ignore
+    arg [-v] ==> ignore
+  Library search paths: [;/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0;/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11;/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/lib]
+  Framework search paths: [;/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/System/Library/Frameworks/]
+  remove lib [System]
+  collapse library dir [/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0] ==> [/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0]
+  collapse library dir [/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/../../..] ==> [/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11]
+  collapse library dir [/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0] ==> [/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0]
+  collapse library dir [/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11] ==> [/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11]
+  collapse library dir [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/lib] ==> [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/lib]
+  collapse framework dir [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/System/Library/Frameworks/] ==> [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/System/Library/Frameworks]
+  implicit libs: [gcc_s.1.1;gcc;gcc]
+  implicit objs: []
+  implicit dirs: [/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0;/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11;/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/lib]
+  implicit fwks: [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/System/Library/Frameworks]
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_922a6/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_922a6.dir/build.make CMakeFiles/cmTC_922a6.dir/build
+Building CXX object CMakeFiles/cmTC_922a6.dir/CMakeCXXCompilerABI.cpp.o
+/opt/homebrew/bin/g++   -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk   -v -Wl,-v -o CMakeFiles/cmTC_922a6.dir/CMakeCXXCompilerABI.cpp.o -c /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.20/Modules/CMakeCXXCompilerABI.cpp
+Using built-in specs.
+COLLECT_GCC=/opt/homebrew/bin/g++
+Target: aarch64-apple-darwin20
+Configured with: ../configure --prefix=/opt/homebrew/Cellar/gcc/11.2.0 --libdir=/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11 --disable-nls --enable-checking=release --enable-languages=c,c++,objc,obj-c++,fortran --program-suffix=-11 --with-gmp=/opt/homebrew/opt/gmp --with-mpfr=/opt/homebrew/opt/mpfr --with-mpc=/opt/homebrew/opt/libmpc --with-isl=/opt/homebrew/opt/isl --with-zstd=/opt/homebrew/opt/zstd --with-pkgversion='Homebrew GCC 11.2.0' --with-bugurl=https://github.com/Homebrew/homebrew-core/issues --build=aarch64-apple-darwin20 --with-system-zlib --disable-multilib --with-native-system-header-dir=/usr/include --with-sysroot=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk
+Thread model: posix
+Supported LTO compression algorithms: zlib zstd
+gcc version 11.1.0 (Homebrew GCC 11.2.0) 
+COLLECT_GCC_OPTIONS='-isysroot' '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk' '-v' '-o' 'CMakeFiles/cmTC_922a6.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-mmacosx-version-min=11.2.0' '-asm_macosx_version_min=11.2' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_922a6.dir/'
+ /opt/homebrew/Cellar/gcc/11.2.0/libexec/gcc/aarch64-apple-darwin20/11.1.0/cc1plus -quiet -v -D__DYNAMIC__ -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.20/Modules/CMakeCXXCompilerABI.cpp -fPIC -quiet -dumpdir CMakeFiles/cmTC_922a6.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mmacosx-version-min=11.2.0 -mlittle-endian -mabi=lp64 -version -o /var/folders/03/h5csm9115m1gw7hpzh8pwwbc0000gn/T//cckPluHc.s
+GNU C++17 (Homebrew GCC 11.2.0) version 11.1.0 (aarch64-apple-darwin20)
+	compiled by GNU C version 11.1.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+ignoring nonexistent directory "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/local/include"
+ignoring nonexistent directory "/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/../../../../../../aarch64-apple-darwin20/include"
+ignoring nonexistent directory "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/Library/Frameworks"
+#include "..." search starts here:
+#include <...> search starts here:
+ /opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/../../../../../../include/c++/11.1.0
+ /opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/../../../../../../include/c++/11.1.0/aarch64-apple-darwin20
+ /opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/../../../../../../include/c++/11.1.0/backward
+ /opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/include
+ /opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/include-fixed
+ /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include
+ /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/System/Library/Frameworks
+End of search list.
+GNU C++17 (Homebrew GCC 11.2.0) version 11.1.0 (aarch64-apple-darwin20)
+	compiled by GNU C version 11.1.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+Compiler executable checksum: 8c4dfc26dbd0a1c1a63f0177bfaeaead
+COLLECT_GCC_OPTIONS='-isysroot' '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk' '-v' '-o' 'CMakeFiles/cmTC_922a6.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-mmacosx-version-min=11.2.0'  '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_922a6.dir/'
+ as -arch arm64 -v -mmacosx-version-min=11.2 -o CMakeFiles/cmTC_922a6.dir/CMakeCXXCompilerABI.cpp.o /var/folders/03/h5csm9115m1gw7hpzh8pwwbc0000gn/T//cckPluHc.s
+Apple clang version 13.0.0 (clang-1300.0.29.30)
+Target: arm64-apple-darwin21.3.0
+Thread model: posix
+InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang" -cc1as -triple arm64-apple-macosx11.2.0 -filetype obj -main-file-name cckPluHc.s -target-cpu apple-m1 -target-feature +v8.5a -target-feature +fp-armv8 -target-feature +neon -target-feature +crc -target-feature +crypto -target-feature +dotprod -target-feature +fp16fml -target-feature +ras -target-feature +lse -target-feature +rdm -target-feature +rcpc -target-feature +zcm -target-feature +zcz -target-feature +fullfp16 -target-feature +sm4 -target-feature +sha3 -target-feature +sha2 -target-feature +aes -fdebug-compilation-dir /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp -dwarf-debug-producer "Apple clang version 13.0.0 (clang-1300.0.29.30)" -dwarf-version=4 -mrelocation-model pic --mrelax-relocations -mllvm -disable-aligned-alloc-awareness=1 -mllvm -enable-dse-memoryssa=0 -o CMakeFiles/cmTC_922a6.dir/CMakeCXXCompilerABI.cpp.o /var/folders/03/h5csm9115m1gw7hpzh8pwwbc0000gn/T//cckPluHc.s
+COMPILER_PATH=/opt/homebrew/Cellar/gcc/11.2.0/libexec/gcc/aarch64-apple-darwin20/11.1.0/:/opt/homebrew/Cellar/gcc/11.2.0/libexec/gcc/aarch64-apple-darwin20/11.1.0/:/opt/homebrew/Cellar/gcc/11.2.0/libexec/gcc/aarch64-apple-darwin20/:/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/:/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/
+LIBRARY_PATH=/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/:/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/../../../
+COLLECT_GCC_OPTIONS='-isysroot' '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk' '-v' '-o' 'CMakeFiles/cmTC_922a6.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-mmacosx-version-min=11.2.0'  '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_922a6.dir/CMakeCXXCompilerABI.cpp.'
+Linking CXX executable cmTC_922a6
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E cmake_link_script CMakeFiles/cmTC_922a6.dir/link.txt --verbose=1
+/opt/homebrew/bin/g++  -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -v -Wl,-v CMakeFiles/cmTC_922a6.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_922a6 
+Using built-in specs.
+COLLECT_GCC=/opt/homebrew/bin/g++
+COLLECT_LTO_WRAPPER=/opt/homebrew/Cellar/gcc/11.2.0/libexec/gcc/aarch64-apple-darwin20/11.1.0/lto-wrapper
+Target: aarch64-apple-darwin20
+Configured with: ../configure --prefix=/opt/homebrew/Cellar/gcc/11.2.0 --libdir=/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11 --disable-nls --enable-checking=release --enable-languages=c,c++,objc,obj-c++,fortran --program-suffix=-11 --with-gmp=/opt/homebrew/opt/gmp --with-mpfr=/opt/homebrew/opt/mpfr --with-mpc=/opt/homebrew/opt/libmpc --with-isl=/opt/homebrew/opt/isl --with-zstd=/opt/homebrew/opt/zstd --with-pkgversion='Homebrew GCC 11.2.0' --with-bugurl=https://github.com/Homebrew/homebrew-core/issues --build=aarch64-apple-darwin20 --with-system-zlib --disable-multilib --with-native-system-header-dir=/usr/include --with-sysroot=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk
+Thread model: posix
+Supported LTO compression algorithms: zlib zstd
+gcc version 11.1.0 (Homebrew GCC 11.2.0) 
+COMPILER_PATH=/opt/homebrew/Cellar/gcc/11.2.0/libexec/gcc/aarch64-apple-darwin20/11.1.0/:/opt/homebrew/Cellar/gcc/11.2.0/libexec/gcc/aarch64-apple-darwin20/11.1.0/:/opt/homebrew/Cellar/gcc/11.2.0/libexec/gcc/aarch64-apple-darwin20/:/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/:/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/
+LIBRARY_PATH=/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/:/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/../../../
+COLLECT_GCC_OPTIONS='-isysroot' '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk' '-v' '-o' 'cmTC_922a6' '-mmacosx-version-min=11.2.0' '-asm_macosx_version_min=11.2' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'cmTC_922a6.'
+ /opt/homebrew/Cellar/gcc/11.2.0/libexec/gcc/aarch64-apple-darwin20/11.1.0/collect2 -dynamic -arch arm64 -macosx_version_min 11.2.0 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -weak_reference_mismatches non-weak -o cmTC_922a6 -L/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0 -L/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/../../.. -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_922a6.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lgcc_s.1.1 -lgcc -lSystem -lgcc -no_compact_unwind -rpath @loader_path -rpath /opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0 -rpath /opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/../../.. -v
+collect2 version 11.1.0
+/usr/bin/ld -dynamic -arch arm64 -macosx_version_min 11.2.0 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -weak_reference_mismatches non-weak -o cmTC_922a6 -L/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0 -L/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/../../.. -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_922a6.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lgcc_s.1.1 -lgcc -lSystem -lgcc -no_compact_unwind -rpath @loader_path -rpath /opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0 -rpath /opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/../../.. -v
+@(#)PROGRAM:ld  PROJECT:ld64-711
+BUILD 21:57:24 Nov 17 2021
+configured to support archs: armv6 armv7 armv7s arm64 arm64e arm64_32 i386 x86_64 x86_64h armv6m armv7k armv7m armv7em
+@(#)PROGRAM:ld  PROJECT:ld64-711
+BUILD 21:57:24 Nov 17 2021
+configured to support archs: armv6 armv7 armv7s arm64 arm64e arm64_32 i386 x86_64 x86_64h armv6m armv7k armv7m armv7em
+Library search paths:
+	/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0
+	/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11
+	/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/lib
+Framework search paths:
+	/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/System/Library/Frameworks/
+ld: warning: dylib (/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/libstdc++.dylib) was built for newer macOS version (11.4) than being linked (11.2)
+
+
+
+Parsed CXX implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/../../../../../../include/c++/11.1.0]
+    add: [/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/../../../../../../include/c++/11.1.0/aarch64-apple-darwin20]
+    add: [/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/../../../../../../include/c++/11.1.0/backward]
+    add: [/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/include]
+    add: [/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/include-fixed]
+    add: [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include]
+    add: [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/System/Library/Frameworks]
+  end of search list found
+  collapse include dir [/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/../../../../../../include/c++/11.1.0] ==> [/opt/homebrew/Cellar/gcc/11.2.0/include/c++/11.1.0]
+  collapse include dir [/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/../../../../../../include/c++/11.1.0/aarch64-apple-darwin20] ==> [/opt/homebrew/Cellar/gcc/11.2.0/include/c++/11.1.0/aarch64-apple-darwin20]
+  collapse include dir [/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/../../../../../../include/c++/11.1.0/backward] ==> [/opt/homebrew/Cellar/gcc/11.2.0/include/c++/11.1.0/backward]
+  collapse include dir [/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/include] ==> [/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/include]
+  collapse include dir [/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/include-fixed] ==> [/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/include-fixed]
+  collapse include dir [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include] ==> [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include]
+  collapse include dir [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/System/Library/Frameworks] ==> [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/System/Library/Frameworks]
+  implicit include dirs: [/opt/homebrew/Cellar/gcc/11.2.0/include/c++/11.1.0;/opt/homebrew/Cellar/gcc/11.2.0/include/c++/11.1.0/aarch64-apple-darwin20;/opt/homebrew/Cellar/gcc/11.2.0/include/c++/11.1.0/backward;/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/include;/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/include-fixed;/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include;/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/System/Library/Frameworks]
+
+
+Parsed CXX implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):/usr/bin/make -f Makefile cmTC_922a6/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_922a6.dir/build.make CMakeFiles/cmTC_922a6.dir/build]
+  ignore line: [Building CXX object CMakeFiles/cmTC_922a6.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/opt/homebrew/bin/g++   -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk   -v -Wl -v -o CMakeFiles/cmTC_922a6.dir/CMakeCXXCompilerABI.cpp.o -c /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.20/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/opt/homebrew/bin/g++]
+  ignore line: [Target: aarch64-apple-darwin20]
+  ignore line: [Configured with: ../configure --prefix=/opt/homebrew/Cellar/gcc/11.2.0 --libdir=/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11 --disable-nls --enable-checking=release --enable-languages=c c++ objc obj-c++ fortran --program-suffix=-11 --with-gmp=/opt/homebrew/opt/gmp --with-mpfr=/opt/homebrew/opt/mpfr --with-mpc=/opt/homebrew/opt/libmpc --with-isl=/opt/homebrew/opt/isl --with-zstd=/opt/homebrew/opt/zstd --with-pkgversion='Homebrew GCC 11.2.0' --with-bugurl=https://github.com/Homebrew/homebrew-core/issues --build=aarch64-apple-darwin20 --with-system-zlib --disable-multilib --with-native-system-header-dir=/usr/include --with-sysroot=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk]
+  ignore line: [Thread model: posix]
+  ignore line: [Supported LTO compression algorithms: zlib zstd]
+  ignore line: [gcc version 11.1.0 (Homebrew GCC 11.2.0) ]
+  ignore line: [COLLECT_GCC_OPTIONS='-isysroot' '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk' '-v' '-o' 'CMakeFiles/cmTC_922a6.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-mmacosx-version-min=11.2.0' '-asm_macosx_version_min=11.2' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_922a6.dir/']
+  ignore line: [ /opt/homebrew/Cellar/gcc/11.2.0/libexec/gcc/aarch64-apple-darwin20/11.1.0/cc1plus -quiet -v -D__DYNAMIC__ -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.20/Modules/CMakeCXXCompilerABI.cpp -fPIC -quiet -dumpdir CMakeFiles/cmTC_922a6.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mmacosx-version-min=11.2.0 -mlittle-endian -mabi=lp64 -version -o /var/folders/03/h5csm9115m1gw7hpzh8pwwbc0000gn/T//cckPluHc.s]
+  ignore line: [GNU C++17 (Homebrew GCC 11.2.0) version 11.1.0 (aarch64-apple-darwin20)]
+  ignore line: [	compiled by GNU C version 11.1.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.2.1  isl version isl-0.24-GMP]
+  ignore line: []
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [ignoring nonexistent directory "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/local/include"]
+  ignore line: [ignoring nonexistent directory "/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/../../../../../../aarch64-apple-darwin20/include"]
+  ignore line: [ignoring nonexistent directory "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/Library/Frameworks"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ /opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/../../../../../../include/c++/11.1.0]
+  ignore line: [ /opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/../../../../../../include/c++/11.1.0/aarch64-apple-darwin20]
+  ignore line: [ /opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/../../../../../../include/c++/11.1.0/backward]
+  ignore line: [ /opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/include]
+  ignore line: [ /opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/include-fixed]
+  ignore line: [ /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include]
+  ignore line: [ /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/System/Library/Frameworks]
+  ignore line: [End of search list.]
+  ignore line: [GNU C++17 (Homebrew GCC 11.2.0) version 11.1.0 (aarch64-apple-darwin20)]
+  ignore line: [	compiled by GNU C version 11.1.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.2.1  isl version isl-0.24-GMP]
+  ignore line: []
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [Compiler executable checksum: 8c4dfc26dbd0a1c1a63f0177bfaeaead]
+  ignore line: [COLLECT_GCC_OPTIONS='-isysroot' '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk' '-v' '-o' 'CMakeFiles/cmTC_922a6.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-mmacosx-version-min=11.2.0'  '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_922a6.dir/']
+  ignore line: [ as -arch arm64 -v -mmacosx-version-min=11.2 -o CMakeFiles/cmTC_922a6.dir/CMakeCXXCompilerABI.cpp.o /var/folders/03/h5csm9115m1gw7hpzh8pwwbc0000gn/T//cckPluHc.s]
+  ignore line: [Apple clang version 13.0.0 (clang-1300.0.29.30)]
+  ignore line: [Target: arm64-apple-darwin21.3.0]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin]
+  ignore line: [ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang" -cc1as -triple arm64-apple-macosx11.2.0 -filetype obj -main-file-name cckPluHc.s -target-cpu apple-m1 -target-feature +v8.5a -target-feature +fp-armv8 -target-feature +neon -target-feature +crc -target-feature +crypto -target-feature +dotprod -target-feature +fp16fml -target-feature +ras -target-feature +lse -target-feature +rdm -target-feature +rcpc -target-feature +zcm -target-feature +zcz -target-feature +fullfp16 -target-feature +sm4 -target-feature +sha3 -target-feature +sha2 -target-feature +aes -fdebug-compilation-dir /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp -dwarf-debug-producer "Apple clang version 13.0.0 (clang-1300.0.29.30)" -dwarf-version=4 -mrelocation-model pic --mrelax-relocations -mllvm -disable-aligned-alloc-awareness=1 -mllvm -enable-dse-memoryssa=0 -o CMakeFiles/cmTC_922a6.dir/CMakeCXXCompilerABI.cpp.o /var/folders/03/h5csm9115m1gw7hpzh8pwwbc0000gn/T//cckPluHc.s]
+  ignore line: [COMPILER_PATH=/opt/homebrew/Cellar/gcc/11.2.0/libexec/gcc/aarch64-apple-darwin20/11.1.0/:/opt/homebrew/Cellar/gcc/11.2.0/libexec/gcc/aarch64-apple-darwin20/11.1.0/:/opt/homebrew/Cellar/gcc/11.2.0/libexec/gcc/aarch64-apple-darwin20/:/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/:/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/]
+  ignore line: [LIBRARY_PATH=/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/:/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/../../../]
+  ignore line: [COLLECT_GCC_OPTIONS='-isysroot' '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk' '-v' '-o' 'CMakeFiles/cmTC_922a6.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-mmacosx-version-min=11.2.0'  '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_922a6.dir/CMakeCXXCompilerABI.cpp.']
+  ignore line: [Linking CXX executable cmTC_922a6]
+  ignore line: [/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E cmake_link_script CMakeFiles/cmTC_922a6.dir/link.txt --verbose=1]
+  ignore line: [/opt/homebrew/bin/g++  -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -Wl -search_paths_first -Wl -headerpad_max_install_names  -v -Wl -v CMakeFiles/cmTC_922a6.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_922a6 ]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/opt/homebrew/bin/g++]
+  ignore line: [COLLECT_LTO_WRAPPER=/opt/homebrew/Cellar/gcc/11.2.0/libexec/gcc/aarch64-apple-darwin20/11.1.0/lto-wrapper]
+  ignore line: [Target: aarch64-apple-darwin20]
+  ignore line: [Configured with: ../configure --prefix=/opt/homebrew/Cellar/gcc/11.2.0 --libdir=/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11 --disable-nls --enable-checking=release --enable-languages=c c++ objc obj-c++ fortran --program-suffix=-11 --with-gmp=/opt/homebrew/opt/gmp --with-mpfr=/opt/homebrew/opt/mpfr --with-mpc=/opt/homebrew/opt/libmpc --with-isl=/opt/homebrew/opt/isl --with-zstd=/opt/homebrew/opt/zstd --with-pkgversion='Homebrew GCC 11.2.0' --with-bugurl=https://github.com/Homebrew/homebrew-core/issues --build=aarch64-apple-darwin20 --with-system-zlib --disable-multilib --with-native-system-header-dir=/usr/include --with-sysroot=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk]
+  ignore line: [Thread model: posix]
+  ignore line: [Supported LTO compression algorithms: zlib zstd]
+  ignore line: [gcc version 11.1.0 (Homebrew GCC 11.2.0) ]
+  ignore line: [COMPILER_PATH=/opt/homebrew/Cellar/gcc/11.2.0/libexec/gcc/aarch64-apple-darwin20/11.1.0/:/opt/homebrew/Cellar/gcc/11.2.0/libexec/gcc/aarch64-apple-darwin20/11.1.0/:/opt/homebrew/Cellar/gcc/11.2.0/libexec/gcc/aarch64-apple-darwin20/:/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/:/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/]
+  ignore line: [LIBRARY_PATH=/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/:/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/../../../]
+  ignore line: [COLLECT_GCC_OPTIONS='-isysroot' '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk' '-v' '-o' 'cmTC_922a6' '-mmacosx-version-min=11.2.0' '-asm_macosx_version_min=11.2' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'cmTC_922a6.']
+  link line: [ /opt/homebrew/Cellar/gcc/11.2.0/libexec/gcc/aarch64-apple-darwin20/11.1.0/collect2 -dynamic -arch arm64 -macosx_version_min 11.2.0 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -weak_reference_mismatches non-weak -o cmTC_922a6 -L/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0 -L/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/../../.. -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_922a6.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lgcc_s.1.1 -lgcc -lSystem -lgcc -no_compact_unwind -rpath @loader_path -rpath /opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0 -rpath /opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/../../.. -v]
+    arg [/opt/homebrew/Cellar/gcc/11.2.0/libexec/gcc/aarch64-apple-darwin20/11.1.0/collect2] ==> ignore
+    arg [-dynamic] ==> ignore
+    arg [-arch] ==> ignore
+    arg [arm64] ==> ignore
+    arg [-macosx_version_min] ==> ignore
+    arg [11.2.0] ==> ignore
+    arg [-syslibroot] ==> ignore
+    arg [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk] ==> ignore
+    arg [-weak_reference_mismatches] ==> ignore
+    arg [non-weak] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_922a6] ==> ignore
+    arg [-L/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0] ==> dir [/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0]
+    arg [-L/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/../../..] ==> dir [/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/../../..]
+    arg [-search_paths_first] ==> ignore
+    arg [-headerpad_max_install_names] ==> ignore
+    arg [-v] ==> ignore
+    arg [CMakeFiles/cmTC_922a6.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [-lstdc++] ==> lib [stdc++]
+    arg [-lgcc_s.1.1] ==> lib [gcc_s.1.1]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lSystem] ==> lib [System]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-no_compact_unwind] ==> ignore
+    arg [-rpath] ==> ignore
+    arg [@loader_path] ==> ignore
+    arg [-rpath] ==> ignore
+    arg [/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0] ==> ignore
+    arg [-rpath] ==> ignore
+    arg [/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/../../..] ==> ignore
+    arg [-v] ==> ignore
+  Library search paths: [;/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0;/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11;/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/lib]
+  Framework search paths: [;/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/System/Library/Frameworks/]
+  remove lib [System]
+  collapse library dir [/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0] ==> [/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0]
+  collapse library dir [/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0/../../..] ==> [/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11]
+  collapse library dir [/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0] ==> [/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0]
+  collapse library dir [/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11] ==> [/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11]
+  collapse library dir [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/lib] ==> [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/lib]
+  collapse framework dir [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/System/Library/Frameworks/] ==> [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/System/Library/Frameworks]
+  implicit libs: [stdc++;gcc_s.1.1;gcc;gcc]
+  implicit objs: []
+  implicit dirs: [/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0;/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11;/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/lib]
+  implicit fwks: [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/System/Library/Frameworks]
+
+
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_STD_CXX11 succeeded with the following output:
+Change Dir: /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_3038a/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_3038a.dir/build.make CMakeFiles/cmTC_3038a.dir/build
+Building CXX object CMakeFiles/cmTC_3038a.dir/src.cxx.o
+/opt/homebrew/bin/g++ -DHAVE_CXX_FLAG_STD_CXX11  -std=c++11 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk   -std=c++11 -o CMakeFiles/cmTC_3038a.dir/src.cxx.o -c /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_3038a
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3038a.dir/link.txt --verbose=1
+/opt/homebrew/bin/g++   -std=c++11 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_3038a.dir/src.cxx.o -o cmTC_3038a 
+ld: warning: dylib (/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/libstdc++.dylib) was built for newer macOS version (11.4) than being linked (11.2)
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_WALL succeeded with the following output:
+Change Dir: /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_63a2c/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_63a2c.dir/build.make CMakeFiles/cmTC_63a2c.dir/build
+Building CXX object CMakeFiles/cmTC_63a2c.dir/src.cxx.o
+/opt/homebrew/bin/g++ -DHAVE_CXX_FLAG_WALL  -std=c++11  -Wall -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk   -Wall -o CMakeFiles/cmTC_63a2c.dir/src.cxx.o -c /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_63a2c
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E cmake_link_script CMakeFiles/cmTC_63a2c.dir/link.txt --verbose=1
+/opt/homebrew/bin/g++   -std=c++11  -Wall -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_63a2c.dir/src.cxx.o -o cmTC_63a2c 
+ld: warning: dylib (/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/libstdc++.dylib) was built for newer macOS version (11.4) than being linked (11.2)
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_WEXTRA succeeded with the following output:
+Change Dir: /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_9961d/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_9961d.dir/build.make CMakeFiles/cmTC_9961d.dir/build
+Building CXX object CMakeFiles/cmTC_9961d.dir/src.cxx.o
+/opt/homebrew/bin/g++ -DHAVE_CXX_FLAG_WEXTRA  -std=c++11  -Wall  -Wextra -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk   -Wextra -o CMakeFiles/cmTC_9961d.dir/src.cxx.o -c /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_9961d
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9961d.dir/link.txt --verbose=1
+/opt/homebrew/bin/g++   -std=c++11  -Wall  -Wextra -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_9961d.dir/src.cxx.o -o cmTC_9961d 
+ld: warning: dylib (/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/libstdc++.dylib) was built for newer macOS version (11.4) than being linked (11.2)
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_WSHADOW succeeded with the following output:
+Change Dir: /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_8b1df/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_8b1df.dir/build.make CMakeFiles/cmTC_8b1df.dir/build
+Building CXX object CMakeFiles/cmTC_8b1df.dir/src.cxx.o
+/opt/homebrew/bin/g++ -DHAVE_CXX_FLAG_WSHADOW  -std=c++11  -Wall  -Wextra  -Wshadow -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk   -Wshadow -o CMakeFiles/cmTC_8b1df.dir/src.cxx.o -c /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_8b1df
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8b1df.dir/link.txt --verbose=1
+/opt/homebrew/bin/g++   -std=c++11  -Wall  -Wextra  -Wshadow -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_8b1df.dir/src.cxx.o -o cmTC_8b1df 
+ld: warning: dylib (/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/libstdc++.dylib) was built for newer macOS version (11.4) than being linked (11.2)
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_WERROR succeeded with the following output:
+Change Dir: /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_d0570/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_d0570.dir/build.make CMakeFiles/cmTC_d0570.dir/build
+Building CXX object CMakeFiles/cmTC_d0570.dir/src.cxx.o
+/opt/homebrew/bin/g++ -DHAVE_CXX_FLAG_WERROR  -std=c++11  -Wall  -Wextra  -Wshadow  -Werror -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk   -Werror -o CMakeFiles/cmTC_d0570.dir/src.cxx.o -c /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_d0570
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d0570.dir/link.txt --verbose=1
+/opt/homebrew/bin/g++   -std=c++11  -Wall  -Wextra  -Wshadow  -Werror -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_d0570.dir/src.cxx.o -o cmTC_d0570 
+ld: warning: dylib (/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/libstdc++.dylib) was built for newer macOS version (11.4) than being linked (11.2)
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_WSUGGEST_OVERRIDE succeeded with the following output:
+Change Dir: /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_d1f6c/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_d1f6c.dir/build.make CMakeFiles/cmTC_d1f6c.dir/build
+Building CXX object CMakeFiles/cmTC_d1f6c.dir/src.cxx.o
+/opt/homebrew/bin/g++ -DHAVE_CXX_FLAG_WSUGGEST_OVERRIDE  -std=c++11  -Wall  -Wextra  -Wshadow  -Wsuggest-override -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk   -Wsuggest-override -o CMakeFiles/cmTC_d1f6c.dir/src.cxx.o -c /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_d1f6c
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d1f6c.dir/link.txt --verbose=1
+/opt/homebrew/bin/g++   -std=c++11  -Wall  -Wextra  -Wshadow  -Wsuggest-override -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_d1f6c.dir/src.cxx.o -o cmTC_d1f6c 
+ld: warning: dylib (/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/libstdc++.dylib) was built for newer macOS version (11.4) than being linked (11.2)
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_PEDANTIC succeeded with the following output:
+Change Dir: /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_967c2/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_967c2.dir/build.make CMakeFiles/cmTC_967c2.dir/build
+Building CXX object CMakeFiles/cmTC_967c2.dir/src.cxx.o
+/opt/homebrew/bin/g++ -DHAVE_CXX_FLAG_PEDANTIC  -std=c++11  -Wall  -Wextra  -Wshadow  -Wsuggest-override  -pedantic -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk   -pedantic -o CMakeFiles/cmTC_967c2.dir/src.cxx.o -c /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_967c2
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E cmake_link_script CMakeFiles/cmTC_967c2.dir/link.txt --verbose=1
+/opt/homebrew/bin/g++   -std=c++11  -Wall  -Wextra  -Wshadow  -Wsuggest-override  -pedantic -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_967c2.dir/src.cxx.o -o cmTC_967c2 
+ld: warning: dylib (/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/libstdc++.dylib) was built for newer macOS version (11.4) than being linked (11.2)
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_PEDANTIC_ERRORS succeeded with the following output:
+Change Dir: /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_75c90/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_75c90.dir/build.make CMakeFiles/cmTC_75c90.dir/build
+Building CXX object CMakeFiles/cmTC_75c90.dir/src.cxx.o
+/opt/homebrew/bin/g++ -DHAVE_CXX_FLAG_PEDANTIC_ERRORS  -std=c++11  -Wall  -Wextra  -Wshadow  -Wsuggest-override  -pedantic  -pedantic-errors -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk   -pedantic-errors -o CMakeFiles/cmTC_75c90.dir/src.cxx.o -c /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_75c90
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E cmake_link_script CMakeFiles/cmTC_75c90.dir/link.txt --verbose=1
+/opt/homebrew/bin/g++   -std=c++11  -Wall  -Wextra  -Wshadow  -Wsuggest-override  -pedantic  -pedantic-errors -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_75c90.dir/src.cxx.o -o cmTC_75c90 
+ld: warning: dylib (/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/libstdc++.dylib) was built for newer macOS version (11.4) than being linked (11.2)
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_FSTRICT_ALIASING succeeded with the following output:
+Change Dir: /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_0e39b/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_0e39b.dir/build.make CMakeFiles/cmTC_0e39b.dir/build
+Building CXX object CMakeFiles/cmTC_0e39b.dir/src.cxx.o
+/opt/homebrew/bin/g++ -DHAVE_CXX_FLAG_FSTRICT_ALIASING  -std=c++11  -Wall  -Wextra  -Wshadow  -Wsuggest-override  -pedantic  -pedantic-errors  -fstrict-aliasing -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk   -fstrict-aliasing -o CMakeFiles/cmTC_0e39b.dir/src.cxx.o -c /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_0e39b
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0e39b.dir/link.txt --verbose=1
+/opt/homebrew/bin/g++   -std=c++11  -Wall  -Wextra  -Wshadow  -Wsuggest-override  -pedantic  -pedantic-errors  -fstrict-aliasing -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_0e39b.dir/src.cxx.o -o cmTC_0e39b 
+ld: warning: dylib (/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/libstdc++.dylib) was built for newer macOS version (11.4) than being linked (11.2)
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_WNO_DEPRECATED_DECLARATIONS succeeded with the following output:
+Change Dir: /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_baad4/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_baad4.dir/build.make CMakeFiles/cmTC_baad4.dir/build
+Building CXX object CMakeFiles/cmTC_baad4.dir/src.cxx.o
+/opt/homebrew/bin/g++ -DHAVE_CXX_FLAG_WNO_DEPRECATED_DECLARATIONS  -std=c++11  -Wall  -Wextra  -Wshadow  -Wsuggest-override  -pedantic  -pedantic-errors  -fstrict-aliasing  -Wno-deprecated-declarations -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk   -Wno-deprecated-declarations -o CMakeFiles/cmTC_baad4.dir/src.cxx.o -c /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_baad4
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E cmake_link_script CMakeFiles/cmTC_baad4.dir/link.txt --verbose=1
+/opt/homebrew/bin/g++   -std=c++11  -Wall  -Wextra  -Wshadow  -Wsuggest-override  -pedantic  -pedantic-errors  -fstrict-aliasing  -Wno-deprecated-declarations -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_baad4.dir/src.cxx.o -o cmTC_baad4 
+ld: warning: dylib (/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/libstdc++.dylib) was built for newer macOS version (11.4) than being linked (11.2)
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_WNO_DEPRECATED succeeded with the following output:
+Change Dir: /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_e2e99/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_e2e99.dir/build.make CMakeFiles/cmTC_e2e99.dir/build
+Building CXX object CMakeFiles/cmTC_e2e99.dir/src.cxx.o
+/opt/homebrew/bin/g++ -DHAVE_CXX_FLAG_WNO_DEPRECATED  -std=c++11  -Wall  -Wextra  -Wshadow  -Wsuggest-override  -pedantic  -pedantic-errors  -fstrict-aliasing  -Wno-deprecated-declarations  -Wno-deprecated -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk   -Wno-deprecated -o CMakeFiles/cmTC_e2e99.dir/src.cxx.o -c /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_e2e99
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e2e99.dir/link.txt --verbose=1
+/opt/homebrew/bin/g++   -std=c++11  -Wall  -Wextra  -Wshadow  -Wsuggest-override  -pedantic  -pedantic-errors  -fstrict-aliasing  -Wno-deprecated-declarations  -Wno-deprecated -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_e2e99.dir/src.cxx.o -o cmTC_e2e99 
+ld: warning: dylib (/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/libstdc++.dylib) was built for newer macOS version (11.4) than being linked (11.2)
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_WSTRICT_ALIASING succeeded with the following output:
+Change Dir: /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_1d7e3/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_1d7e3.dir/build.make CMakeFiles/cmTC_1d7e3.dir/build
+Building CXX object CMakeFiles/cmTC_1d7e3.dir/src.cxx.o
+/opt/homebrew/bin/g++ -DHAVE_CXX_FLAG_WSTRICT_ALIASING  -std=c++11  -Wall  -Wextra  -Wshadow  -Wsuggest-override  -pedantic  -pedantic-errors  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk   -Wstrict-aliasing -o CMakeFiles/cmTC_1d7e3.dir/src.cxx.o -c /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_1d7e3
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1d7e3.dir/link.txt --verbose=1
+/opt/homebrew/bin/g++   -std=c++11  -Wall  -Wextra  -Wshadow  -Wsuggest-override  -pedantic  -pedantic-errors  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_1d7e3.dir/src.cxx.o -o cmTC_1d7e3 
+ld: warning: dylib (/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/libstdc++.dylib) was built for newer macOS version (11.4) than being linked (11.2)
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_COVERAGE succeeded with the following output:
+Change Dir: /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_15e63/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_15e63.dir/build.make CMakeFiles/cmTC_15e63.dir/build
+Building CXX object CMakeFiles/cmTC_15e63.dir/src.cxx.o
+/opt/homebrew/bin/g++ -DHAVE_CXX_FLAG_COVERAGE  -std=c++11  -Wall  -Wextra  -Wshadow  -Wsuggest-override  -pedantic  -pedantic-errors  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  --coverage -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk   --coverage -o CMakeFiles/cmTC_15e63.dir/src.cxx.o -c /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_15e63
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E cmake_link_script CMakeFiles/cmTC_15e63.dir/link.txt --verbose=1
+/opt/homebrew/bin/g++   -std=c++11  -Wall  -Wextra  -Wshadow  -Wsuggest-override  -pedantic  -pedantic-errors  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  --coverage -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_15e63.dir/src.cxx.o -o cmTC_15e63 
+ld: warning: dylib (/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/libstdc++.dylib) was built for newer macOS version (11.4) than being linked (11.2)
+
+
+Source file was:
+int main() { return 0; }
+Determining if the include file pthread.h exists passed with the following output:
+Change Dir: /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_5a26f/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_5a26f.dir/build.make CMakeFiles/cmTC_5a26f.dir/build
+Building C object CMakeFiles/cmTC_5a26f.dir/CheckIncludeFile.c.o
+/opt/homebrew/bin/gcc   -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -o CMakeFiles/cmTC_5a26f.dir/CheckIncludeFile.c.o -c /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_5a26f
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5a26f.dir/link.txt --verbose=1
+/opt/homebrew/bin/gcc  -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_5a26f.dir/CheckIncludeFile.c.o -o cmTC_5a26f 
+
+
+
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD succeeded with the following output:
+Change Dir: /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_2b977/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_2b977.dir/build.make CMakeFiles/cmTC_2b977.dir/build
+Building C object CMakeFiles/cmTC_2b977.dir/src.c.o
+/opt/homebrew/bin/gcc -DCMAKE_HAVE_LIBC_PTHREAD  -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -o CMakeFiles/cmTC_2b977.dir/src.c.o -c /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_2b977
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2b977.dir/link.txt --verbose=1
+/opt/homebrew/bin/gcc  -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_2b977.dir/src.c.o -o cmTC_2b977 
+
+
+Source file was:
+#include <pthread.h>
+
+static void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_cancel(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+Performing C++ SOURCE FILE Test HAVE_GCC_STD=C__11__WALL__WEXTRA__DNDEBUG succeeded with the following output:
+Change Dir: /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_62602/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_62602.dir/build.make CMakeFiles/cmTC_62602.dir/build
+Building CXX object CMakeFiles/cmTC_62602.dir/src.cxx.o
+/opt/homebrew/bin/g++ -DHAVE_GCC_STD=C__11__WALL__WEXTRA__DNDEBUG  -std=c++11 -Wall -Wextra -DNDEBUG -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -o CMakeFiles/cmTC_62602.dir/src.cxx.o -c /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_62602
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E cmake_link_script CMakeFiles/cmTC_62602.dir/link.txt --verbose=1
+/opt/homebrew/bin/g++  -std=c++11 -Wall -Wextra -DNDEBUG -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_62602.dir/src.cxx.o -o cmTC_62602 
+ld: warning: dylib (/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/libstdc++.dylib) was built for newer macOS version (11.4) than being linked (11.2)
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_GCC_O3__FFAST_MATH__FUNROLL_LOOPS succeeded with the following output:
+Change Dir: /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_c69de/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_c69de.dir/build.make CMakeFiles/cmTC_c69de.dir/build
+Building CXX object CMakeFiles/cmTC_c69de.dir/src.cxx.o
+/opt/homebrew/bin/g++ -DHAVE_GCC_O3__FFAST_MATH__FUNROLL_LOOPS  -std=c++11 -Wall -Wextra -DNDEBUG -O3 -ffast-math -funroll-loops -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -o CMakeFiles/cmTC_c69de.dir/src.cxx.o -c /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_c69de
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c69de.dir/link.txt --verbose=1
+/opt/homebrew/bin/g++  -std=c++11 -Wall -Wextra -DNDEBUG -O3 -ffast-math -funroll-loops -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_c69de.dir/src.cxx.o -o cmTC_c69de 
+ld: warning: dylib (/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/libstdc++.dylib) was built for newer macOS version (11.4) than being linked (11.2)
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXA_DEMANGLE succeeded with the following output:
+Change Dir: /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_13ab3/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_13ab3.dir/build.make CMakeFiles/cmTC_13ab3.dir/build
+Building CXX object CMakeFiles/cmTC_13ab3.dir/src.cxx.o
+/opt/homebrew/bin/g++ -DHAVE_CXA_DEMANGLE  -std=c++11 -Wall -Wextra -DNDEBUG  -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -o CMakeFiles/cmTC_13ab3.dir/src.cxx.o -c /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp/src.cxx
+/Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp/src.cxx: In function 'int main()':
+/Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp/src.cxx:6:11: warning: unused variable 'demangled' [-Wunused-variable]
+    6 |     char *demangled = abi::__cxa_demangle( foo, 0, 0, &status );
+      |           ^~~~~~~~~
+Linking CXX executable cmTC_13ab3
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E cmake_link_script CMakeFiles/cmTC_13ab3.dir/link.txt --verbose=1
+/opt/homebrew/bin/g++  -std=c++11 -Wall -Wextra -DNDEBUG  -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_13ab3.dir/src.cxx.o -o cmTC_13ab3 
+ld: warning: dylib (/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/libstdc++.dylib) was built for newer macOS version (11.4) than being linked (11.2)
+
+
+Source file was:
+#include <cxxabi.h>
+int main(void){
+    int foobar = 0;
+    const char *foo = typeid(foobar).name();
+    int status;
+    char *demangled = abi::__cxa_demangle( foo, 0, 0, &status );
+}
+Performing C++ SOURCE FILE Test HAVE_GCC_DHAVE_CXA_DEMANGLE succeeded with the following output:
+Change Dir: /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_323da/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_323da.dir/build.make CMakeFiles/cmTC_323da.dir/build
+Building CXX object CMakeFiles/cmTC_323da.dir/src.cxx.o
+/opt/homebrew/bin/g++ -DHAVE_GCC_DHAVE_CXA_DEMANGLE  -std=c++11 -Wall -Wextra -DNDEBUG -DHAVE_CXA_DEMANGLE -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -o CMakeFiles/cmTC_323da.dir/src.cxx.o -c /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_323da
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E cmake_link_script CMakeFiles/cmTC_323da.dir/link.txt --verbose=1
+/opt/homebrew/bin/g++  -std=c++11 -Wall -Wextra -DNDEBUG -DHAVE_CXA_DEMANGLE -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_323da.dir/src.cxx.o -o cmTC_323da 
+ld: warning: dylib (/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/libstdc++.dylib) was built for newer macOS version (11.4) than being linked (11.2)
+
+
+Source file was:
+int main() { return 0; }
+Performing C SOURCE FILE Test HAVE_GCC_WALL succeeded with the following output:
+Change Dir: /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_e4266/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_e4266.dir/build.make CMakeFiles/cmTC_e4266.dir/build
+Building C object CMakeFiles/cmTC_e4266.dir/src.c.o
+/opt/homebrew/bin/gcc -DHAVE_GCC_WALL  -Wall -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -o CMakeFiles/cmTC_e4266.dir/src.c.o -c /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_e4266
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e4266.dir/link.txt --verbose=1
+/opt/homebrew/bin/gcc  -Wall -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_e4266.dir/src.c.o -o cmTC_e4266 
+
+
+Source file was:
+int main() { return 0; }
+Performing C SOURCE FILE Test HAVE_GCC_FOMIT_FRAME_POINTER succeeded with the following output:
+Change Dir: /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_71210/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_71210.dir/build.make CMakeFiles/cmTC_71210.dir/build
+Building C object CMakeFiles/cmTC_71210.dir/src.c.o
+/opt/homebrew/bin/gcc -DHAVE_GCC_FOMIT_FRAME_POINTER  -Wall -fomit-frame-pointer -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -o CMakeFiles/cmTC_71210.dir/src.c.o -c /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_71210
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E cmake_link_script CMakeFiles/cmTC_71210.dir/link.txt --verbose=1
+/opt/homebrew/bin/gcc  -Wall -fomit-frame-pointer -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_71210.dir/src.c.o -o cmTC_71210 
+
+
+Source file was:
+int main() { return 0; }
+Determining if the include file inttypes.h exists passed with the following output:
+Change Dir: /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_b5255/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_b5255.dir/build.make CMakeFiles/cmTC_b5255.dir/build
+Building C object CMakeFiles/cmTC_b5255.dir/CheckIncludeFile.c.o
+/opt/homebrew/bin/gcc   -Wall  -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -o CMakeFiles/cmTC_b5255.dir/CheckIncludeFile.c.o -c /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_b5255
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b5255.dir/link.txt --verbose=1
+/opt/homebrew/bin/gcc  -Wall  -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_b5255.dir/CheckIncludeFile.c.o -o cmTC_b5255 
+
+
+
+Determining if the include file memory.h exists passed with the following output:
+Change Dir: /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_910a3/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_910a3.dir/build.make CMakeFiles/cmTC_910a3.dir/build
+Building C object CMakeFiles/cmTC_910a3.dir/CheckIncludeFile.c.o
+/opt/homebrew/bin/gcc   -Wall  -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -o CMakeFiles/cmTC_910a3.dir/CheckIncludeFile.c.o -c /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_910a3
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E cmake_link_script CMakeFiles/cmTC_910a3.dir/link.txt --verbose=1
+/opt/homebrew/bin/gcc  -Wall  -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_910a3.dir/CheckIncludeFile.c.o -o cmTC_910a3 
+
+
+
+Determining if the include file stddef.h exists passed with the following output:
+Change Dir: /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_5cd95/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_5cd95.dir/build.make CMakeFiles/cmTC_5cd95.dir/build
+Building C object CMakeFiles/cmTC_5cd95.dir/CheckIncludeFile.c.o
+/opt/homebrew/bin/gcc   -Wall  -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -o CMakeFiles/cmTC_5cd95.dir/CheckIncludeFile.c.o -c /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_5cd95
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5cd95.dir/link.txt --verbose=1
+/opt/homebrew/bin/gcc  -Wall  -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_5cd95.dir/CheckIncludeFile.c.o -o cmTC_5cd95 
+
+
+
+Determining if the include file stdint.h exists passed with the following output:
+Change Dir: /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_68660/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_68660.dir/build.make CMakeFiles/cmTC_68660.dir/build
+Building C object CMakeFiles/cmTC_68660.dir/CheckIncludeFile.c.o
+/opt/homebrew/bin/gcc   -Wall  -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -o CMakeFiles/cmTC_68660.dir/CheckIncludeFile.c.o -c /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_68660
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E cmake_link_script CMakeFiles/cmTC_68660.dir/link.txt --verbose=1
+/opt/homebrew/bin/gcc  -Wall  -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_68660.dir/CheckIncludeFile.c.o -o cmTC_68660 
+
+
+
+Determining if the include file stdlib.h exists passed with the following output:
+Change Dir: /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_95228/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_95228.dir/build.make CMakeFiles/cmTC_95228.dir/build
+Building C object CMakeFiles/cmTC_95228.dir/CheckIncludeFile.c.o
+/opt/homebrew/bin/gcc   -Wall  -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -o CMakeFiles/cmTC_95228.dir/CheckIncludeFile.c.o -c /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_95228
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E cmake_link_script CMakeFiles/cmTC_95228.dir/link.txt --verbose=1
+/opt/homebrew/bin/gcc  -Wall  -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_95228.dir/CheckIncludeFile.c.o -o cmTC_95228 
+
+
+
+Determining if the include file string.h exists passed with the following output:
+Change Dir: /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_376ed/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_376ed.dir/build.make CMakeFiles/cmTC_376ed.dir/build
+Building C object CMakeFiles/cmTC_376ed.dir/CheckIncludeFile.c.o
+/opt/homebrew/bin/gcc   -Wall  -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -o CMakeFiles/cmTC_376ed.dir/CheckIncludeFile.c.o -c /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_376ed
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E cmake_link_script CMakeFiles/cmTC_376ed.dir/link.txt --verbose=1
+/opt/homebrew/bin/gcc  -Wall  -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_376ed.dir/CheckIncludeFile.c.o -o cmTC_376ed 
+
+
+
+Determining if the include file strings.h exists passed with the following output:
+Change Dir: /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_7f85f/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_7f85f.dir/build.make CMakeFiles/cmTC_7f85f.dir/build
+Building C object CMakeFiles/cmTC_7f85f.dir/CheckIncludeFile.c.o
+/opt/homebrew/bin/gcc   -Wall  -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -o CMakeFiles/cmTC_7f85f.dir/CheckIncludeFile.c.o -c /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_7f85f
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7f85f.dir/link.txt --verbose=1
+/opt/homebrew/bin/gcc  -Wall  -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_7f85f.dir/CheckIncludeFile.c.o -o cmTC_7f85f 
+
+
+
+Determining if the include file sys/types.h exists passed with the following output:
+Change Dir: /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_a7b77/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_a7b77.dir/build.make CMakeFiles/cmTC_a7b77.dir/build
+Building C object CMakeFiles/cmTC_a7b77.dir/CheckIncludeFile.c.o
+/opt/homebrew/bin/gcc   -Wall  -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -o CMakeFiles/cmTC_a7b77.dir/CheckIncludeFile.c.o -c /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_a7b77
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a7b77.dir/link.txt --verbose=1
+/opt/homebrew/bin/gcc  -Wall  -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_a7b77.dir/CheckIncludeFile.c.o -o cmTC_a7b77 
+
+
+
+Performing C SOURCE FILE Test HAVE_INLINE succeeded with the following output:
+Change Dir: /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_227d3/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_227d3.dir/build.make CMakeFiles/cmTC_227d3.dir/build
+Building C object CMakeFiles/cmTC_227d3.dir/src.c.o
+/opt/homebrew/bin/gcc -DHAVE_INLINE  -Wall  -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -o CMakeFiles/cmTC_227d3.dir/src.c.o -c /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_227d3
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E cmake_link_script CMakeFiles/cmTC_227d3.dir/link.txt --verbose=1
+/opt/homebrew/bin/gcc  -Wall  -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_227d3.dir/src.c.o -o cmTC_227d3 
+
+
+Source file was:
+inline void func(); void func() { } int main() { func(); return 0; }
+Performing C SOURCE FILE Test HAVE___INLINE succeeded with the following output:
+Change Dir: /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_d97eb/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_d97eb.dir/build.make CMakeFiles/cmTC_d97eb.dir/build
+Building C object CMakeFiles/cmTC_d97eb.dir/src.c.o
+/opt/homebrew/bin/gcc -DHAVE___INLINE  -Wall  -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -o CMakeFiles/cmTC_d97eb.dir/src.c.o -c /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_d97eb
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d97eb.dir/link.txt --verbose=1
+/opt/homebrew/bin/gcc  -Wall  -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_d97eb.dir/src.c.o -o cmTC_d97eb 
+
+
+Source file was:
+__inline void func(); void func() { } int main() { func(); return 0; }
+Performing C SOURCE FILE Test HAVE___INLINE__ succeeded with the following output:
+Change Dir: /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_d3760/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_d3760.dir/build.make CMakeFiles/cmTC_d3760.dir/build
+Building C object CMakeFiles/cmTC_d3760.dir/src.c.o
+/opt/homebrew/bin/gcc -DHAVE___INLINE__  -Wall  -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -o CMakeFiles/cmTC_d3760.dir/src.c.o -c /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_d3760
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d3760.dir/link.txt --verbose=1
+/opt/homebrew/bin/gcc  -Wall  -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_d3760.dir/src.c.o -o cmTC_d3760 
+
+
+Source file was:
+__inline__ void func(); void func() { } int main() { func(); return 0; }
+Determining size of uint8_t passed with the following output:
+Change Dir: /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_d3833/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_d3833.dir/build.make CMakeFiles/cmTC_d3833.dir/build
+Building C object CMakeFiles/cmTC_d3833.dir/UINT8_T.c.o
+/opt/homebrew/bin/gcc   -Wall  -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -o CMakeFiles/cmTC_d3833.dir/UINT8_T.c.o -c /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CheckTypeSize/UINT8_T.c
+Linking C executable cmTC_d3833
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d3833.dir/link.txt --verbose=1
+/opt/homebrew/bin/gcc  -Wall  -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_d3833.dir/UINT8_T.c.o -o cmTC_d3833 
+
+
+
+Determining size of int32_t passed with the following output:
+Change Dir: /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_e6bcf/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_e6bcf.dir/build.make CMakeFiles/cmTC_e6bcf.dir/build
+Building C object CMakeFiles/cmTC_e6bcf.dir/INT32_T.c.o
+/opt/homebrew/bin/gcc   -Wall  -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -o CMakeFiles/cmTC_e6bcf.dir/INT32_T.c.o -c /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CheckTypeSize/INT32_T.c
+Linking C executable cmTC_e6bcf
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e6bcf.dir/link.txt --verbose=1
+/opt/homebrew/bin/gcc  -Wall  -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_e6bcf.dir/INT32_T.c.o -o cmTC_e6bcf 
+
+
+
+Determining if the PRId32 exist passed with the following output:
+Change Dir: /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_dcfcc/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_dcfcc.dir/build.make CMakeFiles/cmTC_dcfcc.dir/build
+Building C object CMakeFiles/cmTC_dcfcc.dir/CheckSymbolExists.c.o
+/opt/homebrew/bin/gcc   -Wall  -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -o CMakeFiles/cmTC_dcfcc.dir/CheckSymbolExists.c.o -c /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_dcfcc
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E cmake_link_script CMakeFiles/cmTC_dcfcc.dir/link.txt --verbose=1
+/opt/homebrew/bin/gcc  -Wall  -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_dcfcc.dir/CheckSymbolExists.c.o -o cmTC_dcfcc 
+
+
+File /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <inttypes.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef PRId32
+  return ((int*)(&PRId32))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining size of int64_t passed with the following output:
+Change Dir: /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_cea3e/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_cea3e.dir/build.make CMakeFiles/cmTC_cea3e.dir/build
+Building C object CMakeFiles/cmTC_cea3e.dir/INT64_T.c.o
+/opt/homebrew/bin/gcc   -Wall  -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -o CMakeFiles/cmTC_cea3e.dir/INT64_T.c.o -c /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CheckTypeSize/INT64_T.c
+Linking C executable cmTC_cea3e
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E cmake_link_script CMakeFiles/cmTC_cea3e.dir/link.txt --verbose=1
+/opt/homebrew/bin/gcc  -Wall  -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_cea3e.dir/INT64_T.c.o -o cmTC_cea3e 
+
+
+
+Determining if the PRId64 exist passed with the following output:
+Change Dir: /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_89dd8/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_89dd8.dir/build.make CMakeFiles/cmTC_89dd8.dir/build
+Building C object CMakeFiles/cmTC_89dd8.dir/CheckSymbolExists.c.o
+/opt/homebrew/bin/gcc   -Wall  -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -o CMakeFiles/cmTC_89dd8.dir/CheckSymbolExists.c.o -c /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_89dd8
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E cmake_link_script CMakeFiles/cmTC_89dd8.dir/link.txt --verbose=1
+/opt/homebrew/bin/gcc  -Wall  -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_89dd8.dir/CheckSymbolExists.c.o -o cmTC_89dd8 
+
+
+File /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <inttypes.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef PRId64
+  return ((int*)(&PRId64))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the include file cstdio exists passed with the following output:
+Change Dir: /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_088c7/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_088c7.dir/build.make CMakeFiles/cmTC_088c7.dir/build
+Building CXX object CMakeFiles/cmTC_088c7.dir/CheckIncludeFile.cxx.o
+/opt/homebrew/bin/g++   -std=c++11 -Wall -Wextra -DNDEBUG  -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -o CMakeFiles/cmTC_088c7.dir/CheckIncludeFile.cxx.o -c /Users/yuhong/CLionProjects/PFP_LZ77-master/cmake-build-debug-system/CMakeFiles/CMakeTmp/CheckIncludeFile.cxx
+Linking CXX executable cmTC_088c7
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E cmake_link_script CMakeFiles/cmTC_088c7.dir/link.txt --verbose=1
+/opt/homebrew/bin/g++  -std=c++11 -Wall -Wextra -DNDEBUG  -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_088c7.dir/CheckIncludeFile.cxx.o -o cmTC_088c7 
+ld: warning: dylib (/opt/homebrew/Cellar/gcc/11.2.0/lib/gcc/11/libstdc++.dylib) was built for newer macOS version (11.4) than being linked (11.2)
+
+
+

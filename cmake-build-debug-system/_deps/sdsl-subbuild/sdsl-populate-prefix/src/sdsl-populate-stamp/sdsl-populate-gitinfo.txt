@@ -1,0 +1,3 @@
+repository='https://github.com/simongog/sdsl-lite'
+module=''
+tag='origin'

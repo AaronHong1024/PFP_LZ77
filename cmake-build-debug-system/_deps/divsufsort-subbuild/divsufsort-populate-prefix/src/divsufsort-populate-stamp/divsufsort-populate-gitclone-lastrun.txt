@@ -1,0 +1,3 @@
+repository='https://github.com/simongog/libdivsufsort.git'
+module=''
+tag='origin'

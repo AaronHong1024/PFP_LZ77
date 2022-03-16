@@ -1,0 +1,48 @@
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+<<<<<<< HEAD
+
+# CMake build folder
+build/
+
+# Others
+.vscode/
+data/
+logs/
+script/
+build/
+cmake-build-debug/
+cmake-build-debug_remote/
+
+=======
+>>>>>>> 352e5f80c5ce74c0fc09d526e304c4926c5e65b4
