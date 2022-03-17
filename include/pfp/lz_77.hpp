@@ -56,7 +56,7 @@ public:
             //TODO: to check the two x dimension. to the PSV, matrix is smaller than x1. To NSV, matrix is larger than x1.
             point3d psv = tree.query_PSV(x1, y1, y2, z1);
             point3d nsv = tree.query_NSV(x1, y1, y2, z1);
-            size_t offset_prime = pfp.select_b_p(z1 + 1) - 1;
+            size_t offset_prime = pfp.select_b_p(z1 + 1) - i;
 
             size_t p_psv;
             size_t l_psv;
@@ -65,7 +65,9 @@ public:
             size_t f;
             size_t l;
             if (psv != nullptr){
+                // rmq_s_lcp_t(i,j) will return the min(lcp[i,...,j])
                 p_psv = pfp.rmq_s_lcp_T(psv.get(0)+1, i);
+                //s_lcp_T[i] will return longest common prefix of S[SA[i-1]] and S[SA[i]];
                 l_psv = pfp.s_lcp_T[p_psv];
 
                 if (nsv != nullptr){
@@ -91,12 +93,11 @@ public:
                 f = pfp.select_b_p(pfp.pars.saP[nsv.get(0)]) - offset_prime;
                 l = l_nsv;
             } else{
+                // Neither the PSV nor NSV exist. We need to use the kkp algorithm
 
             }
         }
-        //find the phrase it belongs to
-
-
 
     }
+
 };

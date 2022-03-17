@@ -424,7 +424,11 @@ public:
   }
 
 
-  // Customized Kasai et al.
+  // compute the PSV and NSV for proper phrase suffix
+  void build_PPS(){
+    // find each phrase(in Dict) start position in string S first.
+
+  }
 
 
 
