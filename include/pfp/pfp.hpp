@@ -154,6 +154,9 @@ public:
     verbose("kd_tree_test");
     _elapsed_time(kd_tree());
 
+    verbose("PPS_test");
+    _elapsed_time(build_PPS());
+
     verbose("Computing W of BWT(P)");
     _elapsed_time(build_W());
 
@@ -416,7 +419,7 @@ public:
       tree = tree3d(points, points + bwt_p.size());
      // tree3d tree(points, points + bwt_p.size());
       cout<< "tree size: "<< tree.size() << endl;
-      cout <<"p test: "<< pars.p[0]<<endl;
+    //  cout <<"p test: "<< pars.p[0]<<endl;
     //  cout << "bp_rank size: " << rank_b_p.size()<< endl;
       // create the x1, y1, y2, z1 for the matrix.
 
@@ -427,7 +430,16 @@ public:
   // compute the PSV and NSV for proper phrase suffix
   void build_PPS(){
     // find each phrase(in Dict) start position in string S first.
-
+    // test the b_d and b_p size first.
+    // 1. we need to map D[i]->P[j], then select_P(j)
+    // 2. To the first D[0]'s position then plus length - w.
+    size_t b_p_size = b_p.size();
+    size_t b_d_test = dict.daD.size();
+    cout<<"b_d_test: "<<b_d_test<<endl;
+    size_t n_phrase = dict.n_phrases();
+//      for (int i = 1; i < b_d_test; ++i) {
+//          cout<<"daD test: "<<dict.daD[i]<<endl;
+//      }
   }
 
 
