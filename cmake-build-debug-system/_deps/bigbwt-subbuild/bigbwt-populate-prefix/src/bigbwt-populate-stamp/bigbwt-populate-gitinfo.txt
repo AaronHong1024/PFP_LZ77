@@ -1,3 +1,0 @@
-repository='https://github.com/alshai/Big-BWT.git'
-module=''
-tag='origin'

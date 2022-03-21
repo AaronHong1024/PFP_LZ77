@@ -1,3 +1,0 @@
-repository='https://github.com/felipelouza/gsa-is.git'
-module=''
-tag='origin'

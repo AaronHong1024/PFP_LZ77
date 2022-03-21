@@ -224,6 +224,7 @@ public:
     size_t i = 1; // This should be safe since the first entry of sa is always the dollarsign used to compute the sa
     size_t j = 0;
     while (i < dict.saD.size())
+
     {
       size_t left = i;
 
@@ -238,7 +239,10 @@ public:
       }
       else
       {
-        // use the RMQ data structure to find how many of the following suffixes are the same except for the terminator (so they're the same suffix but in different phrases)
+        // use the RMQ data structure to find ho
+        //
+        //
+        // tor (so they're the same suffix but in different phrases)
         // use the document array and the table of phrase frequencies to find the phrases frequencies and sum them up
         onset.push_back(j++); //b_bwt[j++] = true;
         onset_b_pps.push_back(i);
@@ -431,15 +435,41 @@ public:
   void build_PPS(){
     // find each phrase(in Dict) start position in string S first.
     // test the b_d and b_p size first.
-    // 1. we need to map D[i]->P[j], then select_P(j)
-    // 2. To the first D[0]'s position then plus length - w.
-    size_t b_p_size = b_p.size();
-    size_t b_d_test = dict.daD.size();
-    cout<<"b_d_test: "<<b_d_test<<endl;
-    size_t n_phrase = dict.n_phrases();
-//      for (int i = 1; i < b_d_test; ++i) {
-//          cout<<"daD test: "<<dict.daD[i]<<endl;
+    /* We use the pars to calculate the D phrase start position first. Each time
+     * (previous start position + length of current length - w) % n = next pars phrase start position in S.
+     * Then we map the result to the D.
+     * */
+    int pars_size = pars.p.size();
+    cout<<"p size:"<<pars_size<<endl;
+//    for (int i = 0; i < pars.p.size(); ++i) {
+//        cout<<"p[i]:" << pars.p[i]<<endl;
+//    }
+
+    cout <<"daD_size: "<<dict.daD.size()<<endl;
+    cout<<"d_size: "<<dict.n_phrases()<<endl;
+    int start_position[pars.p.size()];
+      for (int i = 0; i < pars.p.size() - 1; ++i)
+      {
+          // parse.p[j]: phrase_id
+          assert(pars.p[i] != 0);
+          size_t phrase_id = pars.p[i];
+          start_position[i] = (select_b_p(i+1
+
+
+                  ) + dict.length_of_phrase(phrase_id) - w) % n;
+          cout<<"start position: "<< start_position[i]<<endl;
+      }
+//      for (int i = 1; i <= pars_size; ++i) {
+//          assert(pars.p[i-1] != 0);
+//          size_t phrase_id = pars.p[i-1];
+//          start_position[i] = (select_b_p(i) + dict.length_of_phrase(phrase_id) - w) % n;
+//          cout<<"start position: "<< start_position[i-1]<<endl;
 //      }
+
+
+
+
+
   }
 
 

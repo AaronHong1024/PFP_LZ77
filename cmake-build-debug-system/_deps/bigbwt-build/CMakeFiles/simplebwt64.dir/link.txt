@@ -1,1 +1,0 @@
-/opt/homebrew/bin/gcc -O3 -Wall -std=c99 -g -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/simplebwt64.dir/simplebwt.c.o CMakeFiles/simplebwt64.dir/gsa/gsacak.c.o -o simplebwt64 

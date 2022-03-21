@@ -1,1 +1,0 @@
-/opt/homebrew/bin/gcc -O3 -Wall -std=c99 -g -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/unparse.dir/unparse.c.o CMakeFiles/unparse.dir/utils.c.o CMakeFiles/unparse.dir/malloc_count.c.o -o unparse  -ldl 
