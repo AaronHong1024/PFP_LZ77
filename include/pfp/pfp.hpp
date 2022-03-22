@@ -219,12 +219,11 @@ public:
     std::vector<size_t> onset;
     std::vector<size_t> onset_b_pps;
     std::vector<int_t> lcp_M_;
-
+    size_t max = 0;
     assert(dict.d[dict.saD[0]] == EndOfDict);
     size_t i = 1; // This should be safe since the first entry of sa is always the dollarsign used to compute the sa
     size_t j = 0;
     while (i < dict.saD.size())
-
     {
       size_t left = i;
 
@@ -457,18 +456,50 @@ public:
 
 
                   ) + dict.length_of_phrase(phrase_id) - w) % n;
-          cout<<"start position: "<< start_position[i]<<endl;
+        //  cout<<"start position: "<< start_position[i]<<endl;
       }
-//      for (int i = 1; i <= pars_size; ++i) {
-//          assert(pars.p[i-1] != 0);
-//          size_t phrase_id = pars.p[i-1];
-//          start_position[i] = (select_b_p(i) + dict.length_of_phrase(phrase_id) - w) % n;
-//          cout<<"start position: "<< start_position[i-1]<<endl;
-//      }
+      // not sure what's the daD. And the phrase is the phrase number in dict?
+      /* We can use the position = (phrase length - suffix length) to get the position of suffix in the pharse
+       * Then the phrase start position in S: [start_position[phrase] + (phrase length - suffix length)] % n is the proper phrase
+       * suffix start position in S.
+       */
+      assert(dict.d[dict.saD[0]] == EndOfDict);
+      size_t i = 1;
+      size_t j = 0;
+      while(i < dict.saD.size()){
+          auto sn = dict.saD[i];
+          auto phrase = dict.daD[i] + 1;
+          assert(phrase > 0 && phrase < freq.size());
+          size_t suffix_length = dict.select_b_d(dict.rank_b_d(sn + 1) + 1) - sn - 1;
+          if (dict.b_d[sn] || suffix_length < w){
+              ++i;
+          } else{
+              j += freq[phrase];
+              i++;
+              if (i < dict.saD.size()){
+                  auto new_sn = dict.saD[i];
+                  auto new_phrase = dict.daD[i] + 1;
+                  assert(new_phrase > 0 && new_phrase < freq.size());
+                  size_t new_suffix_length = dict.select_b_d(dict.rank_b_d(new_sn + 1) + 1) - new_sn - 1;
 
+                  while (i < dict.saD.size() && (dict.lcpD[i] >= suffix_length) && (suffix_length == new_suffix_length)){
+                      j += freq[new_phrase];
+                      ++i;
 
+                      if (i < dict.saD.size()){
+                          new_sn = dict.saD[i];
+                          new_phrase = dict.daD[i] + 1;
+                          assert(new_phrase > 0 && new_phrase < freq.size());
+                          new_suffix_length = dict.select_b_d(dict.rank_b_d(new_sn + 1) + 1) - new_sn - 1;
 
+                      }
+                  }
+              }
 
+              size_t position_test = dict.length_of_phrase(phrase) - suffix_length;
+              cout<<"position_test: "<<position_test<<endl;
+          }
+      }
 
   }
 
