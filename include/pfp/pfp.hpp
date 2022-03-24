@@ -37,6 +37,7 @@
 #include <wt.hpp>
 #include <wm.hpp>
 #include <kd_tree_support.hpp>
+#include <PPS_support.hpp>
 
 using namespace std;
 
@@ -222,9 +223,6 @@ public:
     size_t max = 0;
     assert(dict.d[dict.saD[0]] == EndOfDict);
     size_t i = 1; // This should be safe since the first entry of sa is always the dollarsign used to compute the sa
-
-
-
     size_t j = 0;
     while (i < dict.saD.size())
     {
@@ -248,7 +246,7 @@ public:
         // use the document array and the table of phrase frequencies to find the phrases frequencies and sum them up
         onset.push_back(j++); //b_bwt[j++] = true;
         onset_b_pps.push_back(i);
-
+       // size_t length = dict.length_of_phrase(phrase);
         j += freq[phrase] - 1; // the next bits are 0s
         i++;
         if (i < dict.saD.size())
@@ -476,6 +474,8 @@ public:
           if (dict.b_d[sn] || suffix_length < w){
               ++i;
           } else{
+              size_t position = (dict.length_of_phrase(phrase) - suffix_length + start_position[phrase]) % n;
+              proper_phrase_suffix.push_back(position);
               j += freq[phrase];
               i++;
               if (i < dict.saD.size()){
@@ -483,9 +483,9 @@ public:
                   auto new_phrase = dict.daD[i] + 1;
                   assert(new_phrase > 0 && new_phrase < freq.size());
                   size_t new_suffix_length = dict.select_b_d(dict.rank_b_d(new_sn + 1) + 1) - new_sn - 1;
-                  size_t position_test = dict.length_of_phrase(new_phrase) - new_suffix_length;
-                  size_t position = (start_position[new_phrase] + position_test) % n;
-                  proper_phrase_suffix.push_back(position);
+//                  size_t position_test = dict.length_of_phrase(new_phrase) - new_suffix_length;
+//                  size_t position = (start_position[new_phrase] + position_test) % n;
+//                  proper_phrase_suffix.push_back(position);
                   while (i < dict.saD.size() && (dict.lcpD[i] >= suffix_length) && (suffix_length == new_suffix_length)){
                       j += freq[new_phrase];
                       ++i;
@@ -496,16 +496,23 @@ public:
                           assert(new_phrase > 0 && new_phrase < freq.size());
                           new_suffix_length = dict.select_b_d(dict.rank_b_d(new_sn + 1) + 1) - new_sn - 1;
 
-
                       }
                   }
               }
-
-
           }
       }
-      cout <<"PPS size: "<<proper_phrase_suffix.size()<<endl;
-      cout << "M size: "<<M.size()<<endl;
+
+      //start compute PSV and NSV for proper_phrase_suffix.
+      cout <<"bwt_p size "<<b_bwt.size()<<endl;
+      cout<<"b_pps size: "<<b_pps.size()<<endl;
+     // cout << "M size: "<<M.size()<<endl;
+      vector<size_t> PPS_PSV;
+      vector<size_t> PPS_NSV;
+      PPS_PSV = PSV(proper_phrase_suffix);
+      PPS_NSV = NSV(proper_phrase_suffix);
+      for (int k = 0; k < proper_phrase_suffix.size(); ++k) {
+          cout <<"PPS: "<< proper_phrase_suffix[i] <<endl;
+      }
 
   }
 
