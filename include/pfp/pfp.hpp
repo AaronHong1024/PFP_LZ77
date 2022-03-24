@@ -89,6 +89,9 @@ public:
 
   typedef kdtree<uint32_t, 3> tree3d;
   tree3d tree;
+  vector<size_t> PPS_PSV;
+  vector<size_t> PPS_NSV;
+  vector<size_t> proper_phrase_suffix;
 
 
   // Default constructor for load
@@ -251,16 +254,18 @@ public:
         i++;
         if (i < dict.saD.size())
         {
+            // here to check the next phrase
           auto new_sn = dict.saD[i];
           auto new_phrase = dict.daD[i] + 1;
           assert(new_phrase > 0 && new_phrase < freq.size()); // + 1 because daD is 0-based
           size_t new_suffix_length = dict.select_b_d(dict.rank_b_d(new_sn + 1) + 1) - new_sn - 1;
 
+          // if current suffix is the same as next phrase then we keep computing
           while (i < dict.saD.size() && (dict.lcpD[i] >= suffix_length) && (suffix_length == new_suffix_length))
           {
             j += freq[new_phrase];
             ++i;
-
+            // keep updating the new_suffix.
             if (i < dict.saD.size())
             {
               new_sn = dict.saD[i];
@@ -462,7 +467,7 @@ public:
        * Then the phrase start position in S: [start_position[phrase] + (phrase length - suffix length)] % n is the proper phrase
        * suffix start position in S.
        */
-      vector<size_t> proper_phrase_suffix;
+     // vector<size_t> proper_phrase_suffix;
       assert(dict.d[dict.saD[0]] == EndOfDict);
       size_t i = 1;
       size_t j = 0;
@@ -483,13 +488,15 @@ public:
                   auto new_phrase = dict.daD[i] + 1;
                   assert(new_phrase > 0 && new_phrase < freq.size());
                   size_t new_suffix_length = dict.select_b_d(dict.rank_b_d(new_sn + 1) + 1) - new_sn - 1;
-//                  size_t position_test = dict.length_of_phrase(new_phrase) - new_suffix_length;
-//                  size_t position = (start_position[new_phrase] + position_test) % n;
-//                  proper_phrase_suffix.push_back(position);
                   while (i < dict.saD.size() && (dict.lcpD[i] >= suffix_length) && (suffix_length == new_suffix_length)){
                       j += freq[new_phrase];
                       ++i;
 
+                      size_t new_position = (dict.length_of_phrase(new_phrase) - new_suffix_length + start_position[new_phrase]) % n;
+                      if(position > new_position){
+                          position = new_position;
+                          proper_phrase_suffix.back() = position;
+                      }
                       if (i < dict.saD.size()){
                           new_sn = dict.saD[i];
                           new_phrase = dict.daD[i] + 1;
@@ -506,8 +513,6 @@ public:
       cout <<"bwt_p size "<<b_bwt.size()<<endl;
       cout<<"b_pps size: "<<b_pps.size()<<endl;
      // cout << "M size: "<<M.size()<<endl;
-      vector<size_t> PPS_PSV;
-      vector<size_t> PPS_NSV;
       PPS_PSV = PSV(proper_phrase_suffix);
       PPS_NSV = NSV(proper_phrase_suffix);
       for (int k = 0; k < proper_phrase_suffix.size(); ++k) {

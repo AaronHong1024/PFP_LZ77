@@ -94,7 +94,20 @@ public:
                 l = l_nsv;
             } else{
                 // Neither the PSV nor NSV exist. We need to use the kkp algorithm
-
+                size_t pps_psv = pfp.PPS_PSV[r];
+                size_t pps_nsv = pfp.PPS_NSV[r];
+                l_psv = pfp.dict.lcpD[pfp.dict.rmq_lcp_D[pps_psv + 1, r]];
+                l_nsv = pfp.dict.lcpD[pfp.dict.rmq_lcp_D[r + 1, pps_nsv]];
+                if (l_psv > l_nsv){
+                    f = pfp.proper_phrase_suffix[pps_psv];
+                    l = l_psv;
+                } else{
+                    f = pfp.proper_phrase_suffix[pps_nsv];
+                    l = l_nsv;
+                }
+                if (l == 0){
+                    f = pfp.dict.d[d];
+                }
             }
         }
 
