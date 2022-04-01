@@ -159,6 +159,8 @@ public:
     verbose("Computing b_p");
     _elapsed_time(compute_b_p());
 
+    //Aaron Hong yu.hong@ufl.edu extended this function
+    //Compute the PSV and NSV in this function.
     verbose("Computing b_bwt, b_pps, and M of the parsing");
     _elapsed_time(build_b_bwt__b_pps_and_M());
 
@@ -166,12 +168,9 @@ public:
     verbose("kd_tree_test");
     _elapsed_time(kd_tree());
 
-    //Aaron Hong yu.hong@ufl.edu added this function
-    verbose("PPS_test");
-    _elapsed_time(build_PPS());
-
-    verbose("Computing W of BWT(P)");
-    _elapsed_time(build_W());
+    // we don't need this function in computing lz77
+//    verbose("Computing W of BWT(P)");
+//    _elapsed_time(build_W());
 
     verbose("Computing S_LCP_T");
     _elapsed_time(build_s_lcp_T());
@@ -199,13 +198,6 @@ public:
     for (auto idx : onset)
       builder.set(idx);
     b_p = bv_t(builder);
-      cout<<"size: "<< n << endl;
-      cout<<"first p: " << pars.p[0]<<endl;
-      cout<<"dict size: "<< dict.d.size()<<endl;
-      cout << "first p dic: "<<dict.d[1]<<endl;
-      cout<<"onset first: "<< onset[0]<<endl;
-     // cout << "first b_p : "<< b_p[0]<<endl;
-    // Build rank and select on Sp
     rank_b_p = typename bv_t::rank_1_type(&b_p);
     select_b_p = typename bv_t::select_1_type(&b_p);
   }
@@ -238,16 +230,15 @@ public:
       //int *start_position = new int [dict.n_phrases()];
       for (size_t i = 0; i < pars_size - 1; ++i)
       {
-
         //  assert(pars.p[i] != 0);
           size_t phrase_id = pars.p[i];
           //change to store the end position to each phrase
           if (start_position[phrase_id] <= 0){
-              start_position[phrase_id] = select_b_p(i+1);
+              start_position[phrase_id] = select_b_p(i+1) + dict.length_of_phrase(phrase_id);
           }
-
-
+          cout<<"phrase id: "<< phrase_id << " start_position: " << start_position[phrase_id]<<endl;
       }
+
     // Build the bitvector storing the position of the beginning of each phrase.
     // b_bwt.resize(n);
     // for (size_t i = 0; i < b_bwt.size(); ++i)
@@ -255,7 +246,6 @@ public:
     std::vector<size_t> onset;
     std::vector<size_t> onset_b_pps;
     std::vector<int_t> lcp_M_;
-    size_t max = 0;
     assert(dict.d[dict.saD[0]] == EndOfDict);
     size_t i = 1; // This should be safe since the first entry of sa is always the dollarsign used to compute the sa
     size_t j = 0;
@@ -284,6 +274,10 @@ public:
        // size_t length = dict.length_of_phrase(phrase);
         j += freq[phrase] - 1; // the next bits are 0s
         i++;
+
+        //compute the start position for the proper suffix
+          size_t position = (start_position[phrase] - suffix_length) % n;
+          proper_phrase_suffix.push_back(position);
         if (i < dict.saD.size())
         {
             // here to check the next phrase
@@ -295,6 +289,13 @@ public:
           // if current suffix is the same as next phrase then we keep computing
           while (i < dict.saD.size() && (dict.lcpD[i] >= suffix_length) && (suffix_length == new_suffix_length))
           {
+              // in this situation we will have same suffix. we need to choose the smaller position.
+              size_t new_position = (start_position[new_phrase] - new_suffix_length) % n;
+              if (position > new_position){
+                  position = new_position;
+                  proper_phrase_suffix.back() = position;
+              }
+
             j += freq[new_phrase];
             ++i;
             // keep updating the new_suffix.
@@ -379,9 +380,16 @@ public:
     // rank & select support for b_pps
     b_pps_rank_1 = typename bv_t::rank_1_type(&b_pps);
     b_pps_select_1 = typename bv_t::select_1_type(&b_pps);
+
+    //compute PSV and NSV
+    PPS_PSV = PSV(proper_phrase_suffix);
+    PPS_NSV = NSV(proper_phrase_suffix);
+//      for (int k = 0; k < proper_phrase_suffix.size(); ++k) {
+//          cout <<"PPS: "<< proper_phrase_suffix[i] <<endl;
+//      }
   }
 
-  //Aaron Hong yu.hongf@ufl.edu
+  //Aaron Hong yu.hong@ufl.edu
   // this is not used in this version code
   void build_W() {
     // create alphabet (phrases)
@@ -535,14 +543,6 @@ public:
                   while (i < dict.saD.size() && (dict.lcpD[i] >= suffix_length) && (suffix_length == new_suffix_length)){
                       j += freq[new_phrase];
                       ++i;
-
-
-
-
-
-
-
-
                       size_t new_position = (dict.length_of_phrase(new_phrase) - new_suffix_length + start_position[new_phrase]) % n;
                       if(position > new_position){
                           position = new_position;
