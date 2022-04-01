@@ -1,4 +1,4 @@
-add_executable(kd_tree_test kd_tree_test.cpp)
+add_executable(kd_tree_test lz_77_build.cpp)
 target_link_libraries(kd_tree_test pfp_cst pfp common gsacak malloc_count)
 
 add_executable(pfp-cst_build pfp-cst_build.cpp)

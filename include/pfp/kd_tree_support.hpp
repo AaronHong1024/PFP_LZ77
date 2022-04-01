@@ -319,6 +319,8 @@ public:
         max_x_ = 0;
         query_PSV(x1, y1, y2, z1, root_, 0);
         //Got the leftest and rightest node. Compare there to get the right node.
+
+        //change the return to pointer
         return rightest_->point_;
 
     }

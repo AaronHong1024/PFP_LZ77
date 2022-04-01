@@ -21,6 +21,12 @@
    \date 03/04/2020
 */
 
+/*!
+ \file pfp.hpp
+ \brief added kd_tree and build_PPS functions for constructing the LZ_77
+ \author Aaron Hong
+
+ */
 
 #ifndef _PFP_HH
 #define _PFP_HH
@@ -121,8 +127,9 @@ public:
     verbose("kd_tree_test");
     _elapsed_time(kd_tree());
 
-    verbose("Computing W of BWT(P)");
-    _elapsed_time(build_W());
+    //we don't need the W for this function
+//    verbose("Computing W of BWT(P)");
+//    _elapsed_time(build_W());
 
     verbose("Computing S_LCP_T");
     _elapsed_time(build_s_lcp_T());
@@ -155,9 +162,11 @@ public:
     verbose("Computing b_bwt, b_pps, and M of the parsing");
     _elapsed_time(build_b_bwt__b_pps_and_M());
 
+    //Aaron Hong yu.hong@ufl.edu added this function
     verbose("kd_tree_test");
     _elapsed_time(kd_tree());
 
+    //Aaron Hong yu.hong@ufl.edu added this function
     verbose("PPS_test");
     _elapsed_time(build_PPS());
 
@@ -214,8 +223,31 @@ public:
     //n += w - 1; // Changed after changind b_d in dict // -1 is for the first dollar + w because n is the length including the last w markers
   }
 
+// Aaron Hong yu.hong@ufl.edu
+// extend it to compute the proper phrase suffix start position.
   void build_b_bwt__b_pps_and_M()
   {
+      //check the length ,maybe not int
+      const int pars_size = pars.p.size();
+
+      //first occurance in the text.
+      // int start_position[dict.n_phrases()];
+
+      //use std vector
+      vector<size_t> start_position(dict.n_phrases());
+      //int *start_position = new int [dict.n_phrases()];
+      for (size_t i = 0; i < pars_size - 1; ++i)
+      {
+
+        //  assert(pars.p[i] != 0);
+          size_t phrase_id = pars.p[i];
+          //change to store the end position to each phrase
+          if (start_position[phrase_id] <= 0){
+              start_position[phrase_id] = select_b_p(i+1);
+          }
+
+
+      }
     // Build the bitvector storing the position of the beginning of each phrase.
     // b_bwt.resize(n);
     // for (size_t i = 0; i < b_bwt.size(); ++i)
@@ -349,6 +381,8 @@ public:
     b_pps_select_1 = typename bv_t::select_1_type(&b_pps);
   }
 
+  //Aaron Hong yu.hongf@ufl.edu
+  // this is not used in this version code
   void build_W() {
     // create alphabet (phrases)
     //y dimension
@@ -377,12 +411,12 @@ public:
   void kd_tree(){
       //x dimension for the kd_tree
       std::vector<uint32_t> bwt_p(pars.p.size() - 1, 0);
-      for (size_t i = 1; i < pars.saP.size(); ++i) // TODO: shoud we count end symbol in this?
+      for (size_t i = 1; i < pars.saP.size(); ++i)
       {
               if (pars.saP[i] > 0)
                   bwt_p[i - 1] = pars.p[pars.saP[i] - 1];
               else
-                  bwt_p[i - 1] = pars.p[pars.p.size() - 2]; // TODO: this should be -1 only if 0 stay in pars
+                  bwt_p[i - 1] = pars.p[pars.p.size() - 2];
       }
 
       //y dimension for the kd_tree
@@ -390,11 +424,14 @@ public:
       for (size_t i = 0; i < dict.n_phrases(); ++i) {
           alphabet[i] = dict.colex_id[i] + 1;
       }
-      cout<< "y dimension size" <<dict.n_phrases() << endl;
+      //change the cout to verbose or info or other things
+      size_t n_phrase = dict.n_phrases();
+      verbose("y dimension size: ", dict.n_phrases());
+
 
     //  z dimension for the kd_tree
       vector<uint32_t> p = pars.p;
-      cout<< "z dimension size" <<pars.p.size() << endl;
+      verbose("z dimension size: ", pars.p.size());
 
     // connect x and y
     sdsl::int_vector<> parse_x(bwt_p.size(), 0);
@@ -407,17 +444,19 @@ public:
 
       // parse_x: x location in y dimension. Pair should be (bwt_p[i], parse_x[i], z[i])
       //don need store this can save some space
-      for (size_type i = 0; i < bwt_p.size(); ++i) {
+      size_t bwt_p_size = bwt_p.size();
+      for (size_type i = 0; i < bwt_p_size; ++i) {
           parse_x[i] = translate[bwt_p[i] - 1];
       }
 
       // connect x and z, Z[i] = isa_P[bwt_p[i] - 1]
 
 
-     point3d *points = new point3d [bwt_p.size()];
+      point3d *points = new point3d [bwt_p_size];
 
-      size_t bwt_p_size = bwt_p.size();
-      for (size_type i = 0; i < bwt_p.size(); ++i) {
+      for (size_type i = 0; i < bwt_p_size; ++i) {
+          // shoule be the uint64_t
+          // define a parameter
           uint32_t x = i;
           uint32_t y = parse_x[i];
           //
@@ -425,12 +464,13 @@ public:
           points[i] = {x,y,z};
       }
       // construct the kd_tree
-      tree = tree3d(points, points + bwt_p.size());
+      tree = tree3d(points, points + bwt_p_size);
      // tree3d tree(points, points + bwt_p.size());
-      cout<< "tree size: "<< tree.size() << endl;
-    //  cout <<"p test: "<< pars.p[0]<<endl;
-    //  cout << "bp_rank size: " << rank_b_p.size()<< endl;
-      // create the x1, y1, y2, z1 for the matrix.
+      verbose("tree size: ", tree.size());
+     // cout<< "tree size: "<< tree.size() << endl;
+
+      delete points;
+
 
 
   }
@@ -444,30 +484,33 @@ public:
      * (previous start position + length of current length - w) % n = next pars phrase start position in S.
      * Then we map the result to the D.
      * */
-    int pars_size = pars.p.size();
-    cout<<"n_ phrase: "<<dict.n_phrases()<<endl;
-    cout<<"p size:"<<pars_size<<endl;
-//    for (int i = 0; i < pars.p.size(); ++i) {
-//        cout<<"p[i]:" << pars.p[i]<<endl;
-//    }
 
-    cout <<"daD_size: "<<dict.daD.size()<<endl;
-    cout<<"d_size: "<<dict.n_phrases()<<endl;
-    int start_position[dict.n_phrases()];
-      for (int i = 0; i < pars.p.size() - 1; ++i)
+    //check the length ,maybe not int
+    const int pars_size = pars.p.size();
+
+    //first occurance in the text.
+   // int start_position[dict.n_phrases()];
+
+   //use std vector
+    int *start_position = new int [dict.n_phrases()];
+      for (size_t i = 0; i < pars_size - 1; ++i)
       {
-          // parse.p[j]: phrase_id
+
           assert(pars.p[i] != 0);
           size_t phrase_id = pars.p[i];
-          start_position[phrase_id] = (select_b_p(i+1) + dict.length_of_phrase(phrase_id) - w) % n;
-         // cout<<"phrase_id: "<<phrase_id<<" start_position: "<< start_position[phrase_id]<<endl;
+            //change to store the end position to each phrase
+          if (start_position[phrase_id] <= 0){
+              start_position[phrase_id] = select_b_p(i+1);
+          }
+
+
       }
-      // not sure what's the daD. And the phrase is the phrase number in dict?
+
       /* We can use the position = (phrase length - suffix length) to get the position of suffix in the pharse
        * Then the phrase start position in S: [start_position[phrase] + (phrase length - suffix length)] % n is the proper phrase
        * suffix start position in S.
        */
-     // vector<size_t> proper_phrase_suffix;
+
       assert(dict.d[dict.saD[0]] == EndOfDict);
       size_t i = 1;
       size_t j = 0;
@@ -479,6 +522,7 @@ public:
           if (dict.b_d[sn] || suffix_length < w){
               ++i;
           } else{
+              //trying to remove the dict.length_of_phrase(phrase)
               size_t position = (dict.length_of_phrase(phrase) - suffix_length + start_position[phrase]) % n;
               proper_phrase_suffix.push_back(position);
               j += freq[phrase];
@@ -491,6 +535,13 @@ public:
                   while (i < dict.saD.size() && (dict.lcpD[i] >= suffix_length) && (suffix_length == new_suffix_length)){
                       j += freq[new_phrase];
                       ++i;
+
+
+
+
+
+
+
 
                       size_t new_position = (dict.length_of_phrase(new_phrase) - new_suffix_length + start_position[new_phrase]) % n;
                       if(position > new_position){
@@ -510,17 +561,20 @@ public:
       }
 
       //start compute PSV and NSV for proper_phrase_suffix.
-      cout <<"bwt_p size "<<b_bwt.size()<<endl;
-      cout<<"b_pps size: "<<b_pps.size()<<endl;
+      verbose("bwt_p size: ", b_bwt.size());
+      verbose("b_pps size: ", b_pps.size());
+
      // cout << "M size: "<<M.size()<<endl;
       PPS_PSV = PSV(proper_phrase_suffix);
       PPS_NSV = NSV(proper_phrase_suffix);
-      for (int k = 0; k < proper_phrase_suffix.size(); ++k) {
-          cout <<"PPS: "<< proper_phrase_suffix[i] <<endl;
-      }
+//      for (int k = 0; k < proper_phrase_suffix.size(); ++k) {
+//          cout <<"PPS: "<< proper_phrase_suffix[i] <<endl;
+//      }
 
   }
 
+
+// change this file make it to array
 
 
   void build_s_lcp_T()
@@ -556,7 +610,7 @@ public:
     }
 
     rmq_s_lcp_T = sdsl::rmq_succinct_sct<>(&s_lcp_T_);
-
+// change the s_lcp_T to array
     sdsl::construct_im(s_lcp_T, s_lcp_T_);
   }
 

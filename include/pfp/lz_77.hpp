@@ -24,9 +24,12 @@ protected:
     pfp_sa_support<wt_t> _sa;
 
 public:
-    pf_parsing<wt_t> &pfp;
-    typedef point<uint32_t, 3> point3d;
 
+    //check other place used those things make it private or protected
+    pf_parsing<wt_t> &pfp;
+
+    typedef point<uint32_t, 3> point3d;
+//change the name of tree3d
     typedef kdtree<uint32_t, 3> tree3d;
     tree3d tree;
 
@@ -40,22 +43,32 @@ public:
 
     void compute_lz_77(){
         //i is the starting position of the lz_77's factor. Starting from 0. each time can add the factor's length to compute the next one factor.
+
+        //define the tree this place.
+        //use const kdtree<<>>& tree there. We dont need the tree again.
         tree = pfp.tree;
-        size_t n = pfp.n;
+        const size_t n = pfp.n;
         //the limitation for the x,y,z is the position in grid.
-        for (int i = 0; i < n; ++i) {
+        size_t i = 0;
+
+        while(i < n) {
+            //add the comment to all the variable
             uint_t z1 = pfp.rank_b_p(i);
             size_t offset = i - pfp.select_b_p(z1);
             uint32_t q = pfp.pars.p[z1]; // map the x inside the D
             size_t d = pfp.dict.select_b_d(q) + offset;
+            // r is the
             uint_t r = pfp.dict.isaD[d];
+            r = pfp.b_pps_rank_1(r+1);
+
             uint_t x1 = pfp.pars.isaP[z1+1];
             M_entry_t y_set = pfp.M[r]; // M_entry is [len, left, right]
-            uint y1 = y_set[1];
-            uint y2 = y_set[2];
+            uint y1 = y_set.left;
+            uint y2 = y_set.right;
             //TODO: to check the two x dimension. to the PSV, matrix is smaller than x1. To NSV, matrix is larger than x1.
             point3d psv = tree.query_PSV(x1, y1, y2, z1);
             point3d nsv = tree.query_NSV(x1, y1, y2, z1);
+            // check the length of the suffix is the same as the M length
             size_t offset_prime = pfp.select_b_p(z1 + 1) - i;
 
             size_t p_psv;
@@ -64,21 +77,23 @@ public:
             size_t l_nsv;
             size_t f;
             size_t l;
+
+            //psv is not a pointer. check it
             if (psv != nullptr){
                 // rmq_s_lcp_t(i,j) will return the min(lcp[i,...,j])
-                p_psv = pfp.rmq_s_lcp_T(psv.get(0)+1, i);
+                p_psv = pfp.rmq_s_lcp_T(psv.get(0)+1, x1);
                 //s_lcp_T[i] will return longest common prefix of S[SA[i-1]] and S[SA[i]];
                 l_psv = pfp.s_lcp_T[p_psv];
 
                 if (nsv != nullptr){
-                    p_nsv = pfp.rmq_s_lcp_T(i+1, nsv.get(0));
+                    p_nsv = pfp.rmq_s_lcp_T(x1+1, nsv.get(0));
                     l_nsv = pfp.s_lcp_T[p_nsv];
 
                     if (l_psv > l_nsv){
                         f = pfp.select_b_p(pfp.pars.saP[psv.get(0)]) - offset_prime;
                         l = l_psv;
                     } else{
-                        f = pfp.select_b_p(pfp.pars.saP[nsv.get(0)]) - offset_prime;
+                        f = (pfp.select_b_p(pfp.pars.saP[nsv.get(0)]) - offset_prime) %n;
                         l = l_nsv;
                     }
 
@@ -88,17 +103,20 @@ public:
                 }
 
             } else if(nsv != nullptr){
-                p_nsv = pfp.rmq_s_lcp_T(i+1, nsv.get(0));
+                p_nsv = pfp.rmq_s_lcp_T(x1+1, nsv.get(0));
                 l_nsv = pfp.s_lcp_T[p_nsv];
                 f = pfp.select_b_p(pfp.pars.saP[nsv.get(0)]) - offset_prime;
                 l = l_nsv;
             } else{
                 // Neither the PSV nor NSV exist. We need to use the kkp algorithm
+                //If there is one p
                 size_t pps_psv = pfp.PPS_PSV[r];
                 size_t pps_nsv = pfp.PPS_NSV[r];
                 l_psv = pfp.dict.lcpD[pfp.dict.rmq_lcp_D[pps_psv + 1, r]];
                 l_nsv = pfp.dict.lcpD[pfp.dict.rmq_lcp_D[r + 1, pps_nsv]];
                 if (l_psv > l_nsv){
+
+                    //get a new name for the PPS array.
                     f = pfp.proper_phrase_suffix[pps_psv];
                     l = l_psv;
                 } else{
@@ -109,6 +127,8 @@ public:
                     f = pfp.dict.d[d];
                 }
             }
+            //write it to file
+            i += l;
         }
 
     }
