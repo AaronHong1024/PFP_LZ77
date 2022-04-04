@@ -1,4 +1,4 @@
-add_executable(ds_building_wt_sdsl ds_building_wt_sdsl.cpp)
+add_executable(ds_building_wt_sdsl ds_building_wt_sdsl.cpp build_PPS_test.cpp)
 target_link_libraries(ds_building_wt_sdsl common strdup pfp gsacak sdsl malloc_count)
 
 add_executable(ds_building_wt_sdsl64 ds_building_wt_sdsl.cpp)
@@ -60,4 +60,7 @@ target_link_libraries(pfp_load_test common strdup pfp gsacak sdsl malloc_count)
 
 add_executable(sdsl_load_test sdsl_load_test.cpp)
 target_link_libraries(sdsl_load_test common strdup pfp gsacak sdsl malloc_count sdsl divsufsort divsufsort64)
+
+add_executable(pps_test build_PPS_test.cpp)
+target_link_libraries(pps_test common pfp gsacak sdsl divsufsort divsufsort64 malloc_count pthread)
 

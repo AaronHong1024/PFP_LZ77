@@ -1,5 +1,5 @@
-add_executable(kd_tree_test lz_77_build.cpp)
-target_link_libraries(kd_tree_test pfp_cst pfp common gsacak malloc_count)
+add_executable(lz_77_test lz_77_build.cpp)
+target_link_libraries(lz_77_test pfp_cst pfp common gsacak malloc_count)
 
 add_executable(pfp-cst_build pfp-cst_build.cpp)
 target_link_libraries(pfp-cst_build common strdup pfp gsacak sdsl malloc_count)

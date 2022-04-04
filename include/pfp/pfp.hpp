@@ -226,17 +226,20 @@ public:
       // int start_position[dict.n_phrases()];
 
       //use std vector
-      vector<size_t> start_position(dict.n_phrases());
-      //int *start_position = new int [dict.n_phrases()];
+      //phrase starts from 1.
+      vector<size_t> end_position(dict.n_phrases() + 1);
+
       for (size_t i = 0; i < pars_size - 1; ++i)
       {
-        //  assert(pars.p[i] != 0);
           size_t phrase_id = pars.p[i];
-          //change to store the end position to each phrase
-          if (start_position[phrase_id] <= 0){
-              start_position[phrase_id] = select_b_p(i+1) + dict.length_of_phrase(phrase_id);
+
+           if (end_position[phrase_id] <= 0){
+              end_position[phrase_id] = select_b_p(i+1) + dict.length_of_phrase(phrase_id);
           }
-          cout<<"phrase id: "<< phrase_id << " start_position: " << start_position[phrase_id]<<endl;
+      }
+
+      for(size_t i = 1; i <= dict.n_phrases(); ++i){
+          cout<<"phrase_id: "<<i<<" end_position: "<<end_position[i]<<endl;
       }
 
     // Build the bitvector storing the position of the beginning of each phrase.
@@ -276,7 +279,7 @@ public:
         i++;
 
         //compute the start position for the proper suffix
-          size_t position = (start_position[phrase] - suffix_length) % n;
+          size_t position = (end_position[phrase] - suffix_length) % n;
           proper_phrase_suffix.push_back(position);
         if (i < dict.saD.size())
         {
@@ -290,7 +293,7 @@ public:
           while (i < dict.saD.size() && (dict.lcpD[i] >= suffix_length) && (suffix_length == new_suffix_length))
           {
               // in this situation we will have same suffix. we need to choose the smaller position.
-              size_t new_position = (start_position[new_phrase] - new_suffix_length) % n;
+              size_t new_position = (end_position[new_phrase] - new_suffix_length) % n;
               if (position > new_position){
                   position = new_position;
                   proper_phrase_suffix.back() = position;
