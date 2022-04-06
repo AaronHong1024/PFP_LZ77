@@ -429,7 +429,9 @@ public:
                   bwt_p[i - 1] = pars.p[pars.saP[i] - 1];
               else
                   bwt_p[i - 1] = pars.p[pars.p.size() - 2];
+
       }
+
 
       //y dimension for the kd_tree
       std::vector<uint32_t> alphabet(dict.n_phrases());
@@ -459,21 +461,25 @@ public:
       size_t bwt_p_size = bwt_p.size();
       for (size_type i = 0; i < bwt_p_size; ++i) {
           parse_x[i] = translate[bwt_p[i] - 1];
+
       }
 
       // connect x and z, Z[i] = isa_P[bwt_p[i] - 1]
 
 
       point3d *points = new point3d [bwt_p_size];
-
+//      for (int i = 0; i < pars.saP.size(); ++i) {
+//          cout<<"saP: "<<pars.saP[i]<<endl;
+//      }
       for (size_type i = 0; i < bwt_p_size; ++i) {
           // shoule be the uint64_t
           // define a parameter
           uint32_t x = i;
           uint32_t y = parse_x[i];
           //
-          uint32_t z = (pars.saP[i] - 1)%bwt_p_size;
+          uint32_t z = (pars.saP[i+1] + bwt_p_size - 1)%bwt_p_size;
           points[i] = {x,y,z};
+          cout << "points: "<<points[i].get(0)<<" "<<points[i].get(1)<<" "<<points[i].get(2)<<endl;
       }
       // construct the kd_tree
       tree = tree3d(points, points + bwt_p_size);
@@ -482,8 +488,6 @@ public:
      // cout<< "tree size: "<< tree.size() << endl;
 
       delete points;
-
-
 
   }
 
