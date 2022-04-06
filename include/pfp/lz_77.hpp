@@ -109,7 +109,7 @@ public:
                 l = l_nsv;
             } else{
                 // Neither the PSV nor NSV exist. We need to use the kkp algorithm
-                //If there is one p
+
                 size_t pps_psv = pfp.PPS_PSV[r];
                 size_t pps_nsv = pfp.PPS_NSV[r];
                 l_psv = pfp.dict.lcpD[pfp.dict.rmq_lcp_D[pps_psv + 1, r]];

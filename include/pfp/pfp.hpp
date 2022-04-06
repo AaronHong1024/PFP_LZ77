@@ -211,6 +211,7 @@ public:
       assert(pars.p[j] != 0);
       n += dict.length_of_phrase(pars.p[j]) - w;
     }
+
     //n += w; // + w because n is the length including the last w markers
     //n += w - 1; // Changed after changind b_d in dict // -1 is for the first dollar + w because n is the length including the last w markers
   }
@@ -238,9 +239,6 @@ public:
           }
       }
 
-      for(size_t i = 1; i <= dict.n_phrases(); ++i){
-          cout<<"phrase_id: "<<i<<" end_position: "<<end_position[i]<<endl;
-      }
 
     // Build the bitvector storing the position of the beginning of each phrase.
     // b_bwt.resize(n);
@@ -385,12 +383,15 @@ public:
     b_pps_select_1 = typename bv_t::select_1_type(&b_pps);
 
     //compute PSV and NSV
+    //now we stored the location for PSV or NSV.
     PPS_PSV = PSV(proper_phrase_suffix);
     PPS_NSV = NSV(proper_phrase_suffix);
-//      for (int k = 0; k < proper_phrase_suffix.size(); ++k) {
-//          cout <<"PPS: "<< proper_phrase_suffix[i] <<endl;
+//      for (int k = 0; k < PPS_PSV.size(); ++k) {
+//          cout<<"PSV: "<<PPS_NSV[k]<<endl;
 //      }
   }
+
+
 
   //Aaron Hong yu.hong@ufl.edu
   // this is not used in this version code
