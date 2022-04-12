@@ -12,7 +12,9 @@
 
 #include <common.hpp>
 #include <pfp.hpp>
+#include <lz_77.hpp>
 #include <sa_support.hpp>
+
 
 extern "C" {
     #include<gsacak.h>
@@ -80,7 +82,8 @@ void test(){
 
     cout << "---------------- start paper test --------------------------"<<endl;
     pf_parsing<> pf(dict2,parse, frequencies,w);
-
+    lz_77<> lz77(pf);
+    lz77.compute_lz_77();
 }
 
 int main(){

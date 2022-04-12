@@ -2,7 +2,7 @@
 <project version="4">
   <component name="SshConfigs">
     <configs>
-      <sshConfig authType="PASSWORD" host="hpg.rc.ufl.edu" id="1b658058-f367-47cb-b2a5-ea4fec5e9568" port="22" nameFormat="DESCRIPTIVE" username="yu.hong" useOpenSSHConfig="true" />
+      <sshConfig authType="PASSWORD" connectionConfig="{&quot;serverAliveInterval&quot;:300}" host="hpg.rc.ufl.edu" id="1b658058-f367-47cb-b2a5-ea4fec5e9568" port="22" nameFormat="DESCRIPTIVE" username="yu.hong" useOpenSSHConfig="true" />
     </configs>
   </component>
 </project>

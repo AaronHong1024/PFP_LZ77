@@ -1,9 +1,10 @@
 #ifndef PFP_CST_KD_TREE_SUPPORT_HPP
 #define PFP_CST_KD_TREE_SUPPORT_HPP
 
-#endif //PFP_CST_KD_TREE_SUPPORT_HPP
+ //PFP_CST_KD_TREE_SUPPORT_HPP
 
 // reference: https://rosettacode.org/wiki/K-d_tree#C.2B.2B
+
 
 #include <iostream>
 #include <algorithm>
@@ -44,6 +45,10 @@ public:
             dist += d * d;
         }
         return dist;
+    }
+
+    bool isEmpty(){
+        return coords_.empty();
     }
 private:
     array<coordinate_type, dimensions> coords_;
@@ -160,7 +165,7 @@ private:
 
         // cutting path
         if (index == 0){
-            long dx = root->get(index) - x1;
+            uint64_t dx = root->get(index) - x1;
             // size_t test = root->get(index);
             size_t visited = visited_;
             index = (index + 1) % dimensions;
@@ -171,8 +176,8 @@ private:
             }
         }else if (index == 1){
             //maybe go same subtree twice.
-            long dy1 = root->get(index) - y1;
-            long dy2 = root->get(index) - y2;
+            uint64_t dy1 = root->get(index) - y1;
+            uint64_t dy2 = root->get(index) - y2;
             index = (index + 1) % dimensions;
             if (dy1 < 0){
                 // means y is smaller than y1. current point is on the left side of this matrix.
@@ -191,7 +196,7 @@ private:
             }
 
         } else{
-            long dz = root->get(index) - z1;
+            uint64_t dz = root->get(index) - z1;
             index = (index + 1) % dimensions;
             // if current node's z dimension is larger than matrix, then we go left node
             query_PSV(x1, y1, y2, z1, dz > 0 ? root->left_ : root->right_, index);
@@ -224,7 +229,7 @@ private:
 
         // cutting path
         if (index == 0){
-            long dx = root->get(index) - x1;
+            uint64_t dx = root->get(index) - x1;
             // size_t test = root->get(index);
             size_t visited = visited_;
             index = (index + 1) % dimensions;
@@ -235,8 +240,8 @@ private:
             }
         }else if (index == 1){
             //maybe go same subtree twice.
-            long dy1 = root->get(index) - y1;
-            long dy2 = root->get(index) - y2;
+            uint64_t dy1 = root->get(index) - y1;
+            uint64_t dy2 = root->get(index) - y2;
             index = (index + 1) % dimensions;
             if (dy1 < 0){
                 // means y is smaller than y1. current point is on the left side of this matrix.
@@ -254,7 +259,7 @@ private:
             }
 
         } else{
-            long dz = root->get(index) - z1;
+            uint64_t dz = root->get(index) - z1;
             index = (index + 1) % dimensions;
             // if current node's z dimension is larger than matrix, then we go left node
             query_NSV(x1, y1, y2, z1, dz > 0 ? root->left_ : root->right_, index);
@@ -341,3 +346,4 @@ public:
 
 
 };
+#endif

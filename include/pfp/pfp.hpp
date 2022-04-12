@@ -55,6 +55,7 @@ extern "C" {
 template< class wt_t = pfp_wt_wm>//sdsl::sd_vector<>>
 class pf_parsing{
 public:
+
   struct M_entry_t{
     uint_t len;
     uint_t left; // left and right are the extreemes of the range
@@ -91,9 +92,9 @@ public:
 
   typedef size_t size_type;
 
-  typedef point<uint32_t, 3> point3d;
+  typedef point<uint64_t, 3> point3d;
 
-  typedef kdtree<uint32_t, 3> tree3d;
+  typedef kdtree<uint64_t, 3> tree3d;
   tree3d tree;
   vector<size_t> PPS_PSV;
   vector<size_t> PPS_NSV;
@@ -200,6 +201,7 @@ public:
     b_p = bv_t(builder);
     rank_b_p = typename bv_t::rank_1_type(&b_p);
     select_b_p = typename bv_t::select_1_type(&b_p);
+
   }
 
   void compute_n(){
@@ -386,8 +388,11 @@ public:
     //now we stored the location for PSV or NSV.
     PPS_PSV = PSV(proper_phrase_suffix);
     PPS_NSV = NSV(proper_phrase_suffix);
-//      for (int k = 0; k < PPS_PSV.size(); ++k) {
-//          cout<<"PSV: "<<PPS_NSV[k]<<endl;
+//      for (int k = 0; k < dict.isaD.size(); ++k) {
+//          cout<<"isaD: "<<dict.isaD[k]<<endl;
+//      }
+//      for (int k = 0; k < b_pps.size(); ++k) {
+//          cout<<"b_pps: "<<b_pps[k]<<" rank: "<<b_pps_rank_1(k)<<endl;
 //      }
   }
 
@@ -479,7 +484,7 @@ public:
           //
           uint32_t z = (pars.saP[i+1] + bwt_p_size - 1)%bwt_p_size;
           points[i] = {x,y,z};
-          cout << "points: "<<points[i].get(0)<<" "<<points[i].get(1)<<" "<<points[i].get(2)<<endl;
+        //  cout << "points: "<<points[i].get(0)<<" "<<points[i].get(1)<<" "<<points[i].get(2)<<endl;
       }
       // construct the kd_tree
       tree = tree3d(points, points + bwt_p_size);
@@ -492,98 +497,7 @@ public:
   }
 
 
-  // compute the PSV and NSV for proper phrase suffix
-  void build_PPS(){
-    // find each phrase(in Dict) start position in string S first.
-    // test the b_d and b_p size first.
-    /* We use the pars to calculate the D phrase start position first. Each time
-     * (previous start position + length of current length - w) % n = next pars phrase start position in S.
-     * Then we map the result to the D.
-     * */
-
-    //check the length ,maybe not int
-    const int pars_size = pars.p.size();
-
-    //first occurance in the text.
-   // int start_position[dict.n_phrases()];
-
-   //use std vector
-    int *start_position = new int [dict.n_phrases()];
-      for (size_t i = 0; i < pars_size - 1; ++i)
-      {
-
-          assert(pars.p[i] != 0);
-          size_t phrase_id = pars.p[i];
-            //change to store the end position to each phrase
-          if (start_position[phrase_id] <= 0){
-              start_position[phrase_id] = select_b_p(i+1);
-          }
-
-
-      }
-
-      /* We can use the position = (phrase length - suffix length) to get the position of suffix in the pharse
-       * Then the phrase start position in S: [start_position[phrase] + (phrase length - suffix length)] % n is the proper phrase
-       * suffix start position in S.
-       */
-
-      assert(dict.d[dict.saD[0]] == EndOfDict);
-      size_t i = 1;
-      size_t j = 0;
-      while(i < dict.saD.size()){
-          auto sn = dict.saD[i];
-          auto phrase = dict.daD[i] + 1;
-          assert(phrase > 0 && phrase < freq.size());
-          size_t suffix_length = dict.select_b_d(dict.rank_b_d(sn + 1) + 1) - sn - 1;
-          if (dict.b_d[sn] || suffix_length < w){
-              ++i;
-          } else{
-              //trying to remove the dict.length_of_phrase(phrase)
-              size_t position = (dict.length_of_phrase(phrase) - suffix_length + start_position[phrase]) % n;
-              proper_phrase_suffix.push_back(position);
-              j += freq[phrase];
-              i++;
-              if (i < dict.saD.size()){
-                  auto new_sn = dict.saD[i];
-                  auto new_phrase = dict.daD[i] + 1;
-                  assert(new_phrase > 0 && new_phrase < freq.size());
-                  size_t new_suffix_length = dict.select_b_d(dict.rank_b_d(new_sn + 1) + 1) - new_sn - 1;
-                  while (i < dict.saD.size() && (dict.lcpD[i] >= suffix_length) && (suffix_length == new_suffix_length)){
-                      j += freq[new_phrase];
-                      ++i;
-                      size_t new_position = (dict.length_of_phrase(new_phrase) - new_suffix_length + start_position[new_phrase]) % n;
-                      if(position > new_position){
-                          position = new_position;
-                          proper_phrase_suffix.back() = position;
-                      }
-                      if (i < dict.saD.size()){
-                          new_sn = dict.saD[i];
-                          new_phrase = dict.daD[i] + 1;
-                          assert(new_phrase > 0 && new_phrase < freq.size());
-                          new_suffix_length = dict.select_b_d(dict.rank_b_d(new_sn + 1) + 1) - new_sn - 1;
-
-                      }
-                  }
-              }
-          }
-      }
-
-      //start compute PSV and NSV for proper_phrase_suffix.
-      verbose("bwt_p size: ", b_bwt.size());
-      verbose("b_pps size: ", b_pps.size());
-
-     // cout << "M size: "<<M.size()<<endl;
-      PPS_PSV = PSV(proper_phrase_suffix);
-      PPS_NSV = NSV(proper_phrase_suffix);
-//      for (int k = 0; k < proper_phrase_suffix.size(); ++k) {
-//          cout <<"PPS: "<< proper_phrase_suffix[i] <<endl;
-//      }
-
-  }
-
-
 // change this file make it to array
-
 
   void build_s_lcp_T()
   {
