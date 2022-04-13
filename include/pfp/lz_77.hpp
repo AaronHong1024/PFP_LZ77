@@ -22,6 +22,7 @@ protected:
 //    pfp_lce_support<wt_t> _lce;
 //    pfp_sa_support<wt_t> _sa;
     typedef point<uint64_t , 3> point3d;
+    typedef kdtree<uint64_t, 3> tree3d;
 
 public:
 
@@ -48,6 +49,8 @@ public:
         //use const kdtree<<>>& tree there. We dont need the tree again.
 
         const size_t n = pfp.n;
+        tree3d tree;
+        tree = pfp.tree;
         //the limitation for the x,y,z is the position in grid.
         size_t i = 0;
        // typedef point<uint32_t , 3> point3d;
@@ -71,8 +74,11 @@ public:
             uint y1 = pfp.M[r].left;    // M_entry is [len, left, right]
             uint y2 = pfp.M[r].right;
             //TODO: to check the two x dimension. to the PSV, matrix is smaller than x1. To NSV, matrix is larger than x1.
-            point3d psv = pfp.tree.query_PSV(x1, y1, y2, z1);
-            point3d nsv = pfp.tree.query_NSV(x1, y1, y2, z1);
+
+
+
+            point3d* psv = tree.query_PSV(x1, y1, y2, z1);
+            point3d* nsv = tree.query_NSV(x1, y1, y2, z1);
             // check the length of the suffix is the same as the M length
             size_t offset_prime = pfp.select_b_p(z1 + 1) - i;
 
@@ -84,33 +90,33 @@ public:
             size_t l;
 
             //psv is not a pointer. check it
-            if (psv.isEmpty()){
+            if (psv != nullptr){
                 // rmq_s_lcp_t(i,j) will return the min(lcp[i,...,j])
-                p_psv = pfp.rmq_s_lcp_T(psv.get(0)+1, x1);
+                p_psv = pfp.rmq_s_lcp_T(psv->get(0)+1, x1);
                 //s_lcp_T[i] will return longest common prefix of S[SA[i-1]] and S[SA[i]];
                 l_psv = pfp.s_lcp_T[p_psv];
 
-                if (nsv.isEmpty()){
-                    p_nsv = pfp.rmq_s_lcp_T(x1+1, nsv.get(0));
+                if (nsv != nullptr){
+                    p_nsv = pfp.rmq_s_lcp_T(x1+1, nsv->get(0));
                     l_nsv = pfp.s_lcp_T[p_nsv];
 
                     if (l_psv > l_nsv){
-                        f = pfp.select_b_p(pfp.pars.saP[psv.get(0)]) - offset_prime;
+                        f = pfp.select_b_p(pfp.pars.saP[psv->get(0)]) - offset_prime;
                         l = l_psv;
                     } else{
-                        f = (pfp.select_b_p(pfp.pars.saP[nsv.get(0)]) - offset_prime) %n;
+                        f = (pfp.select_b_p(pfp.pars.saP[nsv->get(0)]) - offset_prime) %n;
                         l = l_nsv;
                     }
 
                 } else{
-                    f = pfp.select_b_p(pfp.pars.saP[psv.get(0)]) - offset_prime;
+                    f = pfp.select_b_p(pfp.pars.saP[psv->get(0)]) - offset_prime;
                     l = l_psv;
                 }
 
-            } else if(nsv.isEmpty()){
-                p_nsv = pfp.rmq_s_lcp_T(x1+1, nsv.get(0));
+            } else if(nsv != nullptr){
+                p_nsv = pfp.rmq_s_lcp_T(x1+1, nsv->get(0));
                 l_nsv = pfp.s_lcp_T[p_nsv];
-                f = pfp.select_b_p(pfp.pars.saP[nsv.get(0)]) - offset_prime;
+                f = pfp.select_b_p(pfp.pars.saP[nsv->get(0)]) - offset_prime;
                 l = l_nsv;
             } else{
                 // Neither the PSV nor NSV exist. We need to use the kkp algorithm

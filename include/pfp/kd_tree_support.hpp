@@ -76,18 +76,18 @@ public:
     typedef point<coordinate_type, dimensions> point_type;
 private:
     struct node {
-        node(const point_type& pt) : point_(pt), left_(nullptr), right_(nullptr) {}
+        node(point_type& pt) : point_(&pt), left_(nullptr), right_(nullptr) {}
 
         coordinate_type get(size_t index) const{
-            return point_.get(index);
+            return point_->get(index);
         }
 
         double distance(const point_type& pt) const {
-            return point_.distance(pt);
+            return point_->distance(pt);
         }
 
 
-        point_type point_;
+        point_type* point_;
         node* left_;
         node* right_;
     };
@@ -104,7 +104,7 @@ private:
     struct node_cmp{
         node_cmp(size_t index) : index_(index) {}
         bool operator()(const node& n1, const node& n2) const {
-            return n1.point_.get(index_) < n2.point_.get(index_);
+            return n1.point_->get(index_) < n2.point_->get(index_);
         }
         size_t index_;
     };
@@ -165,7 +165,7 @@ private:
 
         // cutting path
         if (index == 0){
-            uint64_t dx = root->get(index) - x1;
+            int64_t dx = root->get(index) - x1;
             // size_t test = root->get(index);
             size_t visited = visited_;
             index = (index + 1) % dimensions;
@@ -176,8 +176,8 @@ private:
             }
         }else if (index == 1){
             //maybe go same subtree twice.
-            uint64_t dy1 = root->get(index) - y1;
-            uint64_t dy2 = root->get(index) - y2;
+            int64_t dy1 = root->get(index) - y1;
+            int64_t dy2 = root->get(index) - y2;
             index = (index + 1) % dimensions;
             if (dy1 < 0){
                 // means y is smaller than y1. current point is on the left side of this matrix.
@@ -229,7 +229,7 @@ private:
 
         // cutting path
         if (index == 0){
-            uint64_t dx = root->get(index) - x1;
+            int64_t dx = root->get(index) - x1;
             // size_t test = root->get(index);
             size_t visited = visited_;
             index = (index + 1) % dimensions;
@@ -240,8 +240,8 @@ private:
             }
         }else if (index == 1){
             //maybe go same subtree twice.
-            uint64_t dy1 = root->get(index) - y1;
-            uint64_t dy2 = root->get(index) - y2;
+            int64_t dy1 = root->get(index) - y1;
+            int64_t dy2 = root->get(index) - y2;
             index = (index + 1) % dimensions;
             if (dy1 < 0){
                 // means y is smaller than y1. current point is on the left side of this matrix.
@@ -259,7 +259,7 @@ private:
             }
 
         } else{
-            uint64_t dz = root->get(index) - z1;
+            int64_t dz = root->get(index) - z1;
             index = (index + 1) % dimensions;
             // if current node's z dimension is larger than matrix, then we go left node
             query_NSV(x1, y1, y2, z1, dz > 0 ? root->left_ : root->right_, index);
@@ -307,7 +307,7 @@ public:
 
     double distance() const {return sqrt(best_dist_); }
 
-    const point_type& nearest(const point_type& pt) {
+     point_type& nearest(const point_type& pt) {
         if (root_ == nullptr)
             throw logic_error("tree is empty");
         best_ = nullptr;
@@ -317,7 +317,7 @@ public:
         return best_->point_;
     }
 
-    const point_type& query_PSV(const size_t x1, const size_t y1, const size_t y2, const size_t z1) {
+    point_type* query_PSV(const size_t x1, const size_t y1, const size_t y2, const size_t z1) {
         if (root_ == nullptr)
             throw logic_error("tree is empty");
         rightest_= nullptr;
@@ -326,17 +326,23 @@ public:
         //Got the leftest and rightest node. Compare there to get the right node.
 
         //change the return to pointer
+        if (rightest_ == nullptr){
+            return nullptr;
+        }
         return rightest_->point_;
 
     }
 
-    const point_type & query_NSV(const size_t x1, const size_t y1, const size_t y2, const size_t z1) {
+    point_type* query_NSV(const size_t x1, const size_t y1, const size_t y2, const size_t z1) {
         if (root_ == nullptr)
             throw logic_error("tree is empty");
         leftest_ = nullptr;
         min_x_ = DBL_MAX;
         query_NSV(x1, y1, y2, z1, root_, 0);
-        return leftest_ -> point_;
+        if (leftest_ == nullptr){
+            return nullptr;
+        }
+        return leftest_->point_;
     }
 
 
