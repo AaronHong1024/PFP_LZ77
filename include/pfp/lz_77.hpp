@@ -120,13 +120,21 @@ public:
                 l = l_nsv;
             } else{
                 // Neither the PSV nor NSV exist. We need to use the kkp algorithm
+// the PSV and NSV used unsigned.
+                int64_t pps_psv = pfp.PPS_PSV[r];
+                int64_t pps_nsv = pfp.PPS_NSV[r];
+                if (pps_psv == -1){
+                    l_psv = 0;
+                }else{
+                    l_psv = pfp.dict.lcpD[pfp.dict.rmq_lcp_D(pps_psv + 1, r)];
+                }
+                if (pps_nsv == -1){
+                    l_nsv = 0;
+                }else{
+                    l_nsv = pfp.dict.lcpD[pfp.dict.rmq_lcp_D(r + 1, pps_nsv)];
+                }
 
-                size_t pps_psv = pfp.PPS_PSV[r];
-                size_t pps_nsv = pfp.PPS_NSV[r];
-
-                l_psv = pfp.dict.lcpD[pfp.dict.rmq_lcp_D(pps_psv + 1, r)];
-                l_nsv = pfp.dict.lcpD[pfp.dict.rmq_lcp_D(r + 1, pps_nsv)];
-                if (l_psv > l_nsv){
+                if (l_psv >= l_nsv){
 
                     //get a new name for the PPS array.
                     f = pfp.proper_phrase_suffix[pps_psv];
@@ -137,10 +145,13 @@ public:
                 }
                 if (l == 0){
                     f = pfp.dict.d[d];
+                    i += 1;
+                }else{
+                    i+=l;
                 }
             }
             //write it to file
-            i += l;
+            cout<<"f is: "<<f<<" l is: "<<l<<endl;
         }
 
     }

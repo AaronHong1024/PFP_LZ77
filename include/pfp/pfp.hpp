@@ -96,9 +96,9 @@ public:
 
   typedef kdtree<uint64_t, 3> tree3d;
   tree3d tree;
-  vector<size_t> PPS_PSV;
-  vector<size_t> PPS_NSV;
-  vector<size_t> proper_phrase_suffix;
+  vector<int64_t> PPS_PSV;
+  vector<int64_t> PPS_NSV;
+  vector<int64_t> proper_phrase_suffix;
 
 
   // Default constructor for load

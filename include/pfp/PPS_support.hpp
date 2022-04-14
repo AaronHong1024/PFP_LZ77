@@ -11,9 +11,9 @@
 
 using namespace std;
 
-vector<size_t> PSV(vector<size_t> proper_phrase_suffix){
+vector<int64_t> PSV(vector<int64_t> proper_phrase_suffix){
     size_t n = proper_phrase_suffix.size();
-    vector<size_t> PSV;
+    vector<int64_t> PSV;
    // int PSV[n];
     for (int i = 0; i < n; ++i) {
         PSV.push_back(-1);
@@ -36,9 +36,9 @@ vector<size_t> PSV(vector<size_t> proper_phrase_suffix){
     return PSV;
 }
 
-vector<size_t> NSV(vector<size_t> proper_phrase_suffix){
+vector<int64_t> NSV(vector<int64_t> proper_phrase_suffix){
     size_t n = proper_phrase_suffix.size();
-    vector<size_t> NSV;
+    vector<int64_t> NSV;
     for (int i = 0; i < n; ++i) {
         NSV.push_back(-1);
     }
