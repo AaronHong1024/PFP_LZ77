@@ -61,16 +61,16 @@ public:
             if (i != 0){
                offset = i - pfp.select_b_p(z1);
             }
-            // -1 because p is 0 base.
+            // start from 1.
             uint64_t q = pfp.pars.p[z1 - 1]; // map the x inside the D
-            size_t d = pfp.dict.select_b_d(q) + 1 + offset;
+            size_t d = pfp.dict.select_b_d(q) + offset;
             // r is the
-            size_t r = pfp.dict.isaD[d];
+            size_t r = pfp.dict.isaD[d + 1]; // #1s in b_pps[1..i_in_saD] counting from 0
             r = pfp.b_pps_rank_1(r);
 
 
 
-            uint_t x1 = pfp.pars.isaP[z1+1];
+            uint_t x1 = pfp.pars.isaP[z1];
             uint y1 = pfp.M[r].left;    // M_entry is [len, left, right]
             uint y2 = pfp.M[r].right;
             //TODO: to check the two x dimension. to the PSV, matrix is smaller than x1. To NSV, matrix is larger than x1.
@@ -94,11 +94,11 @@ public:
                 // rmq_s_lcp_t(i,j) will return the min(lcp[i,...,j])
                 p_psv = pfp.rmq_s_lcp_T(psv->get(0)+1, x1);
                 //s_lcp_T[i] will return longest common prefix of S[SA[i-1]] and S[SA[i]];
-                l_psv = pfp.s_lcp_T[p_psv];
+                l_psv = pfp.s_lcp_T_array[p_psv];
 
                 if (nsv != nullptr){
                     p_nsv = pfp.rmq_s_lcp_T(x1+1, nsv->get(0));
-                    l_nsv = pfp.s_lcp_T[p_nsv];
+                    l_nsv = pfp.s_lcp_T_array[p_nsv];
 
                     if (l_psv > l_nsv){
                         f = pfp.select_b_p(pfp.pars.saP[psv->get(0)]) - offset_prime;
@@ -115,7 +115,7 @@ public:
 
             } else if(nsv != nullptr){
                 p_nsv = pfp.rmq_s_lcp_T(x1+1, nsv->get(0));
-                l_nsv = pfp.s_lcp_T[p_nsv];
+                l_nsv = pfp.s_lcp_T_array[p_nsv];
                 f = pfp.select_b_p(pfp.pars.saP[nsv->get(0)]) - offset_prime;
                 l = l_nsv;
             } else{
@@ -144,14 +144,15 @@ public:
                     l = l_nsv;
                 }
                 if (l == 0){
-                    f = pfp.dict.d[d];
+                    uint8_t factor = pfp.dict.d[d];
+                    cout <<"("<<factor<<","<<0<<")"<<endl;
                     i += 1;
                 }else{
                     i+=l;
                 }
             }
             //write it to file
-            cout<<"f is: "<<f<<" l is: "<<l<<endl;
+           // cout<<"f is: "<<f<<" l is: "<<l<<endl;
         }
 
     }

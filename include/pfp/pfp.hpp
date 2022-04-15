@@ -86,6 +86,7 @@ public:
   typename bv_t::select_1_type select_b_p;
 
   wm_t<> s_lcp_T; // LCP array of T sampled in corrispondence of the beginning of each phrase.
+  sdsl::int_vector<> s_lcp_T_array;
   sdsl::rmq_succinct_sct<> rmq_s_lcp_T;
 
   wm_t<> lcp_M; // LCP of the unique reverse of the phrases
@@ -411,7 +412,7 @@ public:
     // create BWT(P)
     //x dimension
     std::vector<uint32_t> bwt_p(pars.p.size() - 1, 0);
-    for (size_t i = 1; i < pars.saP.size(); ++i) // TODO: shoud we count end symbol in this?
+    for (size_t i = 1; i < pars.saP.size(); ++i)
     {
       if (pars.saP[i] > 0)
         bwt_p[i - 1] = pars.p[pars.saP[i] - 1];
@@ -532,6 +533,7 @@ public:
     }
 
     rmq_s_lcp_T = sdsl::rmq_succinct_sct<>(&s_lcp_T_);
+    s_lcp_T_array = s_lcp_T_;
 // change the s_lcp_T to array
     sdsl::construct_im(s_lcp_T, s_lcp_T_);
   }
