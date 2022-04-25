@@ -23,6 +23,7 @@ extern "C" {
 void test(){
 
     // initialize data
+    //(#,0)(0,1)(G,0)(A,0)(T,0)
     std::vector<char> text = {'G','A','T','T','A','C','A','T','#',
                               'G','A','T','A','C','A','T','#',
                               'G','A','T','T','A','G','A','T','A','#','#'};
@@ -83,7 +84,7 @@ void test(){
     cout << "---------------- start paper test --------------------------"<<endl;
     pf_parsing<> pf(dict2,parse, frequencies,w);
     lz_77<> lz77(pf);
-    lz77.compute_lz_77();
+    //lz77.compute_lz_77();
 }
 
 int main(){

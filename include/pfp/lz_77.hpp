@@ -50,6 +50,9 @@ public:
 
         const size_t n = pfp.n;
         tree3d tree;
+
+
+
         tree = pfp.tree;
         //the limitation for the x,y,z is the position in grid.
         size_t i = 0;
@@ -77,8 +80,8 @@ public:
 
 
 
-            point3d* psv = tree.query_PSV(x1, y1, y2, z1);
-            point3d* nsv = tree.query_NSV(x1, y1, y2, z1);
+            point3d* psv = pfp.tree.query_PSV(x1, y1, y2, z1);
+            point3d* nsv = pfp.tree.query_NSV(x1, y1, y2, z1);
             // check the length of the suffix is the same as the M length
             size_t offset_prime = pfp.select_b_p(z1 + 1) - i;
 

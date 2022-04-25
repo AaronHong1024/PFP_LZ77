@@ -76,18 +76,18 @@ public:
     typedef point<coordinate_type, dimensions> point_type;
 private:
     struct node {
-        node(point_type& pt) : point_(&pt), left_(nullptr), right_(nullptr) {}
+        node(point_type& pt) : point_(pt), left_(nullptr), right_(nullptr) {}
 
         coordinate_type get(size_t index) const{
-            return point_->get(index);
+            return point_.get(index);
         }
 
         double distance(const point_type& pt) const {
-            return point_->distance(pt);
+            return point_.distance(pt);
         }
 
 
-        point_type* point_;
+        point_type point_;
         node* left_;
         node* right_;
     };
@@ -104,7 +104,7 @@ private:
     struct node_cmp{
         node_cmp(size_t index) : index_(index) {}
         bool operator()(const node& n1, const node& n2) const {
-            return n1.point_->get(index_) < n2.point_->get(index_);
+            return n1.point_.get(index_) < n2.point_.get(index_);
         }
         size_t index_;
     };
@@ -271,6 +271,8 @@ private:
     }
 
 public:
+
+
     kdtree(const kdtree&) = delete;
 
     kdtree(){
@@ -307,7 +309,7 @@ public:
 
     double distance() const {return sqrt(best_dist_); }
 
-     point_type& nearest(const point_type& pt) {
+    const point_type& nearest(const point_type& pt) {
         if (root_ == nullptr)
             throw logic_error("tree is empty");
         best_ = nullptr;
@@ -328,8 +330,11 @@ public:
         //change the return to pointer
         if (rightest_ == nullptr){
             return nullptr;
+        } else{
+            point_type *res = &(rightest_->point_);
+            return res;
         }
-        return rightest_->point_;
+
 
     }
 
@@ -341,8 +346,9 @@ public:
         query_NSV(x1, y1, y2, z1, root_, 0);
         if (leftest_ == nullptr){
             return nullptr;
+        } else{
+            point_type *res = &(leftest_->point_);
         }
-        return leftest_->point_;
     }
 
 

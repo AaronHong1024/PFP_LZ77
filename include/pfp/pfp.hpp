@@ -97,6 +97,7 @@ public:
 
   typedef kdtree<uint64_t, 3> tree3d;
   tree3d tree;
+//  point3d *points = new point3d [pars.p.size() - 1];
   vector<int64_t> PPS_PSV;
   vector<int64_t> PPS_NSV;
   vector<int64_t> proper_phrase_suffix;
@@ -128,6 +129,9 @@ public:
 
     verbose("kd_tree_test");
     _elapsed_time(kd_tree());
+
+    verbose("create lz77");
+      _elapsed_time(compute_lz_77());
 
     //we don't need the W for this function
 //    verbose("Computing W of BWT(P)");
@@ -202,7 +206,6 @@ public:
     b_p = bv_t(builder);
     rank_b_p = typename bv_t::rank_1_type(&b_p);
     select_b_p = typename bv_t::select_1_type(&b_p);
-
   }
 
   void compute_n(){
@@ -497,7 +500,126 @@ public:
 
   }
 
+    void compute_lz_77(){
+        //i is the starting position of the lz_77's factor. Starting from 0. each time can add the factor's length to compute the next one factor.
 
+        //define the tree this place.
+        //use const kdtree<<>>& tree there. We dont need the tree again.
+
+        //the limitation for the x,y,z is the position in grid.
+        size_t i = 0;
+        // typedef point<uint32_t , 3> point3d;
+        while(i < n) {
+            //add the comment to all the variable
+            uint64_t z1 = rank_b_p(i + 1);
+            size_t offset = 0;
+            if (i != 0){
+                offset = i - select_b_p(z1);
+            }
+            // start from 1.
+            uint64_t q = pars.p[z1 - 1]; // map the x inside the D
+            size_t d = dict.select_b_d(q) + offset;
+            // r is the
+            size_t r = dict.isaD[d + 1]; // #1s in b_pps[1..i_in_saD] counting from 0
+            r = b_pps_rank_1(r);
+
+
+
+            uint_t x1 = pars.isaP[z1];
+            uint y1 = M[r].left;    // M_entry is [len, left, right]
+            uint y2 = M[r].right;
+            //TODO: to check the two x dimension. to the PSV, matrix is smaller than x1. To NSV, matrix is larger than x1.
+
+
+
+            point3d* psv = tree.query_PSV(x1, y1, y2, z1);
+            point3d* nsv = tree.query_NSV(x1, y1, y2, z1);
+            // check the length of the suffix is the same as the M length
+            size_t offset_prime = select_b_p(z1 + 1) - i;
+
+            size_t p_psv;
+            size_t l_psv;
+            size_t p_nsv;
+            size_t l_nsv;
+            size_t f;
+            size_t l;
+
+            //psv is not a pointer. check it
+            if (psv != nullptr){
+                // rmq_s_lcp_t(i,j) will return the min(lcp[i,...,j])
+                p_psv = rmq_s_lcp_T(psv->get(0)+1, x1);
+                //s_lcp_T[i] will return longest common prefix of S[SA[i-1]] and S[SA[i]];
+                l_psv = s_lcp_T_array[p_psv];
+
+                if (nsv != nullptr){
+                    p_nsv = rmq_s_lcp_T(x1+1, nsv->get(0));
+                    l_nsv = s_lcp_T_array[p_nsv];
+
+                    if (l_psv > l_nsv){
+                        f = select_b_p(pars.saP[psv->get(0)]) - offset_prime;
+                        l = l_psv;
+                    } else{
+                        f = (select_b_p(pars.saP[nsv->get(0)]) - offset_prime) %n;
+                        l = l_nsv;
+                    }
+
+                } else{
+                    f = select_b_p(pars.saP[psv->get(0)]) - offset_prime;
+                    l = l_psv;
+                }
+
+            } else if(nsv != nullptr){
+                p_nsv = rmq_s_lcp_T(x1+1, nsv->get(0));
+                l_nsv = s_lcp_T_array[p_nsv];
+                f = select_b_p(pars.saP[nsv->get(0)]) - offset_prime;
+                l = l_nsv;
+            } else{
+                // Neither the PSV nor NSV exist. We need to use the kkp algorithm
+                // the PSV and NSV used unsigned.
+                int64_t pps_psv = PPS_PSV[r];
+                int64_t pps_nsv = PPS_NSV[r];
+                if (pps_psv == -1){
+                    l_psv = 0;
+                }else{
+                    //compare
+                    cout<<"pps_psv: "<<pps_psv<<endl;
+                    cout<<"r: "<<r<<endl;
+                    cout<<"test: "<<dict.rmq_lcp_D(pps_psv + 1, r)<<endl;
+                    cout<<"lcpD: "<<dict.lcpD[dict.rmq_lcp_D(pps_psv + 1, r)]<<endl;
+                    l_psv = dict.lcpD[dict.rmq_lcp_D(pps_psv + 1, r)];
+                }
+                if (pps_nsv == -1){
+                    l_nsv = 0;
+                }else{
+                    cout<<"pps_nsv: "<<pps_nsv<<endl;
+                    cout<<"r: "<<r<<endl;
+                    cout<<"test: "<<dict.rmq_lcp_D(r + 1, pps_nsv)<<endl;
+                    cout<<"lcpD: "<<dict.lcpD[dict.rmq_lcp_D(r + 1, pps_nsv)]<<endl;
+                    l_nsv = dict.lcpD[dict.rmq_lcp_D(r + 1, pps_nsv)];
+                }
+
+                if (l_psv >= l_nsv){
+
+                    //get a new name for the PPS array.
+                    f = proper_phrase_suffix[pps_psv];
+                    l = l_psv;
+                } else{
+                    f = proper_phrase_suffix[pps_nsv];
+                    l = l_nsv;
+                }
+                if (l == 0){
+                    uint8_t factor = dict.d[d];
+                    cout <<"("<<factor<<","<<0<<")"<<endl;
+                    i += 1;
+                }else{
+                    i+=l;
+                }
+            }
+            //write it to file
+            // cout<<"f is: "<<f<<" l is: "<<l<<endl;
+        }
+
+    }
 // change this file make it to array
 
   void build_s_lcp_T()
