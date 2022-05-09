@@ -127,18 +127,18 @@ public:
     verbose("Computing b_bwt, b_pps, and M of the parsing");
     _elapsed_time(build_b_bwt__b_pps_and_M());
 
+    verbose("Computing S_LCP_T");
+    _elapsed_time(build_s_lcp_T());
+
     verbose("kd_tree_test");
     _elapsed_time(kd_tree());
-
-    verbose("create lz77");
-      _elapsed_time(compute_lz_77());
 
     //we don't need the W for this function
 //    verbose("Computing W of BWT(P)");
 //    _elapsed_time(build_W());
 
-    verbose("Computing S_LCP_T");
-    _elapsed_time(build_s_lcp_T());
+    verbose("create lz77");
+    _elapsed_time(compute_lz_77());
 
     // Clear unnecessary elements
     clear_unnecessary_elements();
@@ -170,6 +170,9 @@ public:
     verbose("Computing b_bwt, b_pps, and M of the parsing");
     _elapsed_time(build_b_bwt__b_pps_and_M());
 
+    verbose("Computing S_LCP_T");
+    _elapsed_time(build_s_lcp_T());
+
     //Aaron Hong yu.hong@ufl.edu added this function
     verbose("kd_tree_test");
     _elapsed_time(kd_tree());
@@ -177,9 +180,6 @@ public:
     // we don't need this function in computing lz77
 //    verbose("Computing W of BWT(P)");
 //    _elapsed_time(build_W());
-
-    verbose("Computing S_LCP_T");
-    _elapsed_time(build_s_lcp_T());
 
     // Clear unnecessary elements
     clear_unnecessary_elements();
@@ -217,8 +217,8 @@ public:
       assert(pars.p[j] != 0);
       n += dict.length_of_phrase(pars.p[j]) - w;
     }
-
-    //n += w; // + w because n is the length including the last w markers
+    //cout<<n<<endl;
+    n += w; // + w because n is the length including the last w markers
     //n += w - 1; // Changed after changind b_d in dict // -1 is for the first dollar + w because n is the length including the last w markers
   }
 
@@ -268,6 +268,7 @@ public:
       if (dict.b_d[sn] || suffix_length < w)
       {
         ++i; // Skip
+       // proper_phrase_suffix.push_back(-1);
       }
       else
       {
@@ -301,6 +302,7 @@ public:
               if (position > new_position){
                   position = new_position;
                   proper_phrase_suffix.back() = position;
+                //  proper_phrase_suffix.push_back(-1);
               }
 
             j += freq[new_phrase];
@@ -392,12 +394,29 @@ public:
     //now we stored the location for PSV or NSV.
     PPS_PSV = PSV(proper_phrase_suffix);
     PPS_NSV = NSV(proper_phrase_suffix);
+//    cout <<"n: "<<n<<endl;
+//      for (int k = 0; k < proper_phrase_suffix.size(); ++k) {
+//          cout<<"PPS: "<<proper_phrase_suffix[k]<<endl;
+//      }
+//      for (int k = 0; k < dict.saD.size(); ++k) {
+//          cout<<"saD: " << dict.saD[k]<<endl;
+//      }
 //      for (int k = 0; k < dict.isaD.size(); ++k) {
 //          cout<<"isaD: "<<dict.isaD[k]<<endl;
 //      }
-//      for (int k = 0; k < b_pps.size(); ++k) {
-//          cout<<"b_pps: "<<b_pps[k]<<" rank: "<<b_pps_rank_1(k)<<endl;
+//cout <<"b_pps size: "<<b_pps.size()<<endl;
+//        cout <<"PPS size: "<<proper_phrase_suffix.size()<<endl;
+//        cout <<"M size: "<<M.size()<<endl;
+//      for (int k = 0; k < dict.lcpD.size(); ++k) {
+//          cout<<"lcp_D: "<<dict.lcpD[k]<<endl;
 //      }
+//        for (int k = 0; k < proper_phrase_suffix.size(); ++k) {
+//            cout<<"PPS: "<<proper_phrase_suffix[k]<<endl;
+//        }
+//
+//        for (int k = 0; k < b_pps.size(); ++k) {
+//            cout << "b_pps: "<<b_pps[k]<<"rank: "<<b_pps_rank_1(k)<<endl;
+//        }
   }
 
 
@@ -510,8 +529,12 @@ public:
         size_t i = 0;
         // typedef point<uint32_t , 3> point3d;
         while(i < n) {
-            //add the comment to all the variable
-            uint64_t z1 = rank_b_p(i + 1);
+            uint64_t z1 = 0;
+            if (i == n-1)
+                z1 = rank_b_p(i) ;
+            else {
+                z1 = rank_b_p(i + 1);
+            }
             size_t offset = 0;
             if (i != 0){
                 offset = i - select_b_p(z1);
@@ -520,14 +543,14 @@ public:
             uint64_t q = pars.p[z1 - 1]; // map the x inside the D
             size_t d = dict.select_b_d(q) + offset;
             // r is the
-            size_t r = dict.isaD[d + 1]; // #1s in b_pps[1..i_in_saD] counting from 0
-            r = b_pps_rank_1(r);
+            size_t r = dict.isaD[d]; // #1s in b_pps[1..i_in_saD] counting from 0
+            r = b_pps_rank_1(r + 1);
 
 
-
-            uint_t x1 = pars.isaP[z1];
-            uint y1 = M[r].left;    // M_entry is [len, left, right]
-            uint y2 = M[r].right;
+            // start from 1. So we do not need to plus 1. And the X dimension is 0 based. So we need to minus 1.
+            uint_t x1 = pars.isaP[z1] -1 ;
+            uint y1 = M[r - 1].left;    // M_entry is [len, left, right]
+            uint y2 = M[r - 1].right;
             //TODO: to check the two x dimension. to the PSV, matrix is smaller than x1. To NSV, matrix is larger than x1.
 
 
@@ -574,49 +597,50 @@ public:
                 f = select_b_p(pars.saP[nsv->get(0)]) - offset_prime;
                 l = l_nsv;
             } else{
-                // Neither the PSV nor NSV exist. We need to use the kkp algorithm
-                // the PSV and NSV used unsigned.
-                int64_t pps_psv = PPS_PSV[r];
-                int64_t pps_nsv = PPS_NSV[r];
-                if (pps_psv == -1){
-                    l_psv = 0;
-                }else{
-                    //compare
-                    cout<<"pps_psv: "<<pps_psv<<endl;
-                    cout<<"r: "<<r<<endl;
-                    cout<<"test: "<<dict.rmq_lcp_D(pps_psv + 1, r)<<endl;
-                    cout<<"lcpD: "<<dict.lcpD[dict.rmq_lcp_D(pps_psv + 1, r)]<<endl;
-                    l_psv = dict.lcpD[dict.rmq_lcp_D(pps_psv + 1, r)];
-                }
-                if (pps_nsv == -1){
-                    l_nsv = 0;
-                }else{
-                    cout<<"pps_nsv: "<<pps_nsv<<endl;
-                    cout<<"r: "<<r<<endl;
-                    cout<<"test: "<<dict.rmq_lcp_D(r + 1, pps_nsv)<<endl;
-                    cout<<"lcpD: "<<dict.lcpD[dict.rmq_lcp_D(r + 1, pps_nsv)]<<endl;
-                    l_nsv = dict.lcpD[dict.rmq_lcp_D(r + 1, pps_nsv)];
-                }
+                if (i == 0){
+                    l = 0;
+                }else {
 
-                if (l_psv >= l_nsv){
 
-                    //get a new name for the PPS array.
-                    f = proper_phrase_suffix[pps_psv];
-                    l = l_psv;
-                } else{
-                    f = proper_phrase_suffix[pps_nsv];
-                    l = l_nsv;
-                }
-                if (l == 0){
-                    uint8_t factor = dict.d[d];
-                    cout <<"("<<factor<<","<<0<<")"<<endl;
-                    i += 1;
-                }else{
-                    i+=l;
+                    // Neither the PSV nor NSV exist. We need to use the kkp algorithm
+                    // the PSV and NSV used unsigned.
+                    //the pps_psv and pps_nsv should be value rather than the position.
+                    int64_t pps_psv = PPS_PSV[r - 1];
+                    int64_t pps_nsv = PPS_NSV[r - 1];
+                    if (pps_psv == -1) {
+                        l_psv = 0;
+                    } else {
+                        //the r should be the ISA_D[d]. input should be (ISA_D(pps_psv) + 1,ISA_D(d))
+                       // l_psv = dict.lcpD[dict.rmq_lcp_D(dict.isaD[proper_phrase_suffix[pps_psv]] + 1, dict.isaD[d])];
+                        l_psv = dict.lcpD[dict.rmq_lcp_D(b_pps_select_1(pps_psv + 1) + 1, dict.isaD[d])];
+                    }
+                    if (pps_nsv == -1) {
+                        l_nsv = 0;
+                    } else {
+                        l_nsv = dict.lcpD[dict.rmq_lcp_D(dict.isaD[d] + 1, b_pps_select_1(pps_nsv + 1))];
+                    }
+
+                    if (l_psv >= l_nsv) {
+
+                        //get a new name for the PPS array.
+                        f = proper_phrase_suffix[pps_psv];
+                        l = l_psv;
+                    } else {
+                        f = proper_phrase_suffix[pps_nsv];
+                        l = l_nsv;
+                    }
                 }
             }
+
             //write it to file
-            // cout<<"f is: "<<f<<" l is: "<<l<<endl;
+            if (l == 0){
+                uint8_t factor = dict.d[d];
+                cout <<"("<<factor<<","<<0<<")"<<endl;
+                i += 1;
+            } else{
+                i += l;
+                cout <<"("<<f<<","<<l<<")"<<endl;
+            }
         }
 
     }
@@ -656,6 +680,10 @@ public:
 
     rmq_s_lcp_T = sdsl::rmq_succinct_sct<>(&s_lcp_T_);
     s_lcp_T_array = s_lcp_T_;
+      for (int i = 0; i < s_lcp_T_.size(); ++i) {
+          cout<<"s_lcp_T: "<<s_lcp_T_[i]<<endl;
+      }
+
 // change the s_lcp_T to array
     sdsl::construct_im(s_lcp_T, s_lcp_T_);
   }

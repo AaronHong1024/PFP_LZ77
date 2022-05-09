@@ -155,7 +155,7 @@ private:
         size_t z = root->get(2);
 
 
-        if(x < x1 && y > y1 && y < y2 && z < z1){
+        if(x < x1 && y >= y1 && y <= y2 && z <= z1){
             if (rightest_ == nullptr || x > max_x_){
                 max_x_ = x;
                 rightest_ = root;
@@ -219,7 +219,7 @@ private:
         size_t z = root->get(2);
 
 
-        if(x >= x1 && y > y1 && y < y2 && z < z1){
+        if(x > x1 && y >= y1 && y <= y2 && z <= z1){
             if (leftest_ == nullptr || x < min_x_){
                 min_x_ = x;
                 leftest_ = root;
