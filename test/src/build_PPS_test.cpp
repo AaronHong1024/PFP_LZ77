@@ -30,7 +30,7 @@ void test(){
     std::vector<std::string> dict{"#GATTAC", "ACAT#", "AGATA##", "T#GATAC", "T#GATTAG"};
     std::vector<uint32_t> parse{1, 2, 4, 2, 5, 3, 0};
     std::vector<uint32_t> indices{0, 1, 2, 3, 4};
-    std::vector<uint8_t> dict2 = {'#', '#', 'G', 'A', 'T', 'T', 'A', 'C', EndOfWord,
+    std::vector<uint8_t> dict2 = {'G', 'A', 'T', 'T', 'A', 'C', EndOfWord,
                                   'A', 'C', 'A', 'T', '#', EndOfWord,
                                   'A', 'G', 'A', 'T', 'A', '#', '#', EndOfWord,
                                   'T', '#', 'G', 'A', 'T', 'A', 'C', EndOfWord,

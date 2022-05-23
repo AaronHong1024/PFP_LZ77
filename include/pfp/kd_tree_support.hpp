@@ -34,6 +34,7 @@ public:
 
     //return the coordinate in the given dimension
     coordinate_type get(size_t index) const {
+
         return coords_[index];
     }
 
@@ -145,17 +146,18 @@ private:
 //explain this function What's the x1..., also ...
 
 //find the rightest node inside the matrix
-//this matrix is x > x1, y1 < y < y2, z < z1
+//this matrix is x < x1, y1 <= y <= y2, z <= z1
     void query_PSV(size_t x1, size_t y1, size_t y2, size_t z1, node* root, size_t index){
-        //find the leftest
+        //find the rightmost node inside the matrix
         if (root == nullptr)
+        {
             return;
+        }
         size_t x = root->get(0);
         size_t y = root->get(1);
         size_t z = root->get(2);
 
-
-        if(x < x1 && y >= y1 && y <= y2 && z <= z1){
+        if(x < x1 && y >= y1 && y <= y2 && z < z1){
             if (rightest_ == nullptr || x > max_x_){
                 max_x_ = x;
                 rightest_ = root;
@@ -170,9 +172,9 @@ private:
             size_t visited = visited_;
             index = (index + 1) % dimensions;
             // if current node's x dimension is larger than matrix, then we go left node
-            query_PSV(x1, y1, y2, z1, dx > 0 ? root_->left_ : root_->right_, index);
+            query_PSV(x1, y1, y2, z1, dx > 0 ? root->left_ : root->right_, index);
             if (dx < 0 && visited == visited_){
-                query_PSV(x1, y1, y2, z1, root_->left_, index);
+                query_PSV(x1, y1, y2, z1, root->left_, index);
             }
         }else if (index == 1){
             //maybe go same subtree twice.
@@ -200,10 +202,11 @@ private:
             index = (index + 1) % dimensions;
             // if current node's z dimension is larger than matrix, then we go left node
             query_PSV(x1, y1, y2, z1, dz > 0 ? root->left_ : root->right_, index);
-            if (dz <= 0){
-                query_PSV(x1, y1, y2, z1, root->left_, index);
-            }
+//            if (dz <= 0){
+//                query_PSV(x1, y1, y2, z1, root->left_, index);
+//            }
         }
+        return;
 
     }
 
@@ -219,7 +222,7 @@ private:
         size_t z = root->get(2);
 
 
-        if(x > x1 && y >= y1 && y <= y2 && z <= z1){
+        if(x > x1 && y >= y1 && y <= y2 && z < z1){
             if (leftest_ == nullptr || x < min_x_){
                 min_x_ = x;
                 leftest_ = root;
@@ -234,9 +237,9 @@ private:
             size_t visited = visited_;
             index = (index + 1) % dimensions;
             // if current node's x dimension is smaller than matrix, then we go right node
-            query_NSV(x1, y1, y2, z1, dx < 0 ? root_->right_ : root_->left_, index);
+            query_NSV(x1, y1, y2, z1, dx < 0 ? root->right_ : root->left_, index);
             if (dx > 0 && visited == visited_){
-                query_NSV(x1, y1, y2, z1, root_->right_, index);
+                query_NSV(x1, y1, y2, z1, root->right_, index);
             }
         }else if (index == 1){
             //maybe go same subtree twice.
@@ -263,10 +266,11 @@ private:
             index = (index + 1) % dimensions;
             // if current node's z dimension is larger than matrix, then we go left node
             query_NSV(x1, y1, y2, z1, dz > 0 ? root->left_ : root->right_, index);
-            if (dz <= 0){
-                query_NSV(x1, y1, y2, z1, root->left_, index);
-            }
+//            if (dz <= 0){
+//                query_NSV(x1, y1, y2, z1, root->left_, index);
+//            }
         }
+        return;
 
     }
 
@@ -284,6 +288,7 @@ public:
     template<typename  iterator>
     kdtree(iterator begin, iterator end) : nodes_(begin, end){
         root_ = make_tree(0, nodes_.size(), 0);
+     //   cout<<"test"<<endl;
     }
 
     /**

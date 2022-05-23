@@ -102,6 +102,7 @@ public:
   vector<int64_t> PPS_NSV;
   vector<int64_t> proper_phrase_suffix;
   sdsl::int_vector<> s_lcp_T_array;
+ // std::vector<uint32_t> bwt_p;
 
 
   // Default constructor for load
@@ -131,8 +132,8 @@ public:
     verbose("Computing S_LCP_T");
     _elapsed_time(build_s_lcp_T());
 
-    verbose("kd_tree_test");
-    _elapsed_time(kd_tree());
+//    verbose("kd_tree_test");
+//    _elapsed_time(kd_tree());
 
     //we don't need the W for this function
 //    verbose("Computing W of BWT(P)");
@@ -175,8 +176,11 @@ public:
     _elapsed_time(build_s_lcp_T());
 
     //Aaron Hong yu.hong@ufl.edu added this function
-    verbose("kd_tree_test");
-    _elapsed_time(kd_tree());
+//    verbose("kd_tree_test");
+//    _elapsed_time(kd_tree());
+
+    verbose("create lz77");
+    _elapsed_time(compute_lz_77());
 
     // we don't need this function in computing lz77
 //    verbose("Computing W of BWT(P)");
@@ -207,6 +211,10 @@ public:
     b_p = bv_t(builder);
     rank_b_p = typename bv_t::rank_1_type(&b_p);
     select_b_p = typename bv_t::select_1_type(&b_p);
+      for (int j = 0; j < b_p.size(); ++j) {
+          if (b_p[j] == 1)
+          cout<<"b_p: "<<j<<endl;
+      }
   }
 
   void compute_n(){
@@ -415,9 +423,9 @@ public:
 //            cout<<"PPS: "<<proper_phrase_suffix[k]<<endl;
 //        }
 //
-        for (int k = 0; k < b_pps.size(); ++k) {
-            cout << "b_pps: "<<b_pps[k]<<"rank: "<<b_pps_rank_1(k)<<endl;
-        }
+//        for (int k = 0; k < b_pps.size(); ++k) {
+//            cout << "b_pps: "<<b_pps[k]<<"rank: "<<b_pps_rank_1(k)<<endl;
+//        }
   }
 
 
@@ -448,96 +456,185 @@ public:
     w_wt.construct(alphabet, bwt_p);
 
   }
+//
+//  void kd_tree(){
+//      //x dimension for the kd_tree
+//      std::vector<uint32_t> bwt_p(pars.p.size() - 1, 0);
+//      for (size_t i = 1; i < pars.saP.size(); ++i)
+//      {
+//              if (pars.saP[i] > 0)
+//                  bwt_p[i - 1] = pars.p[pars.saP[i] - 1];
+//              else
+//                  bwt_p[i - 1] = pars.p[pars.p.size() - 2];
+//
+//      }
+//      verbose("x dimension size: ", bwt_p.size());
+////      for (int i = 0; i < bwt_p.size(); ++i) {
+////          cout << "x: "<<bwt_p[i]<<endl;
+////      }
+//
+//
+//      //y dimension for the kd_tree
+//      std::vector<uint32_t> alphabet(dict.n_phrases());
+//      for (size_t i = 0; i < dict.n_phrases(); ++i) {
+//          alphabet[i] = dict.colex_id[i] + 1;
+//      }
+////      for (int i = 0; i < alphabet.size(); ++i) {
+////          cout<<"y: "<<alphabet[i]<<endl;
+////      }
+//      //change the cout to verbose or info or other things
+//      size_t n_phrase = dict.n_phrases();
+//      verbose("y dimension size: ", dict.n_phrases());
+//
+//
+//    //  z dimension for the kd_tree
+//      vector<uint32_t> p = pars.p;
+//      verbose("z dimension size: ", pars.p.size());
+//
+////      for (int i = 0; i < p.size(); ++i) {
+////          cout << "z: "<<p[i]<<endl;
+////      }
+//    // connect x and y
+//    sdsl::int_vector<> parse_x(bwt_p.size(), 0);
+//    vector<uint32_t> translate;
+//    translate.resize(alphabet.size(), 0);
+//
+//      for (size_type i = 0; i < alphabet.size(); ++i) {
+//          translate[alphabet[i] - 1] = i;
+//      }
+//
+//      // parse_x: x location in y dimension. Pair should be (bwt_p[i], parse_x[i], z[i])
+//      //don need store this can save some space
+//      size_t bwt_p_size = bwt_p.size();
+//      for (size_type i = 0; i < bwt_p_size; ++i) {
+//          parse_x[i] = translate[bwt_p[i] - 1];
+//
+//      }
+//
+//      // connect x and z, Z[i] = isa_P[bwt_p[i] - 1]
+//
+//
+//      point3d *points = new point3d [bwt_p_size];
+//
+//      for (size_type i = 0; i < bwt_p_size; ++i) {
+//          // shoule be the uint64_t
+//          // define a parameter
+//          uint32_t x = i;
+//          uint32_t y = parse_x[i];
+//          //
+//          uint32_t z = (pars.saP[i+1] + bwt_p_size - 1)%bwt_p_size;
+//          points[i] = {x,y,z};
+//          cout << "points: "<<points[i].get(0)<<" "<<points[i].get(1)<<" "<<points[i].get(2)<<endl;
+//
+//      }
+//      cout<<"bwt_p_size: "<<bwt_p_size<<endl;
+//      // construct the kd_tree
+//      tree3d test_tree(points, points + bwt_p_size);
+//      tree = test_tree;
+//   //   tree = tree3d(points, points + bwt_p_size);
+//     // tree3d tree(points, points + bwt_p.size());
+//      verbose("tree size: ", tree.size());
+//     // cout<< "tree size: "<< tree.size() << endl;
+//
+//      delete points;
+//
+//  }
 
-  void kd_tree(){
-      //x dimension for the kd_tree
-      std::vector<uint32_t> bwt_p(pars.p.size() - 1, 0);
-      for (size_t i = 1; i < pars.saP.size(); ++i)
-      {
-              if (pars.saP[i] > 0)
-                  bwt_p[i - 1] = pars.p[pars.saP[i] - 1];
-              else
-                  bwt_p[i - 1] = pars.p[pars.p.size() - 2];
+    void compute_lz_77(){
+        std::vector<uint32_t> bwt_p(pars.p.size() - 1, 0);
+        for (size_t i = 1; i < pars.saP.size(); ++i)
+        {
+            if (pars.saP[i] > 0)
+                bwt_p[i - 1] = pars.p[pars.saP[i] - 1];
+            else
+                bwt_p[i - 1] = pars.p[pars.p.size() - 2];
 
-      }
+        }
+        verbose("x dimension size: ", bwt_p.size());
 //      for (int i = 0; i < bwt_p.size(); ++i) {
 //          cout << "x: "<<bwt_p[i]<<endl;
 //      }
 
 
-      //y dimension for the kd_tree
-      std::vector<uint32_t> alphabet(dict.n_phrases());
-      for (size_t i = 0; i < dict.n_phrases(); ++i) {
-          alphabet[i] = dict.colex_id[i] + 1;
-      }
+        //y dimension for the kd_tree
+        std::vector<uint32_t> alphabet(dict.n_phrases());
+        for (size_t i = 0; i < dict.n_phrases(); ++i) {
+            alphabet[i] = dict.colex_id[i] + 1;
+        }
 //      for (int i = 0; i < alphabet.size(); ++i) {
 //          cout<<"y: "<<alphabet[i]<<endl;
 //      }
-      //change the cout to verbose or info or other things
-      size_t n_phrase = dict.n_phrases();
-      verbose("y dimension size: ", dict.n_phrases());
+        //change the cout to verbose or info or other things
+        size_t n_phrase = dict.n_phrases();
+        verbose("y dimension size: ", dict.n_phrases());
 
 
-    //  z dimension for the kd_tree
-      vector<uint32_t> p = pars.p;
-      verbose("z dimension size: ", pars.p.size());
+        //  z dimension for the kd_tree
+        vector<uint32_t> p = pars.p;
+        verbose("z dimension size: ", pars.p.size());
 
 //      for (int i = 0; i < p.size(); ++i) {
 //          cout << "z: "<<p[i]<<endl;
 //      }
-    // connect x and y
-    sdsl::int_vector<> parse_x(bwt_p.size(), 0);
-    vector<uint32_t> translate;
-    translate.resize(alphabet.size(), 0);
+        // connect x and y
+        sdsl::int_vector<> parse_x(bwt_p.size(), 0);
+        vector<uint32_t> translate;
+        translate.resize(alphabet.size(), 0);
 
-      for (size_type i = 0; i < alphabet.size(); ++i) {
-          translate[alphabet[i] - 1] = i;
-      }
+        for (size_type i = 0; i < alphabet.size(); ++i) {
+            translate[alphabet[i] - 1] = i;
+        }
 
-      // parse_x: x location in y dimension. Pair should be (bwt_p[i], parse_x[i], z[i])
-      //don need store this can save some space
-      size_t bwt_p_size = bwt_p.size();
-      for (size_type i = 0; i < bwt_p_size; ++i) {
-          parse_x[i] = translate[bwt_p[i] - 1];
+        // parse_x: x location in y dimension. Pair should be (bwt_p[i], parse_x[i], z[i])
+        //don need store this can save some space
+        size_t bwt_p_size = bwt_p.size();
+        for (size_type i = 0; i < bwt_p_size; ++i) {
+            parse_x[i] = translate[bwt_p[i] - 1];
 
-      }
+        }
 
-      // connect x and z, Z[i] = isa_P[bwt_p[i] - 1]
+        // connect x and z, Z[i] = isa_P[bwt_p[i] - 1]
 
 
-      point3d *points = new point3d [bwt_p_size];
-//      for (int i = 0; i < pars.saP.size(); ++i) {
-//          cout<<"saP: "<<pars.saP[i]<<endl;
-//      }
-      for (size_type i = 0; i < bwt_p_size; ++i) {
-          // shoule be the uint64_t
-          // define a parameter
-          uint32_t x = i;
-          uint32_t y = parse_x[i];
-          //
-          uint32_t z = (pars.saP[i+1] + bwt_p_size - 1)%bwt_p_size;
-          points[i] = {x,y,z};
-        //  cout << "points: "<<points[i].get(0)<<" "<<points[i].get(1)<<" "<<points[i].get(2)<<endl;
-      }
-      // construct the kd_tree
-      tree = tree3d(points, points + bwt_p_size);
-     // tree3d tree(points, points + bwt_p.size());
-      verbose("tree size: ", tree.size());
-     // cout<< "tree size: "<< tree.size() << endl;
+        point3d *points = new point3d [bwt_p_size];
 
-      delete points;
+        for (size_type i = 0; i < bwt_p_size; ++i) {
+            // shoule be the uint64_t
+            // define a parameter
+            uint32_t x = i;
+            uint32_t y = parse_x[i];
+            //
+            uint32_t z = (pars.saP[i+1] + bwt_p_size - 1)%bwt_p_size;
+            points[i] = {x,y,z};
+            cout << "points: "<<points[i].get(0)<<" "<<points[i].get(1)<<" "<<points[i].get(2)<<endl;
 
-  }
+        }
+        cout<<"bwt_p_size: "<<bwt_p_size<<endl;
+        // construct the kd_tree
+        tree3d test_tree(points, points + bwt_p_size);
+        tree = test_tree;
+        //   tree = tree3d(points, points + bwt_p_size);
+        // tree3d tree(points, points + bwt_p.size());
+        verbose("tree size: ", tree.size());
+        // cout<< "tree size: "<< tree.size() << endl;
 
-    void compute_lz_77(){
+        delete points;
+
         //i is the starting position of the lz_77's factor. Starting from 0. each time can add the factor's length to compute the next one factor.
 
         //define the tree this place.
         //use const kdtree<<>>& tree there. We dont need the tree again.
 
+        FILE *file;
+        file = fopen("/blue/boucher/yu.hong/CST_LZ77/data/result.dat","wb");
+        int test = 0;
+        if (file == NULL){
+           verbose("FILE OPEN FAIL");
+        }else{
+            verbose("OPEN SUCCESS");
+        }
         //the limitation for the x,y,z is the position in grid.
-        size_t i = 1;
-
+        size_t i = w;
         size_t p_psv;
         size_t l_psv;
         size_t p_nsv;
@@ -551,6 +648,8 @@ public:
             size_t offset = 0;
             if (i != 0) {
                 offset = i - select_b_p(z1);
+            }else if (z1 > 1){
+                offset = i - select_b_p(z1) + w;
             }
             // start from 1.
             uint64_t q = pars.p[z1 - 1]; // map the x inside the D
@@ -565,45 +664,45 @@ public:
              if (z1 < pars.p.size() - 1){
 
             uint_t x1 = pars.isaP[z1] - 1;
-            uint y1 = M[r - 1].left;    // M_entry is [len, left, right]
-            uint y2 = M[r - 1].right;
+            uint y1 = M[r].left;    // M_entry is [len, left, right]
+            uint y2 = M[r].right;
             //TODO: to check the two x dimension. to the PSV, matrix is smaller than x1. To NSV, matrix is larger than x1.
 
 
 
-            point3d *psv = tree.query_PSV(x1, y1, y2, z1);
-            point3d *nsv = tree.query_NSV(x1, y1, y2, z1);
+            point3d *psv = test_tree.query_PSV(x1, y1, y2, z1);
+            point3d *nsv = test_tree.query_NSV(x1, y1, y2, z1);
             // check the length of the suffix is the same as the M length
             size_t offset_prime = select_b_p(z1 + 1) - i;
 
             //psv is not a pointer. check it
             if (psv != nullptr) {
                 // rmq_s_lcp_t(i,j) will return the min(lcp[i,...,j])
-                p_psv = rmq_s_lcp_T(psv->get(0) + 2, x1 + 1);
+                p_psv = rmq_s_lcp_T(psv->get(0) + 1, x1);
                 //s_lcp_T[i] will return longest common prefix of S[SA[i-1]] and S[SA[i]];
                 l_psv = s_lcp_T_array[p_psv];
 
                 if (nsv != nullptr) {
-                    p_nsv = rmq_s_lcp_T(x1 + 2, nsv->get(0) + 1);
+                    p_nsv = rmq_s_lcp_T(x1 + 1, nsv->get(0));
                     l_nsv = s_lcp_T_array[p_nsv];
 
                     if (l_psv > l_nsv) {
-                        f = select_b_p(pars.saP[psv->get(0) + 1] + 1) - offset_prime;
+                        f = select_b_p(pars.saP[psv->get(0)]) - offset_prime;
                         l = l_psv;
                     } else {
-                        f = (select_b_p(pars.saP[nsv->get(0) + 1] + 1) - offset_prime) % n;
+                        f = (select_b_p(pars.saP[nsv->get(0)]) - offset_prime) % n;
                         l = l_nsv;
                     }
 
                 } else {
-                    f = select_b_p(pars.saP[psv->get(0) + 1] + 1) - offset_prime;
+                    f = select_b_p(pars.saP[psv->get(0)]) - offset_prime;
                     l = l_psv;
                 }
 
             } else if (nsv != nullptr) {
-                p_nsv = rmq_s_lcp_T(x1 + 2, nsv->get(0) + 1);
+                p_nsv = rmq_s_lcp_T(x1 + 1, nsv->get(0));
                 l_nsv = s_lcp_T_array[p_nsv];
-                f = select_b_p(pars.saP[nsv->get(0) + 1] + 1) - offset_prime;
+                f = select_b_p(pars.saP[nsv->get(0)]) - offset_prime;
                 l = l_nsv;
             } else {
                 if (i == 0) {
@@ -647,6 +746,7 @@ public:
                  vector<size_t> tmp = KKP(r, d);
                  f = tmp[0];
                  l = tmp[1];
+               //  cout<<endl<<endl;
              }
 
             //write it to file
@@ -654,12 +754,21 @@ public:
                 uint8_t factor = dict.d[d];
                 cout <<"("<<factor<<","<<0<<")"<<endl;
                 i += 1;
+                if (factor > '0'){
+                    fwrite(&factor, 8, 1, file);
+                    fwrite(&l, 8, 1, file);
+                }
+
             } else{
                 i += l;
+
                 cout <<"("<<f<<","<<l<<")"<<endl;
+                fwrite(&f, 8, 1, file);
+                fwrite(&l, 8, 1, file);
             }
         }
 
+        fclose(file);
     }
 
   vector<size_t> KKP(size_t r, size_t d){
