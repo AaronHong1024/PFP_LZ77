@@ -594,19 +594,12 @@ public:
                  l = tmp[1];
                //  cout<<endl<<endl;
              }
-
             //write it to file
             if (l == 0){
                 uint8_t factor = dict.d[d];
-              //  cout <<"("<<factor<<","<<0<<")"<<endl;
                 i += 1;
-                if (factor > '0'){
-                    fwrite(&factor, 8, 1, file);
-                    fwrite(&l, 8, 1, file);
-
-                 //   cout<<"("<<factor<<",0)"<<endl;
-                }
-
+                fwrite(&factor, 8, 1, file);
+                fwrite(&l, 8, 1, file);
             } else{
                 i += l;
              //   cout <<"("<<f<<","<<l<<")"<<endl;
