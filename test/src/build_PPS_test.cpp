@@ -24,7 +24,7 @@ void test(){
 
     // initialize data
     //(#,0)(0,1)(G,0)(A,0)(T,0)
-    std::vector<char> text = {'#','#','G','A','T','T','A','C','A','T','#',
+    std::vector<char> text = {'G','A','T','T','A','C','A','T','#',
                               'G','A','T','A','C','A','T','#',
                               'G','A','T','T','A','G','A','T','A','#','#'};
     std::vector<std::string> dict{"#GATTAC", "ACAT#", "AGATA##", "T#GATAC", "T#GATTAG"};

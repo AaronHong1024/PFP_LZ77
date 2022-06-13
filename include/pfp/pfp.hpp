@@ -132,12 +132,6 @@ public:
     verbose("Computing S_LCP_T");
     _elapsed_time(build_s_lcp_T());
 
-//    verbose("kd_tree_test");
-//    _elapsed_time(kd_tree());
-
-    //we don't need the W for this function
-//    verbose("Computing W of BWT(P)");
-//    _elapsed_time(build_W());
 
     verbose("create lz77");
     _elapsed_time(compute_lz_77());
@@ -182,10 +176,6 @@ public:
     verbose("create lz77");
     _elapsed_time(compute_lz_77());
 
-    // we don't need this function in computing lz77
-//    verbose("Computing W of BWT(P)");
-//    _elapsed_time(build_W());
-
     // Clear unnecessary elements
     clear_unnecessary_elements();
   }
@@ -211,10 +201,7 @@ public:
     b_p = bv_t(builder);
     rank_b_p = typename bv_t::rank_1_type(&b_p);
     select_b_p = typename bv_t::select_1_type(&b_p);
-      for (int j = 0; j < b_p.size(); ++j) {
-          if (b_p[j] == 1)
-          cout<<"b_p: "<<j<<endl;
-      }
+
   }
 
   void compute_n(){
@@ -403,29 +390,7 @@ public:
     //now we stored the location for PSV or NSV.
     PPS_PSV = PSV(proper_phrase_suffix);
     PPS_NSV = NSV(proper_phrase_suffix);
-//    cout <<"n: "<<n<<endl;
-//      for (int k = 0; k < proper_phrase_suffix.size(); ++k) {
-//          cout<<"PPS: "<<proper_phrase_suffix[k]<<endl;
-//      }
-//      for (int k = 0; k < dict.saD.size(); ++k) {
-//          cout<<"saD: " << dict.saD[k]<<endl;
-//      }
-//      for (int k = 0; k < dict.isaD.size(); ++k) {
-//          cout<<"isaD: "<<dict.isaD[k]<<endl;
-//      }
-//cout <<"b_pps size: "<<b_pps.size()<<endl;
-//        cout <<"PPS size: "<<proper_phrase_suffix.size()<<endl;
-//        cout <<"M size: "<<M.size()<<endl;
-//      for (int k = 0; k < dict.lcpD.size(); ++k) {
-//          cout<<"lcp_D: "<<dict.lcpD[k]<<endl;
-//      }
-//        for (int k = 0; k < proper_phrase_suffix.size(); ++k) {
-//            cout<<"PPS: "<<proper_phrase_suffix[k]<<endl;
-//        }
-//
-//        for (int k = 0; k < b_pps.size(); ++k) {
-//            cout << "b_pps: "<<b_pps[k]<<"rank: "<<b_pps_rank_1(k)<<endl;
-//        }
+
   }
 
 
@@ -456,89 +421,7 @@ public:
     w_wt.construct(alphabet, bwt_p);
 
   }
-//
-//  void kd_tree(){
-//      //x dimension for the kd_tree
-//      std::vector<uint32_t> bwt_p(pars.p.size() - 1, 0);
-//      for (size_t i = 1; i < pars.saP.size(); ++i)
-//      {
-//              if (pars.saP[i] > 0)
-//                  bwt_p[i - 1] = pars.p[pars.saP[i] - 1];
-//              else
-//                  bwt_p[i - 1] = pars.p[pars.p.size() - 2];
-//
-//      }
-//      verbose("x dimension size: ", bwt_p.size());
-////      for (int i = 0; i < bwt_p.size(); ++i) {
-////          cout << "x: "<<bwt_p[i]<<endl;
-////      }
-//
-//
-//      //y dimension for the kd_tree
-//      std::vector<uint32_t> alphabet(dict.n_phrases());
-//      for (size_t i = 0; i < dict.n_phrases(); ++i) {
-//          alphabet[i] = dict.colex_id[i] + 1;
-//      }
-////      for (int i = 0; i < alphabet.size(); ++i) {
-////          cout<<"y: "<<alphabet[i]<<endl;
-////      }
-//      //change the cout to verbose or info or other things
-//      size_t n_phrase = dict.n_phrases();
-//      verbose("y dimension size: ", dict.n_phrases());
-//
-//
-//    //  z dimension for the kd_tree
-//      vector<uint32_t> p = pars.p;
-//      verbose("z dimension size: ", pars.p.size());
-//
-////      for (int i = 0; i < p.size(); ++i) {
-////          cout << "z: "<<p[i]<<endl;
-////      }
-//    // connect x and y
-//    sdsl::int_vector<> parse_x(bwt_p.size(), 0);
-//    vector<uint32_t> translate;
-//    translate.resize(alphabet.size(), 0);
-//
-//      for (size_type i = 0; i < alphabet.size(); ++i) {
-//          translate[alphabet[i] - 1] = i;
-//      }
-//
-//      // parse_x: x location in y dimension. Pair should be (bwt_p[i], parse_x[i], z[i])
-//      //don need store this can save some space
-//      size_t bwt_p_size = bwt_p.size();
-//      for (size_type i = 0; i < bwt_p_size; ++i) {
-//          parse_x[i] = translate[bwt_p[i] - 1];
-//
-//      }
-//
-//      // connect x and z, Z[i] = isa_P[bwt_p[i] - 1]
-//
-//
-//      point3d *points = new point3d [bwt_p_size];
-//
-//      for (size_type i = 0; i < bwt_p_size; ++i) {
-//          // shoule be the uint64_t
-//          // define a parameter
-//          uint32_t x = i;
-//          uint32_t y = parse_x[i];
-//          //
-//          uint32_t z = (pars.saP[i+1] + bwt_p_size - 1)%bwt_p_size;
-//          points[i] = {x,y,z};
-//          cout << "points: "<<points[i].get(0)<<" "<<points[i].get(1)<<" "<<points[i].get(2)<<endl;
-//
-//      }
-//      cout<<"bwt_p_size: "<<bwt_p_size<<endl;
-//      // construct the kd_tree
-//      tree3d test_tree(points, points + bwt_p_size);
-//      tree = test_tree;
-//   //   tree = tree3d(points, points + bwt_p_size);
-//     // tree3d tree(points, points + bwt_p.size());
-//      verbose("tree size: ", tree.size());
-//     // cout<< "tree size: "<< tree.size() << endl;
-//
-//      delete points;
-//
-//  }
+
 
     void compute_lz_77(){
         std::vector<uint32_t> bwt_p(pars.p.size() - 1, 0);
@@ -550,10 +433,6 @@ public:
                 bwt_p[i - 1] = pars.p[pars.p.size() - 2];
 
         }
-        verbose("x dimension size: ", bwt_p.size());
-//      for (int i = 0; i < bwt_p.size(); ++i) {
-//          cout << "x: "<<bwt_p[i]<<endl;
-//      }
 
 
         //y dimension for the kd_tree
@@ -566,12 +445,10 @@ public:
 //      }
         //change the cout to verbose or info or other things
         size_t n_phrase = dict.n_phrases();
-        verbose("y dimension size: ", dict.n_phrases());
 
 
         //  z dimension for the kd_tree
-        vector<uint32_t> p = pars.p;
-        verbose("z dimension size: ", pars.p.size());
+      //  vector<uint32_t> p = pars.p;
 
 //      for (int i = 0; i < p.size(); ++i) {
 //          cout << "z: "<<p[i]<<endl;
@@ -590,7 +467,6 @@ public:
         size_t bwt_p_size = bwt_p.size();
         for (size_type i = 0; i < bwt_p_size; ++i) {
             parse_x[i] = translate[bwt_p[i] - 1];
-
         }
 
         // connect x and z, Z[i] = isa_P[bwt_p[i] - 1]
@@ -601,25 +477,22 @@ public:
         for (size_type i = 0; i < bwt_p_size; ++i) {
             // shoule be the uint64_t
             // define a parameter
-            uint32_t x = i;
-            uint32_t y = parse_x[i];
+            uint64_t x = i;
+            uint64_t y = parse_x[i];
             //
-            uint32_t z = (pars.saP[i+1] + bwt_p_size - 1)%bwt_p_size;
+            uint64_t z = (pars.saP[i+1] + bwt_p_size - 1)%bwt_p_size;
             points[i] = {x,y,z};
-            cout << "points: "<<points[i].get(0)<<" "<<points[i].get(1)<<" "<<points[i].get(2)<<endl;
-
         }
-        cout<<"bwt_p_size: "<<bwt_p_size<<endl;
+
         // construct the kd_tree
         tree3d test_tree(points, points + bwt_p_size);
         tree = test_tree;
-        //   tree = tree3d(points, points + bwt_p_size);
-        // tree3d tree(points, points + bwt_p.size());
         verbose("tree size: ", tree.size());
+
         // cout<< "tree size: "<< tree.size() << endl;
-
         delete points;
-
+        //free the translate vector
+        vector<uint32_t>().swap(translate);
         //i is the starting position of the lz_77's factor. Starting from 0. each time can add the factor's length to compute the next one factor.
 
         //define the tree this place.
@@ -641,6 +514,7 @@ public:
         size_t l_nsv;
         size_t f;
         size_t l;
+
         // typedef point<uint32_t , 3> point3d;
         while(i < n) {
             uint64_t z1 = 0;
@@ -700,6 +574,7 @@ public:
                 }
 
             } else if (nsv != nullptr) {
+
                 p_nsv = rmq_s_lcp_T(x1 + 1, nsv->get(0));
                 l_nsv = s_lcp_T_array[p_nsv];
                 f = select_b_p(pars.saP[nsv->get(0)]) - offset_prime;
@@ -708,35 +583,6 @@ public:
                 if (i == 0) {
                     l = 0;
                 } else {
-                    /*
-                    // Neither the PSV nor NSV exist. We need to use the kkp algorithm
-                    // the PSV and NSV used unsigned.
-                    //the pps_psv and pps_nsv should be value rather than the position.
-                    int64_t pps_psv = PPS_PSV[r];
-                    int64_t pps_nsv = PPS_NSV[r];
-                    if (pps_psv == -1) {
-                        l_psv = 0;
-                    } else {
-                        //the r should be the ISA_D[d]. input should be (ISA_D(pps_psv) + 1,ISA_D(d))
-                       // l_psv = dict.lcpD[dict.rmq_lcp_D(dict.isaD[proper_phrase_suffix[pps_psv]] + 1, dict.isaD[d])];
-                        l_psv = dict.lcpD[dict.rmq_lcp_D(b_pps_select_1(pps_psv + 1) + 1, dict.isaD[d])];
-                    }
-                    if (pps_nsv == -1) {
-                        l_nsv = 0;
-                    } else {
-                        l_nsv = dict.lcpD[dict.rmq_lcp_D(dict.isaD[d] + 1, b_pps_select_1(pps_nsv + 1))];
-                    }
-
-                    if (l_psv >= l_nsv) {
-
-                        //get a new name for the PPS array.
-                        f = proper_phrase_suffix[pps_psv];
-                        l = l_psv;
-                    } else {
-                        f = proper_phrase_suffix[pps_nsv];
-                        l = l_nsv;
-                    }
-                    */
                     vector<size_t> tmp = KKP(r, d);
                     f = tmp[0];
                     l = tmp[1];
@@ -752,22 +598,23 @@ public:
             //write it to file
             if (l == 0){
                 uint8_t factor = dict.d[d];
-                cout <<"("<<factor<<","<<0<<")"<<endl;
+              //  cout <<"("<<factor<<","<<0<<")"<<endl;
                 i += 1;
                 if (factor > '0'){
                     fwrite(&factor, 8, 1, file);
                     fwrite(&l, 8, 1, file);
+
+                 //   cout<<"("<<factor<<",0)"<<endl;
                 }
 
             } else{
                 i += l;
-
-                cout <<"("<<f<<","<<l<<")"<<endl;
+             //   cout <<"("<<f<<","<<l<<")"<<endl;
                 fwrite(&f, 8, 1, file);
                 fwrite(&l, 8, 1, file);
+               // cout<<"("<<f<<","<<l<<")"<<endl;
             }
         }
-
         fclose(file);
     }
 
@@ -846,9 +693,9 @@ public:
     rmq_s_lcp_T = sdsl::rmq_succinct_sct<>(&s_lcp_T_);
     s_lcp_T_array = s_lcp_T_;
    // cout<<s_lcp_T_array.size()<<endl;
-      for (int i = 0; i < s_lcp_T_array.size(); ++i) {
-          cout<<"s_lcp_T: "<<s_lcp_T_array[i]<<endl;
-      }
+//      for (int i = 0; i < s_lcp_T_array.size(); ++i) {
+//          cout<<"s_lcp_T: "<<s_lcp_T_array[i]<<endl;
+//      }
 
 // change the s_lcp_T to array
     sdsl::construct_im(s_lcp_T, s_lcp_T_);
