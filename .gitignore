@@ -43,6 +43,7 @@ script/
 build/
 cmake-build-debug/
 cmake-build-debug_remote/
+pipeline/
 
 =======
 >>>>>>> 352e5f80c5ce74c0fc09d526e304c4926c5e65b4

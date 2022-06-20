@@ -19,7 +19,7 @@ int main(int argc, char* const argv[]) {
 
     verbose("Window size set to: " , args.w);
 
-    verbose("Computing PFP data structures");
+    verbose("Computing LZ77");
     std::chrono::high_resolution_clock::time_point t_insert_start = std::chrono::high_resolution_clock::now();
 
     pf_parsing<> pf(args.filename, args.w);
