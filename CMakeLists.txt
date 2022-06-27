@@ -77,7 +77,7 @@ set(USE_INSTALL_PATH True)
 set(PFP_CST_VERSION "0.1.0")
 #configure_file(${PROJECT_SOURCE_DIR}/pipeline/pfp-cst.in ${PROJECT_BINARY_DIR}/pfp-cst.install @ONLY)
 configure_file(${PROJECT_SOURCE_DIR}/pipeline/Chr_19.sh ${PROJECT_BINARY_DIR}/Chr_19.sh)
-configure_file(${PROJECT_SOURCE_DIR}/pipeline/test_disk.py ${PROJECT_BINARY_DIR}/test_disk.py)
+#configure_file(${PROJECT_SOURCE_DIR}/pipeline/test_disk.py ${PROJECT_BINARY_DIR}/test_disk.py)
 
 install(TARGETS pfp-cst_build pfp-cst_build64 TYPE RUNTIME)
 install(PROGRAMS ${PROJECT_BINARY_DIR}/pfp-cst.install RENAME pfp-cst TYPE BIN)

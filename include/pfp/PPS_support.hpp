@@ -41,7 +41,6 @@ vector<int64_t> NSV(const vector<int64_t> proper_phrase_suffix){
     size_t n = proper_phrase_suffix.size();
     vector<int64_t> NSV;
     NSV.reserve(n);
-
     for (int i = 0; i < n; ++i) {
         NSV.push_back(-1);
     }

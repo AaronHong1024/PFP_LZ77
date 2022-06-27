@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" autoUpload="Always" serverName="Remote Development" remoteFilesAllowedToDisappearOnAutoupload="false">
+    <serverData>
+      <paths name="Remote Host (23dc3aee-e8ae-4cf7-9932-1eb03a1042d0)">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/blue/boucher/yu.hong/tmp/tmp.B7TIKbS7DZ" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="hipergator">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/blue/boucher/yu.hong/CST_LZ77" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+    <option name="myAutoUpload" value="ALWAYS" />
+  </component>
+</project>
