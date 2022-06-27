@@ -100,7 +100,7 @@ public:
 //  point3d *points = new point3d [pars.p.size() - 1];
   vector<int64_t> PPS_PSV;
   vector<int64_t> PPS_NSV;
-  vector<int64_t> proper_phrase_suffix;
+  vector<int64_t> first_PPS;
   sdsl::int_vector<> s_lcp_T_array;
  // std::vector<uint32_t> bwt_p;
 
@@ -264,7 +264,7 @@ public:
       if (dict.b_d[sn] || suffix_length < w)
       {
         ++i; // Skip
-       // proper_phrase_suffix.push_back(-1);
+       // first_PPS.push_back(-1);
       }
       else
       {
@@ -281,7 +281,7 @@ public:
 
         //compute the start position for the proper suffix
           size_t position = (end_position[phrase] - suffix_length) % n;
-          proper_phrase_suffix.push_back(position);
+          first_PPS.push_back(position);
         if (i < dict.saD.size())
         {
             // here to check the next phrase
@@ -297,8 +297,8 @@ public:
               size_t new_position = (end_position[new_phrase] - new_suffix_length) % n;
               if (position > new_position){
                   position = new_position;
-                  proper_phrase_suffix.back() = position;
-                //  proper_phrase_suffix.push_back(-1);
+                  first_PPS.back() = position;
+                //  first_PPS.push_back(-1);
               }
 
             j += freq[new_phrase];
@@ -388,8 +388,8 @@ public:
 
     //compute PSV and NSV
     //now we stored the location for PSV or NSV.
-    PPS_PSV = PSV(proper_phrase_suffix);
-    PPS_NSV = NSV(proper_phrase_suffix);
+    PPS_PSV = PSV(first_PPS);
+    PPS_NSV = NSV(first_PPS);
 
   }
 
@@ -440,19 +440,11 @@ public:
         for (size_t i = 0; i < dict.n_phrases(); ++i) {
             alphabet[i] = dict.colex_id[i] + 1;
         }
-//      for (int i = 0; i < alphabet.size(); ++i) {
-//          cout<<"y: "<<alphabet[i]<<endl;
-//      }
+
         //change the cout to verbose or info or other things
         size_t n_phrase = dict.n_phrases();
 
 
-        //  z dimension for the kd_tree
-      //  vector<uint32_t> p = pars.p;
-
-//      for (int i = 0; i < p.size(); ++i) {
-//          cout << "z: "<<p[i]<<endl;
-//      }
         // connect x and y
         sdsl::int_vector<> parse_x(bwt_p.size(), 0);
         vector<uint32_t> translate;
@@ -471,7 +463,6 @@ public:
 
         // connect x and z, Z[i] = isa_P[bwt_p[i] - 1]
 
-
         point3d *points = new point3d [bwt_p_size];
 
         for (size_type i = 0; i < bwt_p_size; ++i) {
@@ -489,10 +480,10 @@ public:
         tree = test_tree;
         verbose("tree size: ", tree.size());
 
-        // cout<< "tree size: "<< tree.size() << endl;
         delete points;
-        //free the translate vector
-        vector<uint32_t>().swap(translate);
+
+       translate.clear();
+       translate.shrink_to_fit();
         //i is the starting position of the lz_77's factor. Starting from 0. each time can add the factor's length to compute the next one factor.
 
         //define the tree this place.
@@ -583,15 +574,21 @@ public:
                 if (i == 0) {
                     l = 0;
                 } else {
-                    vector<size_t> tmp = KKP(r, d);
-                    f = tmp[0];
-                    l = tmp[1];
+                    std::pair<size_t, size_t> tmp = KKP(r, d);
+                    f = tmp.first;
+                    l = tmp.second;
+//                    vector<size_t> tmp = KKP(r, d);
+//                    f = tmp[0];
+//                    l = tmp[1];
                 }
             }
         }else{
-                 vector<size_t> tmp = KKP(r, d);
-                 f = tmp[0];
-                 l = tmp[1];
+                 std::pair<size_t, size_t> tmp = KKP(r, d);
+                 f = tmp.first;
+                 l = tmp.second;
+//                 vector<size_t> tmp = KKP(r, d);
+//                 f = tmp[0];
+//                 l = tmp[1];
                //  cout<<endl<<endl;
              }
 
@@ -618,11 +615,11 @@ public:
         fclose(file);
     }
 
-  vector<size_t> KKP(size_t r, size_t d){
+  std::pair<size_t, size_t> KKP(size_t r, size_t d){
       // Neither the PSV nor NSV exist. We need to use the kkp algorithm
       // the PSV and NSV used unsigned.
       //the pps_psv and pps_nsv should be value rather than the position.
-      vector<size_t> res;
+     // vector<size_t> res;
       int64_t pps_psv = PPS_PSV[r];
       int64_t pps_nsv = PPS_NSV[r];
       size_t l_psv;
@@ -633,7 +630,7 @@ public:
           l_psv = 0;
       } else {
           //the r should be the ISA_D[d]. input should be (ISA_D(pps_psv) + 1,ISA_D(d))
-          // l_psv = dict.lcpD[dict.rmq_lcp_D(dict.isaD[proper_phrase_suffix[pps_psv]] + 1, dict.isaD[d])];
+          // l_psv = dict.lcpD[dict.rmq_lcp_D(dict.isaD[first_PPS[pps_psv]] + 1, dict.isaD[d])];
           l_psv = dict.lcpD[dict.rmq_lcp_D(b_pps_select_1(pps_psv + 1) + 1, dict.isaD[d])];
       }
       if (pps_nsv == -1) {
@@ -645,14 +642,15 @@ public:
       if (l_psv >= l_nsv) {
 
           //get a new name for the PPS array.
-          f = proper_phrase_suffix[pps_psv];
+          f = first_PPS[pps_psv];
           l = l_psv;
       } else {
-          f = proper_phrase_suffix[pps_nsv];
+          f = first_PPS[pps_nsv];
           l = l_nsv;
       }
-      res.push_back(f);
-      res.push_back(l);
+      std::pair<size_t, size_t> res (f, l);
+//      res.push_back(f);
+//      res.push_back(l);
       return res;
   }
 // change this file make it to array
