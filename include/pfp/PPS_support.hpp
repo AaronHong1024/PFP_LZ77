@@ -37,7 +37,7 @@ vector<int64_t> PSV(const vector<int64_t> proper_phrase_suffix){
     return PSV;
 }
 
-vector<int64_t> NSV(vector<int64_t> proper_phrase_suffix){
+vector<int64_t> NSV(const vector<int64_t> proper_phrase_suffix){
     size_t n = proper_phrase_suffix.size();
     vector<int64_t> NSV;
     NSV.reserve(n);

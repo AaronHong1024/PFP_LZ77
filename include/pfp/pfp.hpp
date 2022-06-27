@@ -100,7 +100,7 @@ public:
 //  point3d *points = new point3d [pars.p.size() - 1];
   vector<int64_t> PPS_PSV;
   vector<int64_t> PPS_NSV;
-  vector<int64_t> proper_phrase_suffix;
+  vector<int64_t> first_PPS;
   sdsl::int_vector<> s_lcp_T_array;
  // std::vector<uint32_t> bwt_p;
 
@@ -264,7 +264,7 @@ public:
       if (dict.b_d[sn] || suffix_length < w)
       {
         ++i; // Skip
-       // proper_phrase_suffix.push_back(-1);
+       // first_PPS.push_back(-1);
       }
       else
       {
@@ -281,7 +281,7 @@ public:
 
         //compute the start position for the proper suffix
           size_t position = (end_position[phrase] - suffix_length) % n;
-          proper_phrase_suffix.push_back(position);
+          first_PPS.push_back(position);
         if (i < dict.saD.size())
         {
             // here to check the next phrase
@@ -297,8 +297,8 @@ public:
               size_t new_position = (end_position[new_phrase] - new_suffix_length) % n;
               if (position > new_position){
                   position = new_position;
-                  proper_phrase_suffix.back() = position;
-                //  proper_phrase_suffix.push_back(-1);
+                  first_PPS.back() = position;
+                //  first_PPS.push_back(-1);
               }
 
             j += freq[new_phrase];
@@ -388,8 +388,8 @@ public:
 
     //compute PSV and NSV
     //now we stored the location for PSV or NSV.
-    PPS_PSV = PSV(proper_phrase_suffix);
-    PPS_NSV = NSV(proper_phrase_suffix);
+    PPS_PSV = PSV(first_PPS);
+    PPS_NSV = NSV(first_PPS);
 
   }
 
@@ -626,7 +626,7 @@ public:
           l_psv = 0;
       } else {
           //the r should be the ISA_D[d]. input should be (ISA_D(pps_psv) + 1,ISA_D(d))
-          // l_psv = dict.lcpD[dict.rmq_lcp_D(dict.isaD[proper_phrase_suffix[pps_psv]] + 1, dict.isaD[d])];
+          // l_psv = dict.lcpD[dict.rmq_lcp_D(dict.isaD[first_PPS[pps_psv]] + 1, dict.isaD[d])];
           l_psv = dict.lcpD[dict.rmq_lcp_D(b_pps_select_1(pps_psv + 1) + 1, dict.isaD[d])];
       }
       if (pps_nsv == -1) {
@@ -638,10 +638,10 @@ public:
       if (l_psv >= l_nsv) {
 
           //get a new name for the PPS array.
-          f = proper_phrase_suffix[pps_psv];
+          f = first_PPS[pps_psv];
           l = l_psv;
       } else {
-          f = proper_phrase_suffix[pps_nsv];
+          f = first_PPS[pps_nsv];
           l = l_nsv;
       }
       res.push_back(f);
