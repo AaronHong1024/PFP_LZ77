@@ -488,7 +488,6 @@ public:
 
         //define the tree this place.
         //use const kdtree<<>>& tree there. We dont need the tree again.
-
         FILE *file;
         file = fopen("/blue/boucher/yu.hong/CST_LZ77/data/result.dat","wb");
         int test = 0;
@@ -505,6 +504,7 @@ public:
         size_t l_nsv;
         size_t f;
         size_t l;
+        vector<size_t> res;
 
         // typedef point<uint32_t , 3> point3d;
         while(i < n) {
@@ -594,25 +594,34 @@ public:
 
             //write it to file
             if (l == 0){
-                uint8_t factor = dict.d[d];
-              //  cout <<"("<<factor<<","<<0<<")"<<endl;
                 i += 1;
-                if (factor > '0'){
-                    fwrite(&factor, 8, 1, file);
-                    fwrite(&l, 8, 1, file);
+                uint8_t factor = dict.d[d];
+                fwrite(&factor, 8, 1, file);
+                fwrite(&l, 8, 1, file);
+                cout<<"("<<factor<<",0)"<<endl;
+                f = dict.d[d];
+                res.push_back(f);
+                res.push_back(0);
 
-                    cout<<"("<<factor<<",0)"<<endl;
-                }
 
             } else{
                 i += l;
-             //   cout <<"("<<f<<","<<l<<")"<<endl;
                 fwrite(&f, 8, 1, file);
                 fwrite(&l, 8, 1, file);
                 cout<<"("<<f<<","<<l<<")"<<endl;
+                res.push_back(f);
+                res.push_back(l);
+
             }
         }
+
         fclose(file);
+
+        sdsl::int_vector<> res__(res.size());
+        for (int j = 0; j < res.size(); ++j) {
+            res__[j] = res[j];
+        }
+        sdsl::store_to_file(res__, "/blue/boucher/yu.hong/CST_LZ77/data/res.dat");
     }
 
   std::pair<size_t, size_t> KKP(size_t r, size_t d){
