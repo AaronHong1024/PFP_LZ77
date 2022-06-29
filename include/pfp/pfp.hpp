@@ -488,14 +488,14 @@ public:
 
         //define the tree this place.
         //use const kdtree<<>>& tree there. We dont need the tree again.
-        FILE *file;
-        file = fopen("/blue/boucher/yu.hong/CST_LZ77/data/result.dat","wb");
-        int test = 0;
-        if (file == NULL){
-           verbose("FILE OPEN FAIL");
-        }else{
-            verbose("OPEN SUCCESS");
-        }
+//        FILE *file;
+//        file = fopen("/blue/boucher/yu.hong/CST_LZ77/data/result.dat","wb");
+//        int test = 0;
+//        if (file == NULL){
+//           verbose("FILE OPEN FAIL");
+//        }else{
+//            verbose("OPEN SUCCESS");
+//        }
         //the limitation for the x,y,z is the position in grid.
         size_t i = w;
         size_t p_psv;
@@ -504,9 +504,7 @@ public:
         size_t l_nsv;
         size_t f;
         size_t l;
-        vector<size_t> res;
-
-        // typedef point<uint32_t , 3> point3d;
+        auto lz_out = sdsl::int_vector_buffer<>("/blue/boucher/yu.hong/CST_LZ77/data/result_test.dat", std::ios::out, 1024*1024, log(n));
         while(i < n) {
             uint64_t z1 = 0;
             z1 = rank_b_p(i);
@@ -577,51 +575,36 @@ public:
                     std::pair<size_t, size_t> tmp = KKP(r, d);
                     f = tmp.first;
                     l = tmp.second;
-//                    vector<size_t> tmp = KKP(r, d);
-//                    f = tmp[0];
-//                    l = tmp[1];
                 }
             }
         }else{
                  std::pair<size_t, size_t> tmp = KKP(r, d);
                  f = tmp.first;
                  l = tmp.second;
-//                 vector<size_t> tmp = KKP(r, d);
-//                 f = tmp[0];
-//                 l = tmp[1];
-               //  cout<<endl<<endl;
              }
 
             //write it to file
             if (l == 0){
                 i += 1;
-                uint8_t factor = dict.d[d];
-                fwrite(&factor, 8, 1, file);
-                fwrite(&l, 8, 1, file);
-                cout<<"("<<factor<<",0)"<<endl;
+//                uint8_t factor = dict.d[d];
+//                fwrite(&factor, 8, 1, file);
+//                fwrite(&l, 8, 1, file);
+//                cout<<"("<<factor<<",0)"<<endl;
                 f = dict.d[d];
-                res.push_back(f);
-                res.push_back(0);
+                lz_out.push_back(f);
+                lz_out.push_back(0);
 
 
             } else{
                 i += l;
-                fwrite(&f, 8, 1, file);
-                fwrite(&l, 8, 1, file);
-                cout<<"("<<f<<","<<l<<")"<<endl;
-                res.push_back(f);
-                res.push_back(l);
-
+//                fwrite(&f, 8, 1, file);
+//                fwrite(&l, 8, 1, file);
+//                cout<<"("<<f<<","<<l<<")"<<endl;
+                lz_out.push_back(f);
+                lz_out.push_back(l);
             }
         }
 
-        fclose(file);
-
-        sdsl::int_vector<> res__(res.size());
-        for (int j = 0; j < res.size(); ++j) {
-            res__[j] = res[j];
-        }
-        sdsl::store_to_file(res__, "/blue/boucher/yu.hong/CST_LZ77/data/res.dat");
     }
 
   std::pair<size_t, size_t> KKP(size_t r, size_t d){

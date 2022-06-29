@@ -13,6 +13,6 @@ module load cmake
 module load gcc/9.3.0
 
 #python3 test_disk.py
-valgrind --tool=callgrind ./src/lz_77_test ../data/yeast.fasta
+./src/lz_77_test ../data/Chr_19_2504_256.fasta
 
 date
