@@ -26,6 +26,8 @@ int main(int argc, char* const argv[]) {
 
     std::chrono::high_resolution_clock::time_point t_insert_end = std::chrono::high_resolution_clock::now();
 
-    verbose("PFP DS construction complete");
+    verbose("LZ77 construction complete");
+
+    verbose("Elapsed time (s): ", std::chrono::duration<double, std::ratio<1>>(t_insert_end - t_insert_start).count());
 
 }
