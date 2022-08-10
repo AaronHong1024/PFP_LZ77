@@ -30,7 +30,6 @@
 
 #ifndef _PFP_HH
 #define _PFP_HH
-
 #include <common.hpp>
 
 #include <sdsl/rmq_support.hpp>
@@ -102,6 +101,7 @@ public:
   vector<int64_t> PPS_NSV;
   vector<int64_t> first_PPS;
   sdsl::int_vector<> s_lcp_T_array;
+  std::string out_FileName;
  // std::vector<uint32_t> bwt_p;
 
 
@@ -131,8 +131,8 @@ public:
 
     verbose("Computing S_LCP_T");
     _elapsed_time(build_s_lcp_T());
-
-
+//
+//
     verbose("create lz77");
     _elapsed_time(compute_lz_77());
 
@@ -146,6 +146,8 @@ public:
               freq(1,0),
               w(w_)
   {
+        out_FileName = filename + ".out";
+//      cout<<"filename test: "<<out_FileName<<endl;
     // Uploading the frequency file
     uint32_t *occ;
     size_t d_words;
@@ -390,6 +392,26 @@ public:
     //now we stored the location for PSV or NSV.
     PPS_PSV = PSV(first_PPS);
     PPS_NSV = NSV(first_PPS);
+//      for (int k = 0; k < b_pps.size(); ++k) {
+//          cout<<b_pps[k]<<endl;
+//      }
+//    cout<<"first:"<<endl;
+//        for (int k = 0; k < first_PPS.size(); ++k) {
+//            cout<<" "<<first_PPS[k];
+//        }
+//      cout<<"PSV: "<<endl;
+//      for (int k = 0; k < PPS_PSV.size(); ++k) {
+//          cout<<" "<<PPS_PSV[k];
+//      }
+//      cout<<endl<<"NSV: "<<endl;
+//      for (int k = 0; k < PPS_PSV.size(); ++k) {
+//          cout<<" "<<PPS_NSV[k];
+//      }
+//      cout<<endl<<"LCP_D"<<endl;
+//      for (int k = 0; k < dict.lcpD.size(); ++k) {
+//          cout<<" "<<dict.lcpD[k];
+//      }
+//      cout<<endl;
 
   }
 
@@ -415,6 +437,7 @@ public:
       else
         bwt_p[i - 1] = pars.p[pars.p.size() - 2]; // TODO: this should be -1 only if 0 stay in pars
     }
+
 
     //p is the z dimension
     //pars.p
@@ -474,7 +497,6 @@ public:
             uint64_t z = (pars.saP[i+1] + bwt_p_size - 1)%bwt_p_size;
             points[i] = {x,y,z};
         }
-
         // construct the kd_tree
         tree3d test_tree(points, points + bwt_p_size);
         tree = test_tree;
@@ -486,16 +508,6 @@ public:
        translate.shrink_to_fit();
         //i is the starting position of the lz_77's factor. Starting from 0. each time can add the factor's length to compute the next one factor.
 
-        //define the tree this place.
-        //use const kdtree<<>>& tree there. We dont need the tree again.
-//        FILE *file;
-//        file = fopen("/blue/boucher/yu.hong/CST_LZ77/data/result.dat","wb");
-//        int test = 0;
-//        if (file == NULL){
-//           verbose("FILE OPEN FAIL");
-//        }else{
-//            verbose("OPEN SUCCESS");
-//        }
         //the limitation for the x,y,z is the position in grid.
         size_t i = w;
         size_t p_psv;
@@ -504,69 +516,81 @@ public:
         size_t l_nsv;
         size_t f;
         size_t l;
-        auto lz_out = sdsl::int_vector_buffer<>("/blue/boucher/yu.hong/CST_LZ77/data/result_test.dat", std::ios::out, 1024*1024, log(n));
+        size_t test = 0;
+        auto lz_out = sdsl::int_vector_buffer<>(out_FileName, std::ios::out, 1024*1024, log(n));
+        cout<<"n: "<<n<<endl;
         while(i < n) {
             uint64_t z1 = 0;
             z1 = rank_b_p(i);
             size_t offset = 0;
             if (i != 0) {
                 offset = i - select_b_p(z1);
-            }else if (z1 > 1){
-                offset = i - select_b_p(z1) + w;
             }
+//            else if (z1 > 1){
+//                offset = i - select_b_p(z1) + w;
+//            }
             // start from 1.
-            uint64_t q = pars.p[z1 - 1]; // map the x inside the D
+            uint64_t q = pars.p[z1 - 1]; // P count from 0.
             size_t d = dict.select_b_d(q) + offset;
             // r is the
             size_t r = dict.isaD[d]; // #1s in b_pps[1..i_in_saD] counting from 0
             r = b_pps_rank_1(r);
-
-
             // start from 1. So we do not need to plus 1. And the X dimension is 0 based. So we need to minus 1.
             // if we reach the last parse. We cannot use kd_tree anymore.
-             if (z1 < pars.p.size() - 1){
-
+            if (z1 < pars.p.size() - 1){
             uint_t x1 = pars.isaP[z1] - 1;
             uint y1 = M[r].left;    // M_entry is [len, left, right]
             uint y2 = M[r].right;
-            //TODO: to check the two x dimension. to the PSV, matrix is smaller than x1. To NSV, matrix is larger than x1.
-
-
+            if (b_pps[dict.isaD[d]] == 0){
+                y1 = M[r-1].left;
+                y2 = M[r-1].right;
+            }
 
             point3d *psv = test_tree.query_PSV(x1, y1, y2, z1);
             point3d *nsv = test_tree.query_NSV(x1, y1, y2, z1);
             // check the length of the suffix is the same as the M length
             size_t offset_prime = select_b_p(z1 + 1) - i;
-
             //psv is not a pointer. check it
             if (psv != nullptr) {
                 // rmq_s_lcp_t(i,j) will return the min(lcp[i,...,j])
-                p_psv = rmq_s_lcp_T(psv->get(0) + 1, x1);
+                p_psv = rmq_s_lcp_T(psv->get(0) + 2, x1 + 1);
                 //s_lcp_T[i] will return longest common prefix of S[SA[i-1]] and S[SA[i]];
-                l_psv = s_lcp_T_array[p_psv];
+                if(b_pps[dict.isaD[d]] == 0){
+                    l_psv = s_lcp_T_array[p_psv] + M[r-1].len - w;
+                }else{
+                    l_psv = s_lcp_T_array[p_psv] + M[r].len - w;
+                }
 
                 if (nsv != nullptr) {
-                    p_nsv = rmq_s_lcp_T(x1 + 1, nsv->get(0));
-                    l_nsv = s_lcp_T_array[p_nsv];
+                    p_nsv = rmq_s_lcp_T(x1 + 2, nsv->get(0)+1);
+                    if(b_pps[dict.isaD[d]] == 0){
+                        l_nsv = s_lcp_T_array[p_nsv]+ M[r-1].len - w;
+                    }else{
+                        l_nsv = s_lcp_T_array[p_nsv]+ M[r].len - w;
+                    }
 
-                    if (l_psv > l_nsv) {
-                        f = select_b_p(pars.saP[psv->get(0)]) - offset_prime;
+                    if (l_psv >= l_nsv) {
+                        f = select_b_p(pars.saP[psv->get(0) + 1] + 1) - offset_prime;
                         l = l_psv;
                     } else {
-                        f = (select_b_p(pars.saP[nsv->get(0)]) - offset_prime) % n;
+                        f = select_b_p(pars.saP[nsv->get(0) + 1] + 1) - offset_prime ;
                         l = l_nsv;
                     }
 
                 } else {
-                    f = select_b_p(pars.saP[psv->get(0)]) - offset_prime;
+                    f = select_b_p(pars.saP[psv->get(0) + 1] + 1) - offset_prime;
                     l = l_psv;
                 }
 
             } else if (nsv != nullptr) {
-
-                p_nsv = rmq_s_lcp_T(x1 + 1, nsv->get(0));
-                l_nsv = s_lcp_T_array[p_nsv];
-                f = select_b_p(pars.saP[nsv->get(0)]) - offset_prime;
+                p_nsv = rmq_s_lcp_T(x1 + 2, nsv->get(0)+1);
+                if(b_pps[dict.isaD[d]] == 0){
+                    l_nsv = s_lcp_T_array[p_nsv]+ M[r-1].len - w;
+                }else{
+                    l_nsv = s_lcp_T_array[p_nsv]+ M[r].len - w;
+                }
+               // l_nsv = s_lcp_T_array[p_nsv]+ M[r-1].len - w;
+                f = select_b_p(pars.saP[nsv->get(0) + 1] + 1) - offset_prime;
                 l = l_nsv;
             } else {
                 if (i == 0) {
@@ -586,25 +610,20 @@ public:
             //write it to file
             if (l == 0){
                 i += 1;
-//                uint8_t factor = dict.d[d];
-//                fwrite(&factor, 8, 1, file);
-//                fwrite(&l, 8, 1, file);
-//                cout<<"("<<factor<<",0)"<<endl;
                 f = dict.d[d];
+                test += 1;
                 lz_out.push_back(f);
                 lz_out.push_back(0);
 
 
             } else{
                 i += l;
-//                fwrite(&f, 8, 1, file);
-//                fwrite(&l, 8, 1, file);
-//                cout<<"("<<f<<","<<l<<")"<<endl;
-                lz_out.push_back(f);
+                test += 1;
+                lz_out.push_back(f-w);
                 lz_out.push_back(l);
             }
         }
-
+        verbose("phrase number: ",test);
     }
 
   std::pair<size_t, size_t> KKP(size_t r, size_t d){
@@ -614,6 +633,11 @@ public:
      // vector<size_t> res;
       int64_t pps_psv = PPS_PSV[r];
       int64_t pps_nsv = PPS_NSV[r];
+      if (b_pps[dict.isaD[d]] == 0){
+          pps_psv = PPS_PSV[r-1];
+          pps_nsv = PPS_NSV[r-1];
+      }
+
       size_t l_psv;
       size_t l_nsv;
       size_t f;
@@ -623,12 +647,44 @@ public:
       } else {
           //the r should be the ISA_D[d]. input should be (ISA_D(pps_psv) + 1,ISA_D(d))
           // l_psv = dict.lcpD[dict.rmq_lcp_D(dict.isaD[first_PPS[pps_psv]] + 1, dict.isaD[d])];
-          l_psv = dict.lcpD[dict.rmq_lcp_D(b_pps_select_1(pps_psv + 1) + 1, dict.isaD[d])];
+          uint64_t z1 = 0;
+          int64_t position_S = first_PPS[pps_psv];
+          z1 = rank_b_p(position_S);
+          size_t offset = 0;
+          uint64_t p_i = 0;
+          if (position_S != 0) {
+              offset = position_S - select_b_p(z1);
+          }
+          if(z1 > 0){
+              p_i = pars.p[z1 - 1];
+          }else{
+              p_i = pars.p[z1];
+          }
+          size_t b = dict.select_b_d(p_i) + offset;
+      //    cout<<"d: "<<b<<endl;
+          l_psv = dict.lcpD[dict.rmq_lcp_D(dict.isaD[b] + 1, dict.isaD[d])];
+         // l_psv = dict.lcpD[dict.rmq_lcp_D(b_pps_select_1(pps_psv + 1) + 1 , dict.isaD[d])];
       }
       if (pps_nsv == -1) {
           l_nsv = 0;
       } else {
-          l_nsv = dict.lcpD[dict.rmq_lcp_D(dict.isaD[d] + 1, b_pps_select_1(pps_nsv + 1))];
+          uint64_t z1 = 0;
+          int64_t position_S = first_PPS[pps_nsv];
+          z1 = rank_b_p(position_S);
+          size_t offset = 0;
+          uint64_t p_i = 0;
+          if (position_S != 0) {
+              offset = position_S - select_b_p(z1);
+          }
+          if(z1 > 0){
+              p_i = pars.p[z1 - 1];
+          }else{
+              p_i = pars.p[z1];
+          }
+          size_t b = dict.select_b_d(p_i) + offset;
+       //   cout<<"d: "<<b<<endl;
+          l_nsv = dict.lcpD[dict.rmq_lcp_D(dict.isaD[d] + 1, dict.isaD[b])];
+        //  l_nsv = dict.lcpD[dict.rmq_lcp_D(dict.isaD[d] + 1, b_pps_select_1(pps_nsv + 1))];
       }
 
       if (l_psv >= l_nsv) {
@@ -651,7 +707,6 @@ public:
   {
     size_t n = pars.saP.size();
     sdsl::int_vector<> s_lcp_T_(n, 0);
-
 
     size_t l = 0;
     size_t lt = 0;
@@ -682,11 +737,6 @@ public:
 
     rmq_s_lcp_T = sdsl::rmq_succinct_sct<>(&s_lcp_T_);
     s_lcp_T_array = s_lcp_T_;
-   // cout<<s_lcp_T_array.size()<<endl;
-//      for (int i = 0; i < s_lcp_T_array.size(); ++i) {
-//          cout<<"s_lcp_T: "<<s_lcp_T_array[i]<<endl;
-//      }
-
 // change the s_lcp_T to array
     sdsl::construct_im(s_lcp_T, s_lcp_T_);
   }

@@ -172,7 +172,7 @@ private:
             size_t visited = visited_;
             index = (index + 1) % dimensions;
             // if current node's x dimension is larger than matrix, then we go left node
-            query_PSV(x1, y1, y2, z1, dx > 0 ? root->left_ : root->right_, index);
+            query_PSV(x1, y1, y2, z1, dx >= 0 ? root->left_ : root->right_, index);
             if (dx < 0 && visited == visited_){
                 query_PSV(x1, y1, y2, z1, root->left_, index);
             }
@@ -181,28 +181,34 @@ private:
             int64_t dy1 = root->get(index) - y1;
             int64_t dy2 = root->get(index) - y2;
             index = (index + 1) % dimensions;
-            if (dy1 < 0){
-                // means y is smaller than y1. current point is on the left side of this matrix.
-                //we only need to check the right side
-                query_PSV(x1, y1, y2, z1, root -> right_, index);
-            }else if(dy2 > 0){
-                // y is larger than y2. Current node is on the right side of this matrix.
-                //we only need to check the left side
-                query_PSV(x1, y1, y2, z1, root -> left_, index);
-            }else{
-                // inside the matrix
-                size_t visited = visited_;
-                query_PSV(x1, y1, y2, z1, root -> left_, index);
-                query_PSV(x1, y1, y2, z1, root -> right_, index);
+                if (dy1 < 0){
+                    // means y is smaller than y1. current point is on the left side of this matrix.
+                    //we only need to check the right side
+                    query_PSV(x1, y1, y2, z1, root -> right_, index);
+                }else if(dy2 > 0){
+                    // y is larger than y2. Current node is on the right side of this matrix.
+                    //we only need to check the left side
+                    query_PSV(x1, y1, y2, z1, root -> left_, index);
+                }else{
+                    // inside the matrix
+                    size_t visited = visited_;
+                    query_PSV(x1, y1, y2, z1, root -> left_, index);
+                    query_PSV(x1, y1, y2, z1, root -> right_, index);
 
-            }
+                }
 
         } else{
-            uint64_t dz = root->get(index) - z1;
+            int64_t dz = root->get(index) - z1;
             index = (index + 1) % dimensions;
             // if current node's z dimension is larger than matrix, then we go left node
-            query_PSV(x1, y1, y2, z1, dz > 0 ? root->left_ : root->right_, index);
-//            if (dz <= 0){
+            if (dz >= 0){
+                query_PSV(x1, y1, y2, z1, root->left_, index);
+            }else{
+                query_PSV(x1, y1, y2, z1, root->right_, index);
+                query_PSV(x1, y1, y2, z1, root->left_, index);
+            }
+ //           query_PSV(x1, y1, y2, z1, dz >= 0 ? root->left_ : root->right_, index);
+//            if (dz < 0){
 //                query_PSV(x1, y1, y2, z1, root->left_, index);
 //            }
         }
@@ -222,7 +228,7 @@ private:
         size_t z = root->get(2);
 
 
-        if(x > x1 && y >= y1 && y <= y2 && z < z1){
+        if(x > x1 && y >= y1 && y <= y2  && z < z1){
             if (leftest_ == nullptr || x < min_x_){
                 min_x_ = x;
                 leftest_ = root;
@@ -237,7 +243,7 @@ private:
             size_t visited = visited_;
             index = (index + 1) % dimensions;
             // if current node's x dimension is smaller than matrix, then we go right node
-            query_NSV(x1, y1, y2, z1, dx < 0 ? root->right_ : root->left_, index);
+            query_NSV(x1, y1, y2, z1, dx <= 0 ? root->right_ : root->left_, index);
             if (dx > 0 && visited == visited_){
                 query_NSV(x1, y1, y2, z1, root->right_, index);
             }
@@ -265,10 +271,12 @@ private:
             int64_t dz = root->get(index) - z1;
             index = (index + 1) % dimensions;
             // if current node's z dimension is larger than matrix, then we go left node
-            query_NSV(x1, y1, y2, z1, dz > 0 ? root->left_ : root->right_, index);
-//            if (dz <= 0){
-//                query_NSV(x1, y1, y2, z1, root->left_, index);
-//            }
+            if (dz >= 0){
+                query_NSV(x1, y1, y2, z1, root->left_, index);
+            }else{
+                query_NSV(x1, y1, y2, z1, root->right_, index);
+                query_NSV(x1, y1, y2, z1, root->left_, index);
+            }
         }
         return;
 
@@ -353,6 +361,7 @@ public:
             return nullptr;
         } else{
             point_type *res = &(leftest_->point_);
+            return res;
         }
     }
 

@@ -1,4 +1,4 @@
-add_executable(ds_building_wt_sdsl ds_building_wt_sdsl.cpp)
+add_executable(ds_building_wt_sdsl ds_building_wt_sdsl.cpp paper_test.cpp)
 target_link_libraries(ds_building_wt_sdsl common strdup pfp gsacak sdsl malloc_count)
 
 add_executable(ds_building_wt_sdsl64 ds_building_wt_sdsl.cpp)
