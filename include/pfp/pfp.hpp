@@ -43,6 +43,7 @@
 #include <wm.hpp>
 #include <kd_tree_support.hpp>
 #include <PPS_support.hpp>
+#include <malloc_count.h>
 
 using namespace std;
 
@@ -131,8 +132,7 @@ public:
 
     verbose("Computing S_LCP_T");
     _elapsed_time(build_s_lcp_T());
-//
-//
+
     verbose("create lz77");
     _elapsed_time(compute_lz_77());
 
@@ -161,8 +161,8 @@ public:
 
     // b_p(pfp.n,0);
     verbose("Computing b_p");
+    auto mem_peak = malloc_count_peak();
     _elapsed_time(compute_b_p());
-
     //Aaron Hong yu.hong@ufl.edu extended this function
     //Compute the PSV and NSV in this function.
     verbose("Computing b_bwt, b_pps, and M of the parsing");
@@ -170,13 +170,16 @@ public:
 
     verbose("Computing S_LCP_T");
     _elapsed_time(build_s_lcp_T());
-
+    auto mem_peak1 = malloc_count_peak();
+    verbose("Memory peak for support data structures: ", mem_peak1-mem_peak);
     //Aaron Hong yu.hong@ufl.edu added this function
 //    verbose("kd_tree_test");
 //    _elapsed_time(kd_tree());
 
     verbose("create lz77");
     _elapsed_time(compute_lz_77());
+    auto mem_peak2 = malloc_count_peak();
+    verbose("Memory usage for lz77: ", mem_peak2-mem_peak1);
 
     // Clear unnecessary elements
     clear_unnecessary_elements();
@@ -328,34 +331,11 @@ public:
           lcp_M_.push_back(0);
         else
         {
-            // const auto& m_ = M.back();
-            // if ((m_.left <= m.right && m.right <= m_.right) or
-            //     (m_.left <= m.left && m.left <= m_.right) or 
-            //     (m.left <= m_.right && m_.right <= m.right) or
-            //     (m.left <= m_.left && m_.left <= m.right))
-            //   // The two suffixes are suffixes of the same phrase
-            //   lcp_M_.push_back(std::min(m.len, m_.len)); 
-            // else
-            // {
-            //   size_t left, right;
-            //   if(m.right != m_.right)
-            //   {
-            //     left = std::min(m.right, m_.right)+1;
-            //     right = max(m.right, m_.right);
-            //   }
-            //   else
-            //   {
-            //     assert(m.right != m_.left);
-            //     left = std::min(m.right, m_.left)+1;
-            //     right = max(m.right, m_.left);
-            //   }
               const size_t left = onset_b_pps[onset_b_pps.size()-2] +1;
               const size_t right = onset_b_pps[onset_b_pps.size()-1];
               const size_t idx = dict.rmq_lcp_D(left,right);
               lcp_M_.push_back(dict.lcpD[idx]);
-              // const size_t idx = dict.rmq_lcps(left,right);
-              // lcp_M_.push_back(dict.lcps[idx]);
-            // }
+
         }
 
 
@@ -392,26 +372,6 @@ public:
     //now we stored the location for PSV or NSV.
     PPS_PSV = PSV(first_PPS);
     PPS_NSV = NSV(first_PPS);
-//      for (int k = 0; k < b_pps.size(); ++k) {
-//          cout<<b_pps[k]<<endl;
-//      }
-//    cout<<"first:"<<endl;
-//        for (int k = 0; k < first_PPS.size(); ++k) {
-//            cout<<" "<<first_PPS[k];
-//        }
-//      cout<<"PSV: "<<endl;
-//      for (int k = 0; k < PPS_PSV.size(); ++k) {
-//          cout<<" "<<PPS_PSV[k];
-//      }
-//      cout<<endl<<"NSV: "<<endl;
-//      for (int k = 0; k < PPS_PSV.size(); ++k) {
-//          cout<<" "<<PPS_NSV[k];
-//      }
-//      cout<<endl<<"LCP_D"<<endl;
-//      for (int k = 0; k < dict.lcpD.size(); ++k) {
-//          cout<<" "<<dict.lcpD[k];
-//      }
-//      cout<<endl;
 
   }
 
@@ -518,7 +478,6 @@ public:
         size_t l;
         size_t test = 0;
         auto lz_out = sdsl::int_vector_buffer<>(out_FileName, std::ios::out, 1024*1024, log(n));
-        cout<<"n: "<<n<<endl;
         while(i < n) {
             uint64_t z1 = 0;
             z1 = rank_b_p(i);

@@ -48,7 +48,7 @@ public:
         return dist;
     }
 
-    bool isEmpty(){
+    const bool isEmpty(){
         return coords_.empty();
     }
 private:
