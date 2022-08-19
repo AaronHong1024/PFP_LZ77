@@ -6,4 +6,4 @@ set(PFP_SOURCES dictionary.hpp
                 pfp.hpp PPS_support.hpp)
 
 add_library(pfp OBJECT ${PFP_SOURCES})
-target_link_libraries(pfp common sdsl divsufsort divsufsort64)
+target_link_libraries(pfp common sdsl divsufsort divsufsort64 malloc_count)

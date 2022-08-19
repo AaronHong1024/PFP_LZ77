@@ -133,6 +133,7 @@ public:
     verbose("Computing S_LCP_T");
     _elapsed_time(build_s_lcp_T());
 
+
     verbose("create lz77");
     _elapsed_time(compute_lz_77());
 
@@ -161,7 +162,8 @@ public:
 
     // b_p(pfp.n,0);
     verbose("Computing b_p");
-    auto mem_peak = malloc_count_peak();
+    size_t mem_current = malloc_count_current();
+    malloc_count_reset_peak();
     _elapsed_time(compute_b_p());
     //Aaron Hong yu.hong@ufl.edu extended this function
     //Compute the PSV and NSV in this function.
@@ -170,16 +172,21 @@ public:
 
     verbose("Computing S_LCP_T");
     _elapsed_time(build_s_lcp_T());
-    auto mem_peak1 = malloc_count_peak();
-    verbose("Memory peak for support data structures: ", mem_peak1-mem_peak);
-    //Aaron Hong yu.hong@ufl.edu added this function
+       //Aaron Hong yu.hong@ufl.edu added this function
 //    verbose("kd_tree_test");
 //    _elapsed_time(kd_tree());
 
+//    verbose("Construct KD_Tree");
+//    _elapsed_time(construct_kd_tree());
+//    auto mem_peak = malloc_count_peak();
+//    malloc_count_reset_peak();
+//    verbose("before construction the RAM:", mem_current);
+//    verbose("after all the support data structures, RAM: ", mem_peak);
+
     verbose("create lz77");
     _elapsed_time(compute_lz_77());
-    auto mem_peak2 = malloc_count_peak();
-    verbose("Memory usage for lz77: ", mem_peak2-mem_peak1);
+//    mem_peak = malloc_count_peak();
+//    verbose("LZ77 construction: ",mem_peak);
 
     // Clear unnecessary elements
     clear_unnecessary_elements();
@@ -342,15 +349,15 @@ public:
         M.push_back(m);
       }
     }
-
-    sdsl::int_vector<> lcp_M__(lcp_M_.size());
-    for(size_t i = 0; i < lcp_M_.size(); ++i)
-      lcp_M__[i] = lcp_M_[i];
-
-    lcp_M_.clear();
-
-    sdsl::construct_im(lcp_M,lcp_M__);
-    lcp_M_.resize(0);
+//
+//    sdsl::int_vector<> lcp_M__(lcp_M_.size());
+//    for(size_t i = 0; i < lcp_M_.size(); ++i)
+//      lcp_M__[i] = lcp_M_[i];
+//
+//    lcp_M_.clear();
+//
+//    sdsl::construct_im(lcp_M,lcp_M__);
+//    lcp_M_.resize(0);
 
     sdsl::sd_vector_builder builder(n,onset.size());
     for(auto idx: onset)
@@ -404,7 +411,67 @@ public:
     w_wt.construct(alphabet, bwt_p);
 
   }
-
+//    void construct_kd_tree(){
+//        std::vector<uint32_t> bwt_p(pars.p.size() - 1, 0);
+//        for (size_t i = 1; i < pars.saP.size(); ++i)
+//        {
+//            if (pars.saP[i] > 0)
+//                bwt_p[i - 1] = pars.p[pars.saP[i] - 1];
+//            else
+//                bwt_p[i - 1] = pars.p[pars.p.size() - 2];
+//
+//        }
+//
+//
+//        //y dimension for the kd_tree
+//        std::vector<uint32_t> alphabet(dict.n_phrases());
+//        for (size_t i = 0; i < dict.n_phrases(); ++i) {
+//            alphabet[i] = dict.colex_id[i] + 1;
+//        }
+//
+//        //change the cout to verbose or info or other things
+//        size_t n_phrase = dict.n_phrases();
+//
+//
+//        // connect x and y
+//        sdsl::int_vector<> parse_x(bwt_p.size(), 0);
+//        vector<uint32_t> translate;
+//        translate.resize(alphabet.size(), 0);
+//
+//        for (size_type i = 0; i < alphabet.size(); ++i) {
+//            translate[alphabet[i] - 1] = i;
+//        }
+//
+//        // parse_x: x location in y dimension. Pair should be (bwt_p[i], parse_x[i], z[i])
+//        //don need store this can save some space
+//        size_t bwt_p_size = bwt_p.size();
+//        for (size_type i = 0; i < bwt_p_size; ++i) {
+//            parse_x[i] = translate[bwt_p[i] - 1];
+//        }
+//
+//        // connect x and z, Z[i] = isa_P[bwt_p[i] - 1]
+//
+//        point3d *points = new point3d [bwt_p_size];
+//
+//        for (size_type i = 0; i < bwt_p_size; ++i) {
+//            // shoule be the uint64_t
+//            // define a parameter
+//            uint64_t x = i;
+//            uint64_t y = parse_x[i];
+//            //
+//            uint64_t z = (pars.saP[i+1] + bwt_p_size - 1)%bwt_p_size;
+//            points[i] = {x,y,z};
+//        }
+//        // construct the kd_tree
+//        tree3d test_tree(points, points + bwt_p_size);
+//        tree = test_tree;
+//        verbose("tree size: ", tree.size());
+//
+//        delete points;
+//
+//        translate.clear();
+//        translate.shrink_to_fit();
+//  }
 
     void compute_lz_77(){
         std::vector<uint32_t> bwt_p(pars.p.size() - 1, 0);
@@ -466,8 +533,14 @@ public:
 
        translate.clear();
        translate.shrink_to_fit();
-        //i is the starting position of the lz_77's factor. Starting from 0. each time can add the factor's length to compute the next one factor.
 
+       auto mem_peak = malloc_count_peak();
+       malloc_count_reset_peak();
+//       verbose("before construction the RAM:", mem_current);
+       verbose("after all the support data structures, RAM: ", mem_peak);
+
+        //i is the starting position of the lz_77's factor. Starting from 0. each time can add the factor's length to compute the next one factor.
+        std::chrono::high_resolution_clock::time_point t_insert_start = std::chrono::high_resolution_clock::now();
         //the limitation for the x,y,z is the position in grid.
         size_t i = w;
         size_t p_psv;
@@ -505,6 +578,8 @@ public:
                 y2 = M[r-1].right;
             }
 
+//            point3d *psv = tree.query_PSV(x1, y1, y2, z1);
+//            point3d *nsv = tree.query_NSV(x1, y1, y2, z1);
             point3d *psv = test_tree.query_PSV(x1, y1, y2, z1);
             point3d *nsv = test_tree.query_NSV(x1, y1, y2, z1);
             // check the length of the suffix is the same as the M length
@@ -582,7 +657,11 @@ public:
                 lz_out.push_back(l);
             }
         }
+        mem_peak = malloc_count_peak();
+        verbose("LZ77 construction: ",mem_peak);
         verbose("phrase number: ",test);
+        std::chrono::high_resolution_clock::time_point t_insert_end = std::chrono::high_resolution_clock::now();
+        verbose("LZ77 construction time (s): ", std::chrono::duration<double, std::ratio<1>>(t_insert_end - t_insert_start).count());
     }
 
   std::pair<size_t, size_t> KKP(size_t r, size_t d){
@@ -656,8 +735,7 @@ public:
           l = l_nsv;
       }
       std::pair<size_t, size_t> res (f, l);
-//      res.push_back(f);
-//      res.push_back(l);
+
       return res;
   }
 // change this file make it to array
@@ -696,8 +774,6 @@ public:
 
     rmq_s_lcp_T = sdsl::rmq_succinct_sct<>(&s_lcp_T_);
     s_lcp_T_array = s_lcp_T_;
-// change the s_lcp_T to array
-    sdsl::construct_im(s_lcp_T, s_lcp_T_);
   }
 
   void clear_unnecessary_elements(){

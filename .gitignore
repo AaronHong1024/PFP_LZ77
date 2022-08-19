@@ -36,6 +36,7 @@
 build/
 
 # Others
+/.idea
 .vscode/
 data/
 logs/
