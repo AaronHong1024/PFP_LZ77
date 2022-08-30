@@ -3,6 +3,14 @@
 # Lempel-Ziv 77 via Prefix-Free Parsing
 Lempel-Ziv 77 described in [1], built on prefix-free parsing compressed suffix tree [1].
 
+If you use the PFP_LZ77 in your research, please cite:
+XXXXX
+
+BibTex [here](#citation)
+
+#Usage
+
+
 
 [1] 
 [2] Christina Boucher, Ondřej Cvacho, Travis Gagie, Jan Holub, Giovanni Manzini, Gonzalo Navarro, and Massimiliano Rossi . *"PFP Compressed Suffix Tree"*, In Proc. of the SIAM Symposium onAlgorithm Engineering and Experiments (ALENEX21), pp. 60-72. (2021).
