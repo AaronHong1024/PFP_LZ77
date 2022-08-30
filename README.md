@@ -10,6 +10,39 @@ BibTex [here](#citation)
 
 #Usage
 
+## Building the LZ77
+
+To build the LZ77 you can use the `lz_77` pipeline as follows.
+```
+usage: lz_77 input
+
+positional arguments:
+  input           input file name
+
+Once built, the `lz_77` will be stored on disk, under the same directory as the input file.
+
+## Integrating `lz_77` in your code
+
+Integrate the `lz_77` into your code by using the `CMake`
+
+```cmake
+include(FetchContent)
+
+## Add PFP_LZ77
+FetchContent_declare(
+  PFP_LZ77
+  GIT_REPOSITORY https://github.com/AaronHong1024/PFP_LZ77
+)
+
+FetchContent_GetProperties(PFP_LZ77)
+if(NOT PFP_LZ77_POPULATED)
+  fetchContent_Populate(PFP_LZ77)
+  add_subdirectory(${PFP_LZ77_SOURCE_DIR} ${PFP_LZ77_BINARY_DIR})
+ endif()
+```
+
+
+
 
 
 [1] 
