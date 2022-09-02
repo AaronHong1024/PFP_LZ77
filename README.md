@@ -67,6 +67,7 @@ make
 ### Run
 
 ```console
+./_deps/bigbwt-build/newscanNT.x ../data/yeast.fasta -w 10 -p 100 -f
 ./src/lz_77 ../data/yeast.fasta
 ```
 
