@@ -14,9 +14,11 @@ BibTex [here](#citation)
 
 To build the LZ77 you can use the `lz_77` pipeline as follows.
 ```
-usage: lz_77 input
+usage: lz_77 [-w WSIZE] input
 
 positional arguments:
+  -w WSIZE, --wsize WSIZE
+                        sliding window size (def. 10)
   input           input file name
 ```
 Once built, the `lz_77` will be stored on disk, under the same directory as the input file.
