@@ -72,7 +72,7 @@ make
 ./_deps/bigbwt-build/newscanNT.x ../data/yeast.fasta -w 10 -p 100 -f
 ./src/lz_77 ../data/yeast.fasta
 ```
-
+We need to run the bigbwt first to generate the dictionary file and pars file. The -w is the window size and -p is the hash modulus.
 # External resources
 
 * [Big-BWT](https://github.com/alshai/Big-BWT.git)
