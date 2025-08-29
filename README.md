@@ -27,7 +27,6 @@ PFP-LZ77 constructs the Lempel-Ziv 77 factorization by augmenting Prefix-Free Pa
 -  **Memory Optimized**: Designed for large-scale datasets
 -  **Genomic Data Support**: Optimized for biological sequences
 -  **CMake Integration**: Easy integration into existing projects
--  **Cross-platform**: Works on Linux, macOS, and Windows
 
 ## Requirements
 
