@@ -1,5 +1,5 @@
 
-# Lempel-Ziv 77 via Prefix-Free Parsing (PFP-LZ77)[![Release](https://img.shields.io/github/release/AaronHong1024/PFP_LZ77.svg)](https://github.com/AaronHong1024/PFP_LZ77/releases)
+# Lempel-Ziv 77 via Prefix-Free Parsing (PFP-LZ77)[![Release](https://img.shields.io/github/release/AaronHong1024/PFP_LZ77.svg)](https://github.com/AaronHong1024/PFP_LZ77/releases/tag/v2.0)
 
 [LZ77 via Prefix-Free Parsing](https://epubs.siam.org/doi/abs/10.1137/1.9781611977561.ch11)
 
