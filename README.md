@@ -90,7 +90,7 @@ make -j$(nproc)
 
 ### Building LZ77 Factorization
 
-The main executable `pfp-cst_build` computes the LZ77 factorization:
+The main executable `lz_77` computes the LZ77 factorization:
 
 ```bash
 ./lz77 [OPTIONS] input_file
@@ -101,10 +101,8 @@ The main executable `pfp-cst_build` computes the LZ77 factorization:
 - `-w, --wsize`: Sliding window size (default: 10)
 
 **Available Executables:**
-- `pfp-cst_build`: Standard version
-- `pfp-cst_build64`: 64-bit optimized version
-- `lz_77_test`: Test executable
-- `lz_77_test64`: 64-bit test executable
+- `lz_77`: Standard version
+- `lz_77_64`: 64-bit optimized version
 
 **Output:**
 The LZ77 factorization will be stored in the same directory as the input file with appropriate extensions.
