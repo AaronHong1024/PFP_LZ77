@@ -6,7 +6,7 @@
 
 This repository provides an implementation of PFP-LZ77, an algorithm for constructing the Lempel-Ziv 77 (LZ77) factorization using prefix-free parsing (PFP). By augmenting PFP with primitives for previous/next smaller value queries, PFP-LZ77 efficiently computes the LZ77 parse, scaling to large and highly repetitive datasets such as human chromosome collections and SARS-CoV-2 genomes
 
-#Usage
+# Usage
 
 ## Building the LZ77
 
