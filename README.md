@@ -1,86 +1,181 @@
 
-# Lempel-Ziv 77 via Prefix-Free Parsing (PFP-LZ77)[![Release](https://img.shields.io/github/release/AaronHong1024/PFP_LZ77.svg)](https://github.com/AaronHong1024/PFP_LZ77/releases/tag/v2.0)
+# PFP-LZ77: Lempel-Ziv 77 via Prefix-Free Parsing
 
-[LZ77 via Prefix-Free Parsing](https://epubs.siam.org/doi/abs/10.1137/1.9781611977561.ch11)
+[![Release](https://img.shields.io/github/release/AaronHong1024/PFP_LZ77.svg)](https://github.com/AaronHong1024/PFP_LZ77/releases/tag/v2.0)
+[![License](https://img.shields.io/badge/license-GPL--3.0-blue.svg)](LICENSE)
+[![Language](https://img.shields.io/badge/language-C++-blue.svg)](https://isocpp.org/)
+[![CMake](https://img.shields.io/badge/CMake-3.15+-green.svg)](https://cmake.org/)
 
-This repository provides an implementation of PFP-LZ77, an algorithm for constructing the Lempel-Ziv 77 (LZ77) factorization using prefix-free parsing (PFP). By augmenting PFP with primitives for previous/next smaller value queries, PFP-LZ77 efficiently computes the LZ77 parse, scaling to large and highly repetitive datasets such as human chromosome collections and SARS-CoV-2 genomes
+An efficient implementation of the Lempel-Ziv 77 (LZ77) factorization algorithm using Prefix-Free Parsing (PFP). This implementation scales to large and highly repetitive datasets such as human chromosome collections and SARS-CoV-2 genomes.
 
-# Usage
+**Paper**: [LZ77 via Prefix-Free Parsing](https://epubs.siam.org/doi/abs/10.1137/1.9781611977561.ch11)
 
-## Building the LZ77
 
-To build the LZ77 you can use the `lz_77` pipeline as follows.
+## Overview
+
+PFP-LZ77 constructs the Lempel-Ziv 77 factorization by augmenting Prefix-Free Parsing (PFP) with primitives for previous/next smaller value queries. This approach enables efficient compression of highly repetitive text collections while maintaining scalability.
+
+**Key Benefits:**
+- Efficient processing of large, repetitive datasets
+- Memory-efficient implementation
+- Scalable to genomic-scale data
+- Based on solid theoretical foundations
+
+## Features
+
+-  **Efficient LZ77 Construction**: Fast computation using prefix-free parsing
+-  **Memory Optimized**: Designed for large-scale datasets
+-  **Genomic Data Support**: Optimized for biological sequences
+-  **CMake Integration**: Easy integration into existing projects
+-  **Cross-platform**: Works on Linux, macOS, and Windows
+
+## Requirements
+
+### System Requirements
+- **OS**: Linux, macOS, or Windows
+- **Compiler**: GCC 7+ or Clang 6+ with C++14 support
+- **CMake**: Version 3.15 or higher
+- **Memory**: Depends on input size (typically 5-10x input size)
+
+### Dependencies
+All dependencies are automatically downloaded and built using CMake FetchContent:
+- [Big-BWT](https://github.com/alshai/Big-BWT.git)
+- [SDSL-lite](https://github.com/simongog/sdsl-lite)
+- [libdivsufsort](https://github.com/simongog/libdivsufsort.git)
+- [gSACA-K](https://github.com/felipelouza/gsa-is.git)
+
+
+## Installation
+
+### Clone the Repository
+```bash
+git clone https://github.com/AaronHong1024/PFP_LZ77.git
+cd PFP_LZ77
 ```
-usage: lz_77 [-w WSIZE] input
 
-positional arguments:
-  -w WSIZE, --wsize WSIZE
-                        sliding window size (def. 10)
-  input           input file name
+### Build from Source
+```bash
+# Create build directory
+mkdir build && cd build
+
+# Configure with CMake
+cmake ..
+
+# Build the project
+make -j$(nproc)
 ```
-Once built, the `lz_77` will be stored on disk, under the same directory as the input file.
 
-## Integrating `lz_77` in your code
 
-Integrate the `lz_77` into your code by using the `CMake`
+## Quick Start
+
+### Basic Usage
+```bash
+# Step 1: Generate dictionary and parse files using Big-BWT
+./_deps/bigbwt-build/newscanNT.x input.fasta -w 10 -p 100 -f
+
+# Step 2: Compute LZ77 factorization
+./lz77 input.fasta
+```
+
+### Command Line Options
+```bash
+# Basic usage
+./lz77 input_file
+
+# With 64-bit version
+./lz77_64 input_file
+```
+
+## Usage
+
+### Building LZ77 Factorization
+
+The main executable `pfp-cst_build` computes the LZ77 factorization:
+
+```bash
+./lz77 [OPTIONS] input_file
+```
+
+**Parameters:**
+- `input_file`: Path to input text file
+- `-w, --wsize`: Sliding window size (default: 10)
+
+**Available Executables:**
+- `pfp-cst_build`: Standard version
+- `pfp-cst_build64`: 64-bit optimized version
+- `lz_77_test`: Test executable
+- `lz_77_test64`: 64-bit test executable
+
+**Output:**
+The LZ77 factorization will be stored in the same directory as the input file with appropriate extensions.
+
+### File Formats
+
+**Input:** Plain text files (FASTA format supported for genomic data)  
+**Output:** Binary files containing LZ77 factors
+
+### Prerequisites
+
+Before running the LZ77 construction, you need to generate dictionary and parse files using Big-BWT:
+
+```bash
+# Generate required files
+./_deps/bigbwt-build/newscanNT.x input_file -w window_size -p hash_modulus -f
+```
+
+**Big-BWT Parameters:**
+- `-w`: Window size (affects compression ratio)
+- `-p`: Hash modulus (typically 100)
+- `-f`: Force overwrite existing files
+
+## Integration
+
+### CMake Integration
+
+Add PFP-LZ77 to your CMake project:
 
 ```cmake
 include(FetchContent)
 
-## Add PFP_LZ77
-FetchContent_declare(
+# Fetch PFP-LZ77
+FetchContent_Declare(
   PFP_LZ77
-  GIT_REPOSITORY https://github.com/AaronHong1024/PFP_LZ77
+  GIT_REPOSITORY https://github.com/AaronHong1024/PFP_LZ77.git
+  GIT_TAG        v2.0  # Use specific version
 )
 
-FetchContent_GetProperties(PFP_LZ77)
-if(NOT PFP_LZ77_POPULATED)
-  fetchContent_Populate(PFP_LZ77)
-  add_subdirectory(${PFP_LZ77_SOURCE_DIR} ${PFP_LZ77_BINARY_DIR})
- endif()
-```
-Link the `PFP_LZ77` target library to example `LZ_app`.
+FetchContent_MakeAvailable(PFP_LZ77)
 
-```cmake
-add_executable(LZ_app LZ_app.cpp)
-target_link_libraries(LZ_app PFP_LZ77)
-```
-### Project Mockup
-
-### Download
-
-```console
-git clone https://github.com/AaronHong1024/PFP_LZ77.git
+# Link to your target
+add_executable(my_app main.cpp)
+target_link_libraries(my_app PFP_LZ77)
 ```
 
-### Compile
 
-```console
-mkdir build
-cd build
-cmake ..
-make 
-```
+## Dependencies
 
-### Run
+This project automatically manages the following dependencies:
 
-```console
-./_deps/bigbwt-build/newscanNT.x ../data/yeast.fasta -w 10 -p 100 -f
-./src/lz_77 ../data/yeast.fasta
-```
-We need to run the bigbwt first to generate the dictionary file and pars file. The -w is the window size and -p is the hash modulus.
-# External resources
+- **[Big-BWT](https://github.com/alshai/Big-BWT.git)**: For suffix array construction
+  - **[gSACA-K](https://github.com/felipelouza/gsa-is.git)**: Generalized suffix array construction
+  - **[malloc_count](https://github.com/bingmann/malloc_count)**: Memory usage tracking
+- **[SDSL-lite](https://github.com/simongog/sdsl-lite)**: Succinct data structures library
+  - **[libdivsufsort](https://github.com/simongog/libdivsufsort.git)**: Suffix array library
 
-* [Big-BWT](https://github.com/alshai/Big-BWT.git)
-    * [gSACA-K](https://github.com/felipelouza/gsa-is.git)
-    * [malloc_count](https://github.com/bingmann/malloc_count)
-* [sdsl-lite](https://github.com/simongog/sdsl-lite)
-    * [Divsufsort](https://github.com/simongog/libdivsufsort.git)
 
-# Citation
+## Citation
 
-If you use this code or reproduce the results, please cite:
+If you use this software in your research, please cite:
 
 > Hong, A., Rossi, M., & Boucher, C. (2023). LZ77 via Prefix-Free Parsing. In Proceedings. 2023 Proceedings of the Symposium on Algorithm Engineering and Experiments (ALENEX) (pp. 123–134). doi:10.1137/1.9781611977561.ch11
+
+
+**Paper**: [LZ77 via Prefix-Free Parsing](https://epubs.siam.org/doi/abs/10.1137/1.9781611977561.ch11)
+
+
+---
+**Developed by**: Aaron Hong, Massimiliano Rossi, Christina Boucher  
+**Affiliation**: University of Florida  
+**Contact**: [Aaron Hong](https://github.com/AaronHong1024)
 
 
