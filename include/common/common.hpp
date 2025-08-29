@@ -331,6 +331,7 @@ void parseArgs(int argc, char *const argv[], Args &arg)
     //   break;
     case 'h':
       error(usage);
+      break;
     case '?':
       error("Unknown option.\n", usage);
       exit(1);
