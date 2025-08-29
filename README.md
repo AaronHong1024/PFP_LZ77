@@ -1,12 +1,10 @@
 [![Release](https://img.shields.io/github/release/AaronHong1024/PFP_LZ77.svg)](https://github.com/AaronHong1024/PFP_LZ77/releases)
 
-# Lempel-Ziv 77 via Prefix-Free Parsing
-Lempel-Ziv 77 described in [1], built on prefix-free parsing compressed suffix tree [1].
+# Lempel-Ziv 77 via Prefix-Free Parsing (PFP-LZ77)
 
-If you use the PFP_LZ77 in your research, please cite:
-XXXXX
+[LZ77 via Prefix-Free Parsing](https://epubs.siam.org/doi/abs/10.1137/1.9781611977561.ch11)
 
-BibTex [here](#citation)
+This repository provides an implementation of PFP-LZ77, an algorithm for constructing the Lempel-Ziv 77 (LZ77) factorization using prefix-free parsing (PFP). By augmenting PFP with primitives for previous/next smaller value queries, PFP-LZ77 efficiently computes the LZ77 parse, scaling to large and highly repetitive datasets such as human chromosome collections and SARS-CoV-2 genomes
 
 #Usage
 
@@ -83,20 +81,8 @@ We need to run the bigbwt first to generate the dictionary file and pars file. T
 
 # Citation
 
-Please, if you use this tool in an acdemic setting cite the following paper:
+If you use this code or reproduce the results, please cite:
 
-XXXXX
+> Hong, A., Rossi, M., & Boucher, C. (2023). LZ77 via Prefix-Free Parsing. In Proceedings. 2023 Proceedings of the Symposium on Algorithm Engineering and Experiments (ALENEX) (pp. 123–134). doi:10.1137/1.9781611977561.ch11
 
 
-# Authors
-
-### Theoretical results:
-
-* Yu Hong
-* Massimiliano Rossi
-* Christina Boucher
-
-#Reference
-
-[1] 
-[2] Christina Boucher, Ondřej Cvacho, Travis Gagie, Jan Holub, Giovanni Manzini, Gonzalo Navarro, and Massimiliano Rossi . *"PFP Compressed Suffix Tree"*, In Proc. of the SIAM Symposium onAlgorithm Engineering and Experiments (ALENEX21), pp. 60-72. (2021).
