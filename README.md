@@ -48,7 +48,6 @@ target_link_libraries(LZ_app PFP_LZ77)
 ```
 ### Project Mockup
 
-#Example
 ### Download
 
 ```console
