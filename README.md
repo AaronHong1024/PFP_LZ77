@@ -167,9 +167,5 @@ If you use this software in your research, please cite:
 > Hong, A., Rossi, M., & Boucher, C. (2023). LZ77 via Prefix-Free Parsing. In Proceedings. 2023 Proceedings of the Symposium on Algorithm Engineering and Experiments (ALENEX) (pp. 123–134). doi:10.1137/1.9781611977561.ch11
 
 
----
-**Developed by**: Aaron Hong, Massimiliano Rossi, Christina Boucher  
-**Affiliation**: University of Florida  
-**Contact**: [Aaron Hong](https://github.com/AaronHong1024)
 
 
